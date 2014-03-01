@@ -44,6 +44,27 @@ button{
 	margin:40px 3px 0px 0px;
 	box-shadow: 5px 5px 5px #000033;
 }
+
+input{
+	border-radius: 5px;
+}
+
+#inputBoxs input{
+	margin-left: auto;
+	margin-right: auto;
+	width: 150px;
+}
+
+#inputBoxs{
+	margin-left: auto;
+	margin-right: auto;
+	width:150px;
+}
+
+#menubar{
+	width:100%;
+}
+
 footer{
 	text-align:center;
 }
