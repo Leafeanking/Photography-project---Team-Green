@@ -1,9 +1,9 @@
 body {
-	background-color:#807c7c;
+	background-color:#757575;
 	margin-top:0px;
 }
 .center{
-	background-color: #906a6a;
+	background-color: #7e6f72;
 	margin: 0% 20%;
 	padding:10px;
 	min-width:300px;
@@ -15,6 +15,7 @@ body {
 	background-repeat: no-repeat;
 	background-position: center;	
 	padding:10px 10px 0px 10px;	
+	margin-top:0px;
 	min-width:300px;
 }
 h1{
@@ -27,16 +28,30 @@ h1{
 	padding-bottom:0px;
 	padding-top:85px;
 }
-
-ul{
+.avatar{
+	padding:0px 0px 20px 0px;
+	margin-top: -25px;
+}
+.navwrapper{
 	list-style-type:none;
 	display:inline-block;
-	margin:0 px;
-	padding:0px;
+	padding: 0% 50%;
+	min-width:300px;
+}
+li{
+	display:inline;
 }
 .redline{
-	background-color: #730000;
-	margin:0% -50%;
+	background-color: #690004;
+	margin:1% -50%;
+}
+.right{
+	float:right;
+	padding-left: 20px;
+}
+.left{
+	float:left;
+	padding-left:20px;
 }
 
 button{

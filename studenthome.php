@@ -17,22 +17,12 @@ if(isset($_GET['folder'])){
 		<link rel="stylesheet" type="text/css" href="photography.css">
 		<title>DSU Photography</title>
 	</head>
-	<body>
+	<body> 
 		<div id = "logo" class="center">
             <header >
                 <h1 >Photography</h1>
             </header>
-		</div>
-        
-        <div class="center">
-            <ul>
-               <li> <a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> </li>
-               <li> <a href="name">Name</a> </li>
-               <li> <a href="back">Back</a> </li>
-               <li> <a href="join">Join!</a> </li>
-               
-               
-                <?php
+			<?php
 					if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
 						echo "<div id='location'>";
 						echo "<li><a href='studenthome.php?folder=home'>Home</a></li>";
@@ -40,13 +30,21 @@ if(isset($_GET['folder'])){
 						echo "<li>$theme</li></div>";
 					}
 					?>
-                <li>join button</li>
-               
-                	<li><a><button type="button">Join!</button></a> </li> 
-              </ul>
-        </div>
+		</div>
         
-		<div>
+        <div class="center">
+        
+            <ul class="redline navwrapper">
+            
+               <li class="left avatar"> <a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> </li>
+               <li class="left"> <a href="name">Name</a> </li>
+                <li class="right"> <a href="join">Join!</a> </li>
+               <li class="right"> <a href="back">Back</a> </li>
+                <li><a><button type="button">Join!</button></a> </li>
+         	</ul>
+        </div>
+       
+		<div class="center">
 			<?php
 			if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
 				include 'viewfolder.php';
