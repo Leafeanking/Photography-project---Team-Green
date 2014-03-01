@@ -21,25 +21,29 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
+		<link rel="stylesheet" type"text/css" href="photography.css">
 		<title>Login</title>
+		<!--Icon place holder until we find a icon-->
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
 	</head>
 	<body>
-		<header>
-			<!--Icon place holder until we find a icon-->
-			<link rel="icon" href="favicon.ico" type="image/x-icon" />
-			<!--Logo place holder until we find a logo-->
-			<img src="logo.png" alt"Photography Logo" width="313" height="106">
+		<header id="logo">
 		<h1>Photography</h1>
 		</header>
-		<div>
-		<form action = 'index.php' method = 'POST'>
-			<input type='text' name="username" value="Username" />
-			<input type='password' name="password" value="Password" />
-			<input type='submit' name='Login' />
+		<div id="menubar">
+			<div id="inputBoxs">
+			<form action='index.php' method='POST'>
+			<input type="username" name="" placeholder="Username"/><br>
+			<input type="password" name="" placeholder="Password"/>
+			<input type='submit' name = 'Login'>
 		</form>
 		</div>
+	</div>
+		<footer>
+		<small><i>Copyright &copy; 2014 <br></i></small>
+		</footer>
 	</body>
 </html>
