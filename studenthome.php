@@ -9,17 +9,6 @@ if(isset($_GET['folder'])){
 <form action='index.php' method='POST'>
 	<input type='submit' name = 'Logout' value='Logout'>
 </form>
-<!------------------------------------------------------------------------------------------>
-<!--Shows what folder you are currently viewing. Grab everything inside of this and place it where you want it-->
-<?php
-	if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
-		echo "<div id='location'><ul>";
-		echo "<li><a href='studenthome.php?folder=home'>Home</a></li>";
-		$theme = get_theme($_SESSION['view']);
-		echo "<li>$theme</li></ul></div>";
-	}
-?>
-<!-------------end-------------------------------------------------------------------------->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,19 +18,34 @@ if(isset($_GET['folder'])){
 		<title>DSU Photography</title>
 	</head>
 	<body>
-		<div id = "logo">
+		<div id = "logo" class="center">
             <header >
                 <h1 >Photography</h1>
             </header>
 		</div>
-            <nav>
-                <a> 
-                	<img src="icon3.png" alt="avatar" height="64" width="64">
-                </a>
-                <a> 
-                	<button type="button">Join!</button>
-                </a> 
-            </nav>
+        
+        <div class="center">
+            <ul>
+               <li> <a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> </li>
+               <li> <a href="name">Name</a> </li>
+               <li> <a href="back">Back</a> </li>
+               <li> <a href="join">Join!</a> </li>
+               
+               
+                <?php
+					if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
+						echo "<div id='location'>";
+						echo "<li><a href='studenthome.php?folder=home'>Home</a></li>";
+						$theme = get_theme($_SESSION['view']);
+						echo "<li>$theme</li></div>";
+					}
+					?>
+                <li>join button</li>
+               
+                	<li><a><button type="button">Join!</button></a> </li> 
+              </ul>
+        </div>
+        
 		<div>
 			<?php
 			if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){

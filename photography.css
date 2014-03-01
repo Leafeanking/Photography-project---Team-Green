@@ -2,6 +2,14 @@ body {
 	background-color:#807c7c;
 	margin-bottom:0px;
 }
+.center{
+	background-color: #906a6a;
+	margin-bottom:0px;
+	margin-top:0px;
+	padding:10px;
+	min-width:300px;
+}
+	
 #logo{
 	background-image: url('logo.png');
 	background-size:279px,82px;
@@ -21,10 +29,14 @@ h1{
 	padding-top:85px;
 }
 
-nav{
-	margin-top:0;
+ul{
+	list-style-type:none;
+	display:block;
+	margin:0 px;
+	padding: 0px;
+}
+.redline{
 	background-color: #730000;
-	padding: 5px 80px;
 }
 
 button{
