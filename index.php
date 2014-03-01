@@ -36,8 +36,8 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 		<div id="menubar">
 			<div id="inputBoxs">
 			<form action='index.php' method='POST'>
-			<input type="username" name="" placeholder="Username"/><br>
-			<input type="password" name="" placeholder="Password"/>
+			<input type="username" name="username" placeholder="Username"/><br>
+			<input type="password" name="password" placeholder="Password"/>
 			<input type='submit' name = 'Login'>
 		</form>
 		</div>
