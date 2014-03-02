@@ -150,20 +150,49 @@ footer{
 #image_and_comments{
  display:none;
  position:absolute;
- top:0px;
- left:0px;
- width:75%;
- height:75%;
+ top:50px;
+ left:10%;
+ width:80%;
+ height:500px;
  background-color:white;
  z-index:11;
+ padding:10px;
+ border-radius:10px;
+}
+
+#selectedImage{
+width:65%;
+float:left;
+overflow:hidden;
+height:inherit;
+}
+#selectedImage img{
+max-width:100%;
+max-height:100%;
 }
 
 #comments_ratings{
 background-color:white;
 overflow:scroll;
+display:block;
+width:28%;
+padding-left:3%;
+padding-right:3%;
+height:inherit;
+float:right;
+text-align:right;
+}
+#comments_ratings h3{
+text-align:center;
+}
+#comments_ratings li{
+display:block;
+text-align:center;
 }
 
+
 #shadow{
+clear:both;
 display:none;
 position:absolute;
 top:0px;

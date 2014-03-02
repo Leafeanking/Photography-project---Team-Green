@@ -11,9 +11,10 @@
 	}
 	
 	function manage_image_click(photoId){
-		document.getElementById('image_and_comments').style.display = 'block';
+		document.getElementById('image_and_comments').style.display = 'inline';
 		document.getElementById('shadow').style.display='block';
 		request_comments(photoId);
+		document.getElementById('selectedImage').innerHTML=document.getElementById(photoId).innerHTML
 	}
 	
 	function hide_image_and_comments(){
@@ -30,8 +31,8 @@ if(!isset($_SESSION['view']) or $_SESSION['view'] == 'home'){
 }
 $data = access_personal_project($_SESSION['username'],$_SESSION['view']);
 echo "<div id='image_and_comments'>";
-echo "<div id='selectedImage'></div>";
-echo "<div id='comments_ratings'></div></div>";
+echo "<div id='comments_ratings'></div>";
+echo "<div id='selectedImage'></div></div>";
 echo "<div id='shadow' onclick='hide_image_and_comments()'></div>";
 echo "<div id='iconbar'>";
 
