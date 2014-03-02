@@ -27,7 +27,7 @@ if(isset($_GET['folder'])){
 						echo "<div id='location'>";
 						echo "<li><a href='studenthome.php?folder=home'>Home</a></li>";
 						$theme = get_theme($_SESSION['view']);
-						echo "<li>$theme</li></div>";
+						echo "<li><b>Gallery:</b> $theme</li></div>";
 					}
 					?>
 		</div>
