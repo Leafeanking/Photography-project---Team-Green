@@ -177,7 +177,6 @@ max-height:100%;
 #comments_ratings{
 background-color:white;
 overflow:scroll;
-display:block;
 width:28%;
 padding-left:3%;
 padding-right:3%;
