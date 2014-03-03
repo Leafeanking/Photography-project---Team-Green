@@ -32,8 +32,8 @@ if(isset($_GET['folder'])){
 					?>
 		</div>
         
-        
-            <ul class="redline navwrapper">
+        <div class="redline">
+            <ul class="navwrapper">
             
                <li class="left avatar"> <a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> </li>
                <li class="left"> <a href="name">Name</a> </li>
@@ -41,7 +41,7 @@ if(isset($_GET['folder'])){
                <li class="right"> <a href="back">Back</a> </li>
                 <li><a><button type="button">Join!</button></a> </li>
          	</ul>
-    
+		</div>
        
 		<div class="center">
 			<?php

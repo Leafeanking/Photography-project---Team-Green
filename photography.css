@@ -32,13 +32,13 @@ h1{
 	padding:0px 0px 20px 0px;
 	margin-top: -25px;
 }
-.navwrapper{
+.navwrapper ul{
 	list-style-type:none;
 	display:inline-block;
 	padding: 0% 50%;
 	min-width:300px;
 }
-li{
+.navwrapper li{
 	display:inline;
 }
 .redline{
