@@ -195,7 +195,7 @@ text-align:center;
 #create_project{
 background-color:white;
 overflow:scroll;
-display:block;
+display:none;
 width:28%;
 padding-left:3%;
 padding-right:3%;
