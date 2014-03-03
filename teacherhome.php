@@ -9,9 +9,7 @@ if($_SESSION['access'] != 'admin'){
 }
 ?>
 <!-- Temporary form to use for testing. We need to incorperate this into the picture icon.-->
-<form action='index.php' method='POST'>
-	<input type='submit' name = 'Logout' value='Logout'>
-</form>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +41,11 @@ if($_SESSION['access'] != 'admin'){
 						
 					}
 				?>
+                <li class="right">
+                <form action='index.php' method='POST'>
+                <input type='submit' name = 'Logout' value='Logout'>
+            	</form>
+                </li>
                 <li class="right"> <a href="join">Join!</a> </li>
                <li class="right"> <a href="back">Back</a> </li>
                 <li><a><button type="button">Join!</button></a> </li>
