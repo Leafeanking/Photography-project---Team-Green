@@ -26,14 +26,7 @@ if($_SESSION['access'] != 'admin'){
             <header >
                 <h1 >Photography</h1>
             </header>
-			<?php
-					if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
-						echo "<div id='location'>";
-						echo "<li><a href='teacherhome.php?folder=home'>Home</a></li>";
-						$theme = get_theme($_SESSION['view']);
-						echo "<li><b>Gallery:</b> $theme</li></div>";
-					}
-			?>
+			
 		</div>
         
         <div class="redline">
@@ -42,6 +35,14 @@ if($_SESSION['access'] != 'admin'){
             
                <li class="left avatar"> <a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> </li>
                <li class="left"> <a href="name">Name</a> </li>
+			   <?php
+					if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
+						echo "<div id='location'>";
+						$theme = get_theme($_SESSION['view']);
+						echo "<li class='left'><a href='teacherhome.php?folder=home'>Home</a> Gallery: $theme</li>";
+						
+					}
+				?>
                 <li class="right"> <a href="join">Join!</a> </li>
                <li class="right"> <a href="back">Back</a> </li>
                 <li><a><button type="button">Join!</button></a> </li>
