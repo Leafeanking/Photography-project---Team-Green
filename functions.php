@@ -52,12 +52,26 @@ function list_viewable($user,$access){
 	//checks project list for projects that a class($access) belongs to, and then
 	//grabs first photo from corresponding student 'folders'
 	//returns an array(array(projectID,theme,<img>coverPhoto))
-	if(true /*$access != 'admin'*/){
+	if($access != 'admin'){
 		$query = "select projectID, theme from projects where class = '$access'";
 		$results = dbGet($query);
 		$return = array();
 		while($item = mysql_fetch_assoc($results)){
 			$query = "select imageID from images where owner = '$user' and projectID = '$item[projectID]' LIMIT 0,1";
+			$resultsImage = dbGet($query);
+			$data = mysql_fetch_row($resultsImage);
+			$picture = "<img src='image.php?imageID=$data[0]'/>";
+			$packet = array($item['projectID'],$item['theme'],$picture);
+			array_push($return,$packet); 
+		}
+		return $return;
+	}
+	else if($access == 'admin'){
+		$query = "select projectID, theme from projects";
+		$results = dbGet($query);
+		$return = array();
+		while($item = mysql_fetch_assoc($results)){
+			$query = "select imageID from images where projectID = '$item[projectID]' LIMIT 0,1";
 			$resultsImage = dbGet($query);
 			$data = mysql_fetch_row($resultsImage);
 			$picture = "<img src='image.php?imageID=$data[0]'/>";

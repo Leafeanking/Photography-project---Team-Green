@@ -1,5 +1,5 @@
 <?php
-include 'functions.php';
+include_once('functions.php');
 session_start();
 if(isset($_POST['Logout']) and session_id() != false){
 	session_destroy();
@@ -9,10 +9,12 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 	$_SESSION['access'] = authenticate($_POST['username'],$_POST['password']);
 }
 if(isset($_SESSION['access']) and $_SESSION['access'] != false){
-	/*if($_SESSION['access'] == 'admin'){
+	if($_SESSION['access'] == 'admin'){
 		header('Location: teacherhome.php');
-	}*/
-	header('Location: studenthome.php');
+	}
+	else{
+		header('Location: studenthome.php');
+	}
 }
 if(isset($_POST['username']) and isset($_POST['password'])){
 	echo "<div id='warning'>Incorrect Username and/or Password</div>";
