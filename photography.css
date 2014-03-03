@@ -42,8 +42,11 @@ li{
 	display:inline;
 }
 .redline{
+	
 	background-color: #690004;
-	margin:1% -50%;
+	width: 100%;
+	height:25px;
+	margin:0px;
 }
 .right{
 	float:right;

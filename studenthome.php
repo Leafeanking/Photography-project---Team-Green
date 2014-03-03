@@ -32,7 +32,6 @@ if(isset($_GET['folder'])){
 					?>
 		</div>
         
-        <div class="center">
         
             <ul class="redline navwrapper">
             
@@ -42,7 +41,7 @@ if(isset($_GET['folder'])){
                <li class="right"> <a href="back">Back</a> </li>
                 <li><a><button type="button">Join!</button></a> </li>
          	</ul>
-        </div>
+    
        
 		<div class="center">
 			<?php
