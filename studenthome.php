@@ -37,9 +37,9 @@ if(isset($_GET['folder'])){
 						echo "<li><a href='studenthome.php?folder=home'>Home</a> Gallery: $theme</li>";
 					}
 				?>
-                <li class="right"> <a href="join">Join!</a> </li>
+               <li class="right"> <a href="join">Join!</a> </li>
                <li class="right"> <a href="back">Back</a> </li>
-                <li><a><button type="button">Join!</button></a> </li>
+                
          	</ul>
 		</div>
        
