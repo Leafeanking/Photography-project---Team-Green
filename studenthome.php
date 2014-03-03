@@ -6,9 +6,7 @@ if(isset($_GET['folder'])){
 }
 ?>
 <!-- Temporary form to use for testing. We need to incorperate this into the picture icon.-->
-<form action='index.php' method='POST'>
-	<input type='submit' name = 'Logout' value='Logout'>
-</form>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,8 +35,14 @@ if(isset($_GET['folder'])){
 						echo "<li><a href='studenthome.php?folder=home'>Home</a> Gallery: $theme</li>";
 					}
 				?>
+               <li class="right"> <form action='index.php' method='POST'>
+					<input type='submit' name = 'Logout' value='Logout'>
+					</form>
+               </li>
                <li class="right"> <a href="join">Join!</a> </li>
+               
                <li class="right"> <a href="back">Back</a> </li>
+               
                 
          	</ul>
 		</div>

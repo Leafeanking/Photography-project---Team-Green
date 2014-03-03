@@ -14,7 +14,7 @@ body {
 	background-size:279px,82px;
 	background-repeat: no-repeat;
 	background-position: center;	
-	padding:10px 10px 0px 10px;	
+	padding:25px 0px 10px 0px;	
 	margin-top:0px;
 	min-width:300px;
 }
@@ -34,11 +34,16 @@ h1{
 .navwrapper ul{
 	list-style-type:none;
 	display:inline-block;
-	margin: 0% 20%;
 	min-width:300px;
+	padding-top:20px;
 }
+
 .navwrapper li{
 	display:inline;
+	padding:0px 10px;
+}
+.redline ul{
+	margin-top:-16px;
 }
 .redline{
 	background-color: #690004;
