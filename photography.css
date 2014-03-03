@@ -190,6 +190,17 @@ display:block;
 text-align:center;
 }
 
+#create_project{
+background-color:white;
+overflow:scroll;
+display:block;
+width:28%;
+padding-left:3%;
+padding-right:3%;
+height:inherit;
+float:right;
+text-align:right;
+}
 
 #shadow{
 clear:both;

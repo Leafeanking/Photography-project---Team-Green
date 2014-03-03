@@ -4,6 +4,9 @@ require_once("functions.php");
 if(isset($_GET['folder'])){
 	$_SESSION['view'] = $_GET['folder'];
 }
+if($_SESSION['access'] != 'admin'){
+	header('Location: index.php');
+}
 ?>
 <!-- Temporary form to use for testing. We need to incorperate this into the picture icon.-->
 <form action='index.php' method='POST'>
@@ -18,6 +21,7 @@ if(isset($_GET['folder'])){
 		<title>DSU Photography</title>
 	</head>
 	<body> 
+		<div id = "create_project"></div>
 		<div id = "logo" class="center">
             <header >
                 <h1 >Photography</h1>
