@@ -35,6 +35,7 @@ if($_SESSION['access'] != 'admin'){
                </li>
                <li class="left"><a href="name">Name</a> 
                </li>
+			   <li class='left'><button onclick='hide_all()'>Create Project</button></li>
 				   <?php
                         if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
                             echo "<div id='location'>";
