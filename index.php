@@ -33,17 +33,28 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 		<header id="logo">
 		<h1>Photography</h1>
 		</header>
-		<div id="menubar">
-			<div id="inputBoxs">
-			<form action='index.php' method='POST'>
+		<form action='index.php' method='POST'>
+		<div class="menubar">
+			<div class="inputBoxs">
 			<input type="username" name="username" placeholder="Username"/><br>
 			<input type="password" name="password" placeholder="Password"/>
-			<input type='submit' name = 'Login'>
+			</div>
+			<input type="submit" name = "Login">
+			<p onclick="forgotPassword()">Forgot password</p>
 		</form>
 		</div>
-	</div>
 		<footer>
 		<small><i>Copyright &copy; 2014 <br></i></small>
 		</footer>
+<script>
+function forgotPassword()
+{
+	var email=prompt("Forgot password? Please enter your Dmail user name.");
+	if(email!=null)
+	{
+		var ok=confirm("Your password has been sent to your email.");
+	}
+}
+</script>
 	</body>
 </html>

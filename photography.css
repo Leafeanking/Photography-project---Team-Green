@@ -55,13 +55,22 @@ input{
 	width: 150px;
 }
 
-#inputBoxs{
+.inputBoxs{
 	margin-left: auto;
 	margin-right: auto;
 	width:150px;
 }
 
-#menubar{
+/*Forgot password text/link*/
+.menubar p:hover {
+	color:#334477;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.menubar{
+	margin-left: auto;
+	margin-right: auto;
 	width:100%;
 }
 
@@ -82,14 +91,16 @@ footer{
 	text-decoration:none;
 	color:black;
 }
-.folder a:hover{
-	color:black;
-}
-.folder a:visited{
+
+.folder a:hover {
 	color:black;
 }
 
-.folder img{
+.folder a:visited {
+	color:black;
+}
+
+.folder img {
 	position:absolute;
 	top:130px;
 	right:0px;
@@ -132,14 +143,14 @@ footer{
 }
 
 #image_and_comments{
- display:none;
- position:absolute;
- top:0px;
- left:0px;
- width:75%;
- height:75%;
- background-color:white;
- z-index:11;
+	display:none;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:75%;
+	height:75%;
+	background-color:white;
+	z-index:11;
 }
 
 #comments_ratings{
