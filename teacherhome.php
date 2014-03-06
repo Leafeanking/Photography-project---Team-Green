@@ -4,6 +4,9 @@ require_once("functions.php");
 if(isset($_GET['folder'])){
 	$_SESSION['view'] = $_GET['folder'];
 }
+if($_SESSION['access'] != 'admin'){
+	header('Location: index.php');
+}
 ?>
 <!-- Temporary form to use for testing. We need to incorperate this into the picture icon.-->
 
@@ -16,6 +19,7 @@ if(isset($_GET['folder'])){
 		<title>DSU Photography</title>
 	</head>
 	<body> 
+		<div id = "create_project"></div>
 		<div id = "logo" class="center">
             <header >
                 <h1 >Photography</h1>
@@ -26,26 +30,30 @@ if(isset($_GET['folder'])){
         <div class="redline">
             <ul class="navwrapper">
             
-               <li class="left avatar"> <a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> </li>
-               <li class="left"> <a href="name">Name</a> </li>
-			   <?php
-					if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
-						echo "<div id='location'>";
-						$theme = get_theme($_SESSION['view']);
-						echo "<li><a href='studenthome.php?folder=home'>Home</a> Gallery: $theme</li>";
-					}
-				?>
-               <li class="right"> <form action='index.php' method='POST'>
-					<input type='submit' name = 'Logout' value='Logout'>
-					</form>
+               <li class="left avatar"> 
+               		<a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> 
                </li>
-               <li class="right"> <a href="join">Join!</a> </li>
-               
+               <li class="left"><a href="name">Name</a> 
+               </li>
+			   <li class='left'><button onclick='hide_all()'>Create Project</button></li>
+				   <?php
+                        if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
+                            echo "<div id='location'>";
+                            $theme = get_theme($_SESSION['view']);
+                            echo "<li class='left'><a href='teacherhome.php?folder=home'>Home</a> Gallery: $theme>";
+ 
+                        }
+                    ?>
+                </li>
+                <li class="right">
+                    <form action='index.php' method='POST'>
+                    <input type='submit' name = 'Logout' value='Logout'>
+                    </form>
+                </li>
+                <li class="right"> <a href="join">Join!</a> </li>
                <li class="right"> <a href="back">Back</a> </li>
-               
-                
          	</ul>
-		</div>
+        </div>
        
 		<div class="center">
 			<?php
