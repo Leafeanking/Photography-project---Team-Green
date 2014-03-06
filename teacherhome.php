@@ -22,7 +22,7 @@ if($_SESSION['access'] != 'admin'){
 		<div id = "create_project"></div>
 		<div id = "logo" class="center">
             <header >
-                <h1 >Photography</h1>
+                <h1>Photography</h1>
             </header>
 			
 		</div>
