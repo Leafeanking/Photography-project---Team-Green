@@ -28,7 +28,7 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 		<meta charset="utf-8">
 		<link rel="stylesheet" type"text/css" href="photography.css">
 		<title>Login</title>
-		<!--Icon place holder until we find an awesome icon-->
+		<!--Icon place holder until we find an super awesome icon-->
 		<link rel="icon" href="favicon.ico" type="image/x-icon" />
 	</head>
 	<body>
