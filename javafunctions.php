@@ -17,6 +17,11 @@
 		document.getElementById('selectedImage').innerHTML=document.getElementById(photoId).innerHTML
 	}
 	
+	function show_create_project(){
+		document.getElementById('create_project').style.display = 'block';
+		document.getElementById('shadow').style.display = 'block';	
+	}
+	
 	function hide_element(elm){
 		var element = document.getElementById(elm);
 		if(typeof(element) != 'undefined' && element != null){
@@ -25,6 +30,7 @@
 	}
 	
 	function hide_all(){
+		hide_element('create_project');
 		hide_element('image_and_comments');
 		document.getElementById('shadow').style.display = 'none';
 	}

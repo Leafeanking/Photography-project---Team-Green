@@ -19,7 +19,10 @@ if($_SESSION['access'] != 'admin'){
 		<title>DSU Photography</title>
 	</head>
 	<body> 
-		<div id = "create_project"></div>
+		<div id = "create_project">
+		<h3>Create Project</h3>
+		
+		</div>
 		<div id = "logo" class="center">
             <header >
                 <h1>Photography</h1>
@@ -35,7 +38,7 @@ if($_SESSION['access'] != 'admin'){
                </li>
                <li class="left"><a href="name">Name</a> 
                </li>
-			   <li class='left'><button onclick='hide_all()'>Create Project</button></li>
+			   <li class='left'><button onclick='show_create_project()'>Create Project</button></li>
 				   <?php
                         if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
                             echo "<div id='location'>";

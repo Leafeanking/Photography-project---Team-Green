@@ -192,15 +192,16 @@ text-align:center;
 }
 
 #create_project{
-background-color:white;
-overflow:scroll;
-display:none;
-width:28%;
-padding-left:3%;
-padding-right:3%;
-height:inherit;
-float:right;
-text-align:right;
+ display:none;
+ position:absolute;
+ top:50px;
+ left:10%;
+ width:80%;
+ height:500px;
+ background-color:white;
+ z-index:11;
+ padding:10px;
+ border-radius:10px;
 }
 
 #shadow{
