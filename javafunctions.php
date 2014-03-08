@@ -37,6 +37,7 @@
 	
 	
 	function hide_all(){
+		hide_element('manage_images');
 		hide_element('edit_classes');
 		hide_element('create_project');
 		hide_element('image_and_comments');
