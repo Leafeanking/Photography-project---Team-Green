@@ -21,9 +21,11 @@ include_once('javafunctions.php');
 		<title>DSU Photography</title>
 	</head>
 	<body> 
+<!--Create Project, hidden div------------------------------------------------------------------------->
 		<div id = "create_project">
 		<h3>Create Project</h3>
-		<form method = 'post' action = 'teacher.php'>
+		<button onclick='switch_to_edit_classes()'>Edit Classes</button>
+		<form method = 'post' action = 'teacherhome.php'>
 		Class: 
 		<?php  
 			$classes = get_classes();
@@ -33,7 +35,6 @@ include_once('javafunctions.php');
 			}
 			echo "</select>";
 		?>
-		<button action='switch_to_edit_classes()'>Edit Classes</button>
 		<br/>Theme: <input type='text' name='theme'>
 		<?php 
 			//Each Question is in a separate div, so that when you select the Scale of the previous one, a new question is made 
@@ -51,9 +52,36 @@ include_once('javafunctions.php');
 				echo "</div>";
 			}
 		?>
-		<input type='submit' name='Create New Project'>
+		<i>Select a scale to move onto another question or create project</i></br>
+		<input type='submit' value='Create New Project' name='create_project'>
 		</form>
 		</div>
+		
+<!--Edit Class, hidden div------------------------------------------------------------------------------------------>		
+	<div id='edit_classes'>
+		<h3>Create Class</h3>
+		<form target='teacherhome.php' method='post'>
+			<input type='text' name='class'>
+			<input type='submit' name='create_class' value='Create New Class'>
+		</form>
+		<h3>Delete Class</h3>
+		<?php 
+			$data = get_classes();
+			echo "<form action='teacherhome.php' method='post'>";
+			echo "<select name='class'>";
+			echo "<option value='none'>Select</option>";
+			foreach($data as $class){
+				echo "<option value='$class'>$class</option>";
+			}
+			echo "</select>";
+			echo "<input type='submit' name='delete_class' value='Delete Class'>";
+			echo "</form>";
+		?>
+	</div>
+		
+		
+		
+<!--Actual Page------------------------------------------------------------------------------------------------------>		
 		<div id = "logo" class="center">
             <header >
                 <h1>Photography</h1>
@@ -70,6 +98,7 @@ include_once('javafunctions.php');
                <li class="left"><a href="name">Name</a> 
                </li>
 			   <li class='left'><button onclick='show_create_project()'>Create Project</button></li>
+			   <li class='left'><button onclick='show_edit_classes()'>Edit Classes</button></li>
 				   <?php
                         if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
                             echo "<div id='location'>";

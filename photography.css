@@ -205,6 +205,20 @@ text-align:center;
  overflow:scroll;
 }
 
+#edit_classes{
+ display:none;
+ position:absolute;
+ top:50px;
+ left:10%;
+ width:80%;
+ height:500px;
+ background-color:white;
+ z-index:11;
+ padding:10px;
+ border-radius:10px;
+ overflow:scroll;
+}
+
 #shadow{
 clear:both;
 display:none;

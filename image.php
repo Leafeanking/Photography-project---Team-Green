@@ -7,4 +7,5 @@ include_once("functions.php");
 	header("content-type: image/jpeg");
 	echo $data[0];
 
+
 ?>

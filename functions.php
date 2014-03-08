@@ -52,7 +52,8 @@ function list_viewable($user,$access){
 	//checks project list for projects that a class($access) belongs to, and then
 	//grabs first photo from corresponding student 'folders'
 	//returns an array(array(projectID,theme,<img>coverPhoto))
-	if($access != 'admin'){
+	define('DEFAULT_IMG',"<image src='picture_icon.png'>"); 
+	if($access != 'admin'){ //Student View
 		$query = "select projectID, theme from projects where class = '$access'";
 		$results = dbGet($query);
 		$return = array();
@@ -60,13 +61,18 @@ function list_viewable($user,$access){
 			$query = "select imageID from images where owner = '$user' and projectID = '$item[projectID]' LIMIT 0,1";
 			$resultsImage = dbGet($query);
 			$data = mysql_fetch_row($resultsImage);
-			$picture = "<img src='image.php?imageID=$data[0]'/>";
+			if($data){
+				$picture = "<img src='image.php?imageID=$data[0]'/>";
+				}
+			else{
+				$picture = DEFAULT_IMG;
+			}
 			$packet = array($item['projectID'],$item['theme'],$picture);
 			array_push($return,$packet); 
 		}
 		return $return;
 	}
-	else if($access == 'admin'){
+	else if($access == 'admin'){ //Teacher View
 		$query = "select projectID, theme from projects";
 		$results = dbGet($query);
 		$return = array();
@@ -74,7 +80,12 @@ function list_viewable($user,$access){
 			$query = "select imageID from images where projectID = '$item[projectID]' LIMIT 0,1";
 			$resultsImage = dbGet($query);
 			$data = mysql_fetch_row($resultsImage);
-			$picture = "<img src='image.php?imageID=$data[0]'/>";
+			if($data){
+				$picture = "<img src='image.php?imageID=$data[0]'/>";
+				}
+			else{
+				$picture = DEFAULT_IMG;
+			}
 			$packet = array($item['projectID'],$item['theme'],$picture);
 			array_push($return,$packet); 
 		}

@@ -37,13 +37,19 @@
 	
 	
 	function hide_all(){
+		hide_element('edit_classes');
 		hide_element('create_project');
 		hide_element('image_and_comments');
 		document.getElementById('shadow').style.display = 'none';
 	}
 	
 	function show_next_create_question_field(next){
-	show_element('project_create_question_'+next);	
+		show_element('project_create_question_'+next);	
+	}
+	
+	function show_edit_classes(){
+		show_element('edit_classes');
+		show_element('shadow');
 	}
 	
 	function switch_to_edit_classes(){
