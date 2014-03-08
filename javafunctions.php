@@ -57,6 +57,12 @@
 		show_element('edit_classes');
 		show_element('shadow');
 	}
+	
+	function show_manage_images(){
+		show_element('manage_images');
+		show_element('shadow');
+	}
+	
 </script>
 
 

@@ -8,9 +8,22 @@ if($_SESSION['access'] != 'admin'){
 	header('Location: index.php');
 }
 
+if(isset($_FILES['file'])){
+	$zip = new ZipArchive;
+	$zip->open($_FILES['file']['tmp_name']);
+	$zip->extractTo(ini_get('upload_tmp_dir'));
+	for($i = 0;$i < $zip->numFiles; $i++){
+		$name = '/'.$zip->getNameIndex($i);
+		$image = addslashes(file_get_contents(ini_get('upload_tmp_dir').$name));
+		dbGet("insert into images (owner,data,projectID) values ('teststudent','$image',4)");
+		unlink(ini_get('upload_tmp_dir').$name);
+	}
+	
+}
+
+
 include_once('javafunctions.php');
 ?>
-<!-- Temporary form to use for testing. We need to incorperate this into the picture icon.-->
 
 
 <!DOCTYPE html>
@@ -20,7 +33,8 @@ include_once('javafunctions.php');
 		<link rel="stylesheet" type="text/css" href="photography.css">
 		<title>DSU Photography</title>
 	</head>
-	<body> 
+	<body>
+	
 <!--Create Project, hidden div------------------------------------------------------------------------->
 		<div id = "create_project">
 		<h3>Create Project</h3>
@@ -79,8 +93,12 @@ include_once('javafunctions.php');
 		?>
 	</div>
 		
-		
-		
+<!--Upload Images, hidden div------------------------------------------------------------------------------------------>
+	<div id='manage_images'>
+	<form target='teacherhome.php' method='post' enctype='multipart/form-data'>
+		<input type='file' name='file'>
+		<input type='submit' name='upload_file' value='Upload'>	
+	</form></div>	
 <!--Actual Page------------------------------------------------------------------------------------------------------>		
 		<div id = "logo" class="center">
             <header >
@@ -99,6 +117,7 @@ include_once('javafunctions.php');
                </li>
 			   <li class='left'><button onclick='show_create_project()'>Create Project</button></li>
 			   <li class='left'><button onclick='show_edit_classes()'>Edit Classes</button></li>
+			   <li class='left'><button onclick='show_manage_images()'>Manage Images</button></li>
 				   <?php
                         if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
                             echo "<div id='location'>";
