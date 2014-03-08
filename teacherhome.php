@@ -7,6 +7,8 @@ if(isset($_GET['folder'])){
 if($_SESSION['access'] != 'admin'){
 	header('Location: index.php');
 }
+
+include_once('javafunctions.php');
 ?>
 <!-- Temporary form to use for testing. We need to incorperate this into the picture icon.-->
 
@@ -21,7 +23,36 @@ if($_SESSION['access'] != 'admin'){
 	<body> 
 		<div id = "create_project">
 		<h3>Create Project</h3>
-		
+		<form method = 'post' action = 'teacher.php'>
+		Class: 
+		<?php  
+			$classes = get_classes();
+			echo "<select name='class'>";
+			foreach($classes as $class){
+				echo "<option value='$class'>$class</option>";
+			}
+			echo "</select>";
+		?>
+		<button action='switch_to_edit_classes()'>Edit Classes</button>
+		<br/>Theme: <input type='text' name='theme'>
+		<?php 
+			//Each Question is in a separate div, so that when you select the Scale of the previous one, a new question is made 
+			//available if you want to create a new one. Goes up to 20, by restriction of the database structure, and this particular code.
+			for($i = 1; $i <= 20;$i++){
+				$next = $i+1;
+				if($i==1){echo "<div id='project_create_question_$i'>Question $i: <input type='text' name='question$i'>";}
+				else{echo "<div id='project_create_question_$i' style='display:none;'>Question $i: <input type='text' name='question$i'>";}
+				echo " Scale (2-10): <select name='scale$i' onclick='show_next_create_question_field($next)'>";
+				echo "<option value='none' selected>Select</option>";
+				for($j=2;$j<=10;$j++){
+					echo "<option value=$j>$j</option>";
+				}
+				echo "</select>";
+				echo "</div>";
+			}
+		?>
+		<input type='submit' name='Create New Project'>
+		</form>
 		</div>
 		<div id = "logo" class="center">
             <header >

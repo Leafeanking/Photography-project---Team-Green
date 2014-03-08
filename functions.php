@@ -84,6 +84,17 @@ function list_viewable($user,$access){
 
 ///////////////////////////////////////////////////////////Admin Functions//////////////////////////////////////////////////////
 
+function get_classes(){
+//Returns Array of ClassID's 
+$query = "select * from classes";
+$results = dbGet($query);
+$classes = array();
+while($data = mysql_fetch_assoc($results)){
+		array_push($classes,$data['class']);
+	}
+return $classes;
+}
+
 function access_full_project($projectID){
 	//For accessing specific folder and reviewing personal photos
 	//Returns an array(array(imageID,<img>,owner),array(imageID,<img>,owner))
