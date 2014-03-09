@@ -9,19 +9,28 @@ if($_SESSION['access'] != 'admin'){
 }
 
 if(isset($_FILES['file'])){
+	//Server Must have max-upload size in php.ini adjusted to allow admin to upload full class files
+	print_r($_FILES);
 	$zip = new ZipArchive;
 	$zip->open($_FILES['file']['tmp_name']);
 	$zip->extractTo(ini_get('upload_tmp_dir'));
+	//$project = $_POST['project'];
 	for($i = 0;$i < $zip->numFiles; $i++){
+		$owner = $zip->getNameIndex($i);
+		$owner = trim(str_replace(range(0,9),'',$owner));
+		$owner = str_replace("'",'',$owner);
+		$owner = str_replace('_',' ',$owner);
+		$owner = strtolower($owner);
+		$owner = str_replace(array('.jpg','.png','.gif'),'',$owner);
 		$name = '/'.$zip->getNameIndex($i);
 		$image = addslashes(file_get_contents(ini_get('upload_tmp_dir').$name));
-		dbGet("insert into images (owner,data,projectID) values ('teststudent','$image',4)");
+		dbGet("insert into images (owner,data,projectID) values ('$owner','$image',4)");
 		unlink(ini_get('upload_tmp_dir').$name);
 	}
 	
 }
 
-
+set_time_limit(100);
 include_once('javafunctions.php');
 ?>
 
@@ -75,6 +84,7 @@ include_once('javafunctions.php');
 	<div id='edit_classes'>
 		<h3>Create Class</h3>
 		<form target='teacherhome.php' method='post'>
+			<input type="hidden" name="MAX_FILE_SIZE" value="4194304" /> 
 			<input type='text' name='class'>
 			<input type='submit' name='create_class' value='Create New Class'>
 		</form>
@@ -96,7 +106,9 @@ include_once('javafunctions.php');
 <!--Upload Images, hidden div------------------------------------------------------------------------------------------>
 	<div id='manage_images'>
 	<form target='teacherhome.php' method='post' enctype='multipart/form-data'>
+		<!--Server Must have max-upload size in php.ini adjusted to allow admin to upload full class files -->
 		<input type='file' name='file'>
+		
 		<input type='submit' name='upload_file' value='Upload'>	
 	</form></div>	
 <!--Actual Page------------------------------------------------------------------------------------------------------>		
