@@ -1,5 +1,6 @@
 <?php
 include_once('functions.php');
+include_once('javafunctions.php');
 session_start();
 if(isset($_POST['Logout']) and session_id() != false){
 	session_destroy();
@@ -52,9 +53,14 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 function forgotPassword()
 {
 	var email=prompt("Forgot password? Please enter your Dmail user name.");
-	if(email!=null)
+	var result = send_password(email);
+	if(result == 'true')
 	{
 		var ok=confirm("Your password has been sent to your email.");
+		
+	}
+	else{
+		var ok=confirm("Your email does not exist in our system.");
 	}
 }
 </script>

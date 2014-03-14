@@ -23,6 +23,17 @@
 		ajx.send();
 	}
 	
+	function send_password(email){
+		//returns string 'true' or 'false' values depending on result.
+		var comments = document.getElementById("forgotPassword");
+		var ajx = new XMLHttpRequest();
+		ajx.onreadystatechange = function(){
+			return ajx.responseText;
+		}
+		ajx.open("GET", "forgot.php?email="+email,true);
+		ajx.send();
+	}
+	
 	function manage_image_click(photoId){
 		document.getElementById('image_and_comments').style.display = 'inline';
 		show_element('shadow');
