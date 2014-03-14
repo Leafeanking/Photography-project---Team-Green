@@ -28,13 +28,7 @@ if(isset($_GET['folder'])){
             
                <li class="left avatar"> <a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> </li>
                <li class="left"> <a href="name">Name</a> </li>
-			   <?php
-					if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
-						echo "<div id='location'>";
-						$theme = get_theme($_SESSION['view']);
-						echo "<li><a href='studenthome.php?folder=home'>Home</a> Gallery: $theme</li>";
-					}
-				?>
+			   
                <li class="right"> <form action='index.php' method='POST'>
 					<input type='submit' name = 'Logout' value='Logout'>
 					</form>
@@ -48,6 +42,13 @@ if(isset($_GET['folder'])){
 		</div>
        
 		<div class="center">
+		<?php
+					if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
+						echo "<div id='location'>";
+						$theme = get_theme($_SESSION['view']);
+						echo "<a href='studenthome.php?folder=home'>Home</a> Gallery: $theme";
+					}
+				?>
 			<?php
 			if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
 				include 'viewfolder.php';

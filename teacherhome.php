@@ -129,27 +129,26 @@ include_once('javafunctions.php');
                </li>
 			   <li class='left'><button onclick='show_create_project()'>Create Project</button></li>
 			   <li class='left'><button onclick='show_edit_classes()'>Edit Classes</button></li>
-			   <li class='left'><button onclick='show_manage_images()'>Manage Images</button></li>
-				   <?php
-                        if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
-                            echo "<div id='location'>";
-                            $theme = get_theme($_SESSION['view']);
-                            echo "<li class='left'><a href='teacherhome.php?folder=home'>Home</a> Gallery: $theme>";
- 
-                        }
-                    ?>
+			   
                 </li>
                 <li class="right">
                     <form action='index.php' method='POST'>
                     <input type='submit' name = 'Logout' value='Logout'>
                     </form>
                 </li>
-                <li class="right"> <a href="join">Join!</a> </li>
-               <li class="right"> <a href="back">Back</a> </li>
+                <li class="right"> <a href="join">Start!</a> </li>
          	</ul>
         </div>
        
 		<div class="center">
+		<?php
+                        if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
+                            echo "<div id='location'>";
+                            $theme = get_theme($_SESSION['view']);
+                            echo "<a href='teacherhome.php?folder=home'>Home</a> Gallery: $theme";
+ 
+                        }
+                    ?>
 			<?php
 			if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
 				include 'viewfolder.php';
