@@ -18,10 +18,14 @@ if($_SESSION['access'] == 'admin'){
 else{
 	$data = access_personal_project($_SESSION['username'],$_SESSION['view']);
 }
-
+//Image and comments Popup window.
 echo "<div id='image_and_comments'>";
 echo "<div id='comments_ratings'></div>";
-echo "<div id='selectedImage'></div></div>";
+echo "<div id='selectedImage'><div id='delete_image'></div></div></div>";
+
+///////////////////////////////////////////
+
+
 echo "<div id='iconbar'>";
 $owner = "";
 foreach($data as $image){

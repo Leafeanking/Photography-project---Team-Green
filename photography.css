@@ -79,8 +79,18 @@ input{
 	width:150px;
 }
 
+.submitButton{
+	margin-left: auto;
+	margin-right: auto;
+	width: 60px;
+}
+
 .menubar{
 	width:100%;
+}
+
+.menubar p{
+	text-algin: center;
 }
 
 /*Forgot password text/link*/

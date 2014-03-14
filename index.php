@@ -42,7 +42,9 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 			<input type="username" name="username" placeholder="Username"/><br>
 			<input type="password" name="password" placeholder="Password"/>
 			</div>
+			<div class="submitButton">
 			<input type="submit" name = "Login">
+			</div>
 			<p onclick="forgotPassword()">Forgot password</p>
 		</form>
 		</div>
