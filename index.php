@@ -1,8 +1,7 @@
 <?php
-session_start();
 include_once('functions.php');
-
-
+include_once('javafunctions.php');
+session_start();
 if(isset($_POST['Logout']) and session_id() != false){
 	session_destroy();
 }
@@ -21,7 +20,7 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 if(isset($_POST['username']) and isset($_POST['password'])){
 	echo "<div id='warning'>Incorrect Username and/or Password</div>";
 }
-include_once('javafunctions.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +31,7 @@ include_once('javafunctions.php');
 		<title>Login</title>
 		<!--Icon place holder until we find an super awesome icon-->
 		<link rel="icon" href="favicon.ico" type="image/x-icon" />
+		<script src="photography.js"></script>
 	</head>
 	<body>
 		<header id="logo">
@@ -52,20 +52,5 @@ include_once('javafunctions.php');
 		<footer>
 		<small><i>Copyright &copy; 2014 <br></i></small>
 		</footer>
-<script>
-function forgotPassword()
-{
-	var email=prompt("Forgot password? Please enter your Dmail user name.");
-	var result = send_password(email);
-	if(result == 'true')
-	{
-		var ok=confirm("Your password has been sent to your email.");
-		
-	}
-	else{
-		var ok=confirm("Your email does not exist in our system.");
-	}
-}
-</script>
 	</body>
 </html>
