@@ -1,10 +1,13 @@
 
-//Join button function in studenthome
+//Join button function in studenthome and teacherhome
 function Join() {
-	var access=prompt("Enter access code to join the discussion");
-	//if they typed in the right access code, they jump to the discussion page
+	var access=prompt("Enter access code to join the session");
+	//if they typed in the right access code, they jump to the session page
 	if(access=="true"){
 		window.location="sessionpage.php";
+	}
+	else{
+		alert("There is no session going on with that access code.");
 	}
 }
 

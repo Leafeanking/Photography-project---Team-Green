@@ -41,6 +41,7 @@ include_once('javafunctions.php');
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="photography.css">
 		<title>DSU Photography</title>
+		<script src="photography.js"></script>
 	</head>
 	<body>
 	
@@ -130,13 +131,13 @@ include_once('javafunctions.php');
 			   <li class='left'><button onclick='show_create_project()'>Create Project</button></li>
 			   <li class='left'><button onclick='show_edit_classes()'>Edit Classes</button></li>
 			   
-                </li>
+				</li>
                 <li class="right">
                     <form action='index.php' method='POST'>
                     <input type='submit' name = 'Logout' value='Logout'>
                     </form>
                 </li>
-                <li class="right"> <a href="join">Start!</a> </li>
+				<li class="right"> <button onclick="Join()">Start</button>
          	</ul>
         </div>
        
