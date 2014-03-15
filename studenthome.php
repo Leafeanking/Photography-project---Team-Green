@@ -14,33 +14,33 @@ if(isset($_GET['folder'])){
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="photography.css">
 		<title>DSU Photography</title>
+		<script  src="photography.js"></script>
 	</head>
-	<body> 
+	<body>
 		<div id = "logo" class="center">
-            <header >
-                <h1 >Photography</h1>
-            </header>
+		<header>
+				<h1 >Photography</h1>
+		</header>
 			
 		</div>
-        
-        <div class="redline">
-            <ul class="navwrapper">
-            
-               <li class="left avatar"> <a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> </li>
-               <li class="left"> <a href="name">Name</a> </li>
-			   
-               <li class="right"> <form action='index.php' method='POST'>
+		
+		<div class="redline">
+		<ul class="navwrapper">
+	
+			<li class="left avatar"> <a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> </li>
+			<li class="left"> <a href="name">Name</a> </li>
+		
+			<li class="right"> <form action='index.php' method='POST'>
 					<input type='submit' name = 'Logout' value='Logout'>
 					</form>
-               </li>
-               <li class="right"> <a href="join">Join!</a> </li>
-               
-               <li class="right"> <a href="back">Back</a> </li>
-               
-                
-         	</ul>
+			</li>
+			<li class="right">
+					<button onclick="Join()">Join</button>
+			</li>
+		
+				
+			</ul>
 		</div>
-       
 		<div class="center">
 		<?php
 					if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
