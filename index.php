@@ -1,7 +1,8 @@
 <?php
-include_once('functions.php');
-include_once('javafunctions.php');
 session_start();
+include_once('functions.php');
+
+
 if(isset($_POST['Logout']) and session_id() != false){
 	session_destroy();
 }
@@ -20,7 +21,7 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 if(isset($_POST['username']) and isset($_POST['password'])){
 	echo "<div id='warning'>Incorrect Username and/or Password</div>";
 }
-
+include_once('javafunctions.php');
 ?>
 
 <!DOCTYPE html>

@@ -5,6 +5,8 @@ include_once("functions.php");
 	$results = dbGet($query);
 	$data = mysql_fetch_row($results);
 	header("content-type: image/jpeg");
+	header('Cache-Control: private');
+	header("filename='$_GET[imageID]'");
 	echo $data[0];
 
 
