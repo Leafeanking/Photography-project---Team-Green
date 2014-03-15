@@ -21,7 +21,7 @@ else{
 //Image and comments Popup window.
 echo "<div id='image_and_comments'>";
 echo "<div id='comments_ratings'></div>";
-echo "<div id='selectedImage'><div id='delete_image'></div></div></div>";
+echo "<div id='selectedImage'></div></div>";
 
 ///////////////////////////////////////////
 
