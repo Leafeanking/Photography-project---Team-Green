@@ -42,6 +42,9 @@ include_once('javafunctions.php');
 		<link rel="stylesheet" type="text/css" href="photography.css">
 		<title>DSU Photography</title>
 		<script src="photography.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+		<script src="dropit.js"></script>
+		<link rel="stylesheet" href="dropit.css" type="text/css" />
 	</head>
 	<body>
 	
@@ -121,16 +124,23 @@ include_once('javafunctions.php');
 		</div>
         
         <div class="redline">
-            <ul class="navwrapper">
+			<ul class="menu">
             
                <li class="left avatar"> 
                		<a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> 
                </li>
                <li class="left"><a href="name">Name</a> 
                </li>
-			   <li class='left'><button onclick='show_create_project()'>Create Project</button></li>
-			   <li class='left'><button onclick='show_edit_classes()'>Edit Classes</button></li>
-			   
+				<li class='left'>
+					<a href="#">Manage</a>
+					<ul>
+						<li>
+							<a onclick="show_create_project()">Create Project</a>
+						</li>
+						<li>
+							<a onclick="show_edit_classes()">Edit Classes</a>
+						</li>
+					</ul>
 				</li>
                 <li class="right">
                     <form action='index.php' method='POST'>
@@ -138,7 +148,7 @@ include_once('javafunctions.php');
                     </form>
                 </li>
 				<li class="right"> <button onclick="Join()">Start</button>
-         	</ul>
+			</ul>
         </div>
        
 		<div class="center">
@@ -165,6 +175,11 @@ include_once('javafunctions.php');
 					<a href= "mailto:scawley@dmail.dixie.edu">sara@cawley.com</a>
 			</i></small>
 		</footer>
-		
+			<!--Javascript for the drop down menu-->
+			<script type="text/javascript">
+			$(document).ready(function() {
+				$('.menu').dropit();
+			});
+			</script>
 	</body>
 </html>
