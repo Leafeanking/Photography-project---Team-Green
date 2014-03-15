@@ -28,9 +28,9 @@ if(isset($_GET['folder'])){
 		<ul>
 	
 			<li class="left avatar"> <a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> </li>
-			<li class="left"> <a href="name">Name</a> </li>
+			<li class="left links"> <a href="name">Name</a> </li>
 		
-			<li class="right"> <form action='index.php' method='POST'>
+			<li class="right "> <form action='index.php' method='POST'>
 					<input type='submit' name = 'Logout' value='Logout'>
 					</form>
 			</li>
@@ -41,7 +41,7 @@ if(isset($_GET['folder'])){
 				
 			</ul>
 		</div>
-		<div class="center">
+		<div class="center links" >
 		<?php
 					if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
 						echo "<div id='location'>";
