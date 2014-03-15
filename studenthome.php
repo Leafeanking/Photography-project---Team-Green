@@ -24,11 +24,11 @@ if(isset($_GET['folder'])){
 			
 		</div>
 		
-		<div class="redline">
+		<div class="redline links">
 		<ul>
 	
 			<li class="left avatar"> <a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> </li>
-			<li class="left links"> <a href="name">Name</a> </li>
+			<li class="left"> <a href="name">Name</a> </li>
 		
 			<li class="right "> <form action='index.php' method='POST'>
 					<input type='submit' name = 'Logout' value='Logout'>

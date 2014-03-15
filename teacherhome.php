@@ -123,7 +123,7 @@ include_once('javafunctions.php');
 			
 		</div>
         
-        <div class="redline">
+        <div class="redline links">
 			<ul class="menu">
             
                <li class="left avatar"> 
@@ -151,7 +151,7 @@ include_once('javafunctions.php');
 			</ul>
         </div>
        
-		<div class="center">
+		<div class="center links">
 		<?php
                         if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
                             echo "<div id='location'>";
