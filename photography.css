@@ -286,5 +286,7 @@ z-index:10;
 .menu ul.dropit-submenu a:hover {
     background: #248fc1;
     color: #fff;
+	font-size: 14px;
+	font-weight: normal;
     text-decoration: none;
 }

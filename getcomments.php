@@ -1,4 +1,5 @@
 <?php
+	require_once("secure.php");
 	if(isset($_GET['imageId'])){
 		include_once('functions.php');
 		$data=get_comments_ratings($_GET['imageId']);
@@ -9,6 +10,20 @@
 			echo "<div class='comment'>";
 			echo "<h3>$com[author]</h3>";
 			echo "<p>$com[comment]</p>";
+			if($_SESSION['access']=='admin'){
+				echo "<form method='POST' action='$_SERVER[REQUEST_URI]'>";
+				echo "<input type='hidden' name='author' value='$com[author]'>";
+				echo "<input type='hidden' name='picture' value='$_GET[imageId]'>";
+				echo "<input type='submit' name='delete_comment' value='Delete Comment'>";
+				echo "</form>";
+			}
+			else{
+				echo "<form method='POST' action='$_SERVER[REQUEST_URI]'>";
+				echo "<input type='hidden' name='author' value='$com[author]'>";
+				echo "<input type='hidden' name='picture' value='$_GET[imageId]'>";
+				echo "<input type='submit' name='report_comment' value='Report Comment'>";
+				echo "</form>";
+			}
 			echo "</div>";
 		}
 		echo "</div>";
@@ -25,8 +40,8 @@
 				}
 				else{
 					echo "<li>$i: $rat[$i]</li>";
-					$total = $total + $i*$rat[$i];
-					$possible = $possible + $rat['scale']*$rat[$i];
+					$total = $total + ($i-1)*$rat[$i]; //-1 so that a vote of '1' is worth 0 points, making it possible to have 0%.
+					$possible = $possible + ($rat['scale']-1)*$rat[$i]; //a rating of '10' is worth 9 points. 
 				}
 			}	
 			echo "<li>Total: ".(string)(($total/$possible)*100)."%</li>";
