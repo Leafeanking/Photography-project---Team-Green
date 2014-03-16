@@ -156,7 +156,7 @@ include_once('javafunctions.php');
                         if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
                             echo "<div id='location'>";
                             $theme = get_theme($_SESSION['view']);
-                            echo "<a href='teacherhome.php?folder=home'>Home</a> Gallery: $theme";
+                            echo "<a href='teacherhome.php?folder=home'>Home</a> >> Gallery: $theme";
  
                         }
                     ?>

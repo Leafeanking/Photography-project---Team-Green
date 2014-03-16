@@ -11,14 +11,14 @@
 			echo "<h3>$com[author]</h3>";
 			echo "<p>$com[comment]</p>";
 			if($_SESSION['access']=='admin'){
-				echo "<form method='POST' action='$_SERVER[REQUEST_URI]'>";
+				echo "<form method='POST' action='index.php'>";
 				echo "<input type='hidden' name='author' value='$com[author]'>";
 				echo "<input type='hidden' name='picture' value='$_GET[imageId]'>";
 				echo "<input type='submit' name='delete_comment' value='Delete Comment'>";
 				echo "</form>";
 			}
 			else{
-				echo "<form method='POST' action='$_SERVER[REQUEST_URI]'>";
+				echo "<form method='POST' action='index.php'>";
 				echo "<input type='hidden' name='author' value='$com[author]'>";
 				echo "<input type='hidden' name='picture' value='$_GET[imageId]'>";
 				echo "<input type='submit' name='report_comment' value='Report Comment'>";

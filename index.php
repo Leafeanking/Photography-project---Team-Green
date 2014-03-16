@@ -2,25 +2,68 @@
 include_once('functions.php');
 include_once('javafunctions.php');
 session_start();
+
+//LOG OUT USER
 if(isset($_POST['Logout']) and session_id() != false){
 	session_destroy();
 }
+
+//CHECK LOGIN CREDENTIALS 
 if(isset($_POST['username']) and isset($_POST['password'])){
 	$_SESSION['username'] = $_POST['username'];
 	$_SESSION['access'] = authenticate($_POST['username'],$_POST['password']);
 }
+
+//FORWARD WHEN LOGGING IN, OR ALREADY LOGGING IN AND SUBMITTING POST FORM DATA
 if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 	if($_SESSION['access'] == 'admin'){
+		//PROSESS REQUESTS SENT TO INDEX.PHP
+		//Delete a comment
+		if(isset($_POST['delete_comment'])){
+		$query = "delete from comments where imageID='$_POST[picture]' and author = '$_POST[author]'";
+		dbDo($query);
+		}
+		//Delete a Image
+		if(isset($_POST['delete_image'])){
+		$query = "delete from images where imageID = '$_POST[imageID]'";
+		$query2 = "delete from comments where imageID = '$_POST[imageID]'";
+		$query3 = "delete from ratings where imageID = '$_POST[imageID]'";
+		dbDo($query);
+		dbDo($query2);
+		dbDo($query3);
+		}
+		
+		//FORWARD TO CURRENT/OPENING PAGE
 		header('Location: teacherhome.php');
 	}
 	else{
+		//PROSESS REQUESTS SENT TO INDEX.PHP
+		//Delete a personal picture
+		if(isset($_POST['delete_image'])){
+		$query = "delete from images where imageID = '$_POST[imageID]'";
+		$query2 = "delete from comments where imageID = '$_POST[imageID]'";
+		$query3 = "delete from ratings where imageID = '$_POST[imageID]'";
+		dbDo($query);
+		dbDo($query2);
+		dbDo($query3);
+		}
+		//Issue a report on a comment
+		if(isset($_POST['report_comment'])){
+		$query = "update comments set report=1 where imageID=$_POST[picture] and author='$_POST[author]'";
+		dbDo($query);
+		}
+		
+		//FORWARD TO CURRENT/OPENING PAGE
 		header('Location: studenthome.php');
 	}
 }
+
+//FAILED AT LOGGING IN
 if(isset($_POST['username']) and isset($_POST['password'])){
 	echo "<div id='warning'>Incorrect Username and/or Password</div>";
 }
 
+//VIEW LOGIN PAGE.
 ?>
 
 <!DOCTYPE html>

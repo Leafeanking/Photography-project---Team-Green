@@ -39,7 +39,7 @@
 		show_element('shadow');
 		request_comments(photoId);
 		var data = document.getElementById('selectedImage')
-		data.innerHTML=document.getElementById(photoId).innerHTML + "<form action='delete.php' method='POST'><input type='hidden' value='"+photoId+"'><input type='submit' name='delete' value='Delete Image'></form>";	
+		data.innerHTML=document.getElementById(photoId).innerHTML + "<form action='index.php' method='POST'><input type='hidden' name='imageID' value='"+photoId+"'><input type='submit' name='delete_image' value='Delete Image'></form>";	
 	}
 	
 	function show_create_project(){
