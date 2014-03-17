@@ -4,8 +4,8 @@ require_once("functions.php");
 if(isset($_GET['folder'])){
 	$_SESSION['view'] = $_GET['folder'];
 }
+print_r($_FILES);
 ?>
-<!-- Temporary form to use for testing. We need to incorperate this into the picture icon.-->
 
 
 <!DOCTYPE html>
@@ -17,19 +17,30 @@ if(isset($_GET['folder'])){
 		<script  src="photography.js"></script>
 	</head>
 	<body>
+	
+	<!--Upload Images, hidden div------------------------------------------------------------------------------------------>
+	<div id='manage_images'>
+	<form target='index.php' method='post' enctype='multipart/form-data' target="_self">
+		<!--Server Must have max-upload size in php.ini adjusted to allow admin to upload full class files -->
+		<input type='file' name='file'></input>
+		
+		<input type='submit' name='upload_file' value='Upload'></input>
+	</form></div>	
+	
+	<!--Actual Page------------------------------------------>
 		<div id = "logo" class="center">
 		<header>
 				<h1 >Photography</h1>
 		</header>
 			
 		</div>
-		
+		<?php include_once("javafunctions.php");?>
 		<div class="redline links">
 		<ul>
 	
 			<li class="left avatar"> <a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> </li>
 			<li class="left"> <a href="name">Name</a> </li>
-		
+			<li class="left"><button onclick=show_manage_images()>Upload Images</button>
 			<li class="right "> <form action='index.php' method='POST'>
 					<input type='submit' name = 'Logout' value='Logout'>
 					</form>

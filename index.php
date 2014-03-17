@@ -52,6 +52,28 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 		$query = "update comments set report=1 where imageID=$_POST[picture] and author='$_POST[author]'";
 		dbDo($query);
 		}
+		//Upload Zip folder
+		if(isset($_FILES['file'])){
+		print_r($_FILES);
+			//Server Must have max-upload size in php.ini adjusted to allow admin to upload full class files
+			/*print_r($_FILES);
+			$zip = new ZipArchive;
+			$zip->open($_FILES['file']['tmp_name']);
+			$zip->extractTo(ini_get('upload_tmp_dir'));
+			//$project = $_POST['project'];
+			for($i = 0;$i < $zip->numFiles; $i++){
+				$owner = $zip->getNameIndex($i);
+				$owner = trim(str_replace(range(0,9),'',$owner));
+				$owner = str_replace("'",'',$owner);
+				$owner = str_replace('_',' ',$owner);
+				$owner = strtolower($owner);
+				$owner = str_replace(array('.jpg','.png','.gif'),'',$owner);
+				$name = '/'.$zip->getNameIndex($i);
+				$image = addslashes(file_get_contents(ini_get('upload_tmp_dir').$name));
+				dbGet("insert into images (owner,data,projectID) values ('$owner','$image',4)");
+				unlink(ini_get('upload_tmp_dir').$name);
+			}*/
+		}
 		
 		//FORWARD TO CURRENT/OPENING PAGE
 		header('Location: studenthome.php');
