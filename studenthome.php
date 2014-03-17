@@ -48,7 +48,7 @@ if(isset($_GET['folder'])){
 		<ul>
 	
 			<li class="left avatar"> <a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> </li>
-			<li class="left"> <a href="name">Name</a> </li>
+			<li class="left"> <a href="profileupdate.html">Name</a> </li>
 			<li class="left"><button onclick=show_manage_images()>Upload Images</button>
 			<li class="right "> <form action='index.php' method='POST'>
 					<input type='submit' name = 'Logout' value='Logout'>

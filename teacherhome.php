@@ -99,7 +99,7 @@ if(isset($_GET['folder'])){
                <li class="left avatar"> 
                		<a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> 
                </li>
-               <li class="left"><a href="name">Name</a> 
+               <li class="left"><a href="profileupdate.html">Name</a> 
                </li>
 				<li class='left'>
 					<a href="#">Manage</a>
