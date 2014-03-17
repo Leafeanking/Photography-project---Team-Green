@@ -109,13 +109,14 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 		</header>
 		<form action='index.php' method='POST'>
 		<div class="menubar">
-			<div class="inputBoxs">
+			<div class="inputBoxes">
 			<input type="username" name="username" placeholder="Username"/><br>
 			<input type="password" name="password" placeholder="Password"/>
 			</div>
 			<div class="submitButton">
 			<input type="submit" name = "Login">
 			</div>
+			<a class="center_link" href="createuser.html">Create New User Account</a>
 			<p onclick="forgotPassword()">Forgot password</p>
 		</form>
 		</div>
