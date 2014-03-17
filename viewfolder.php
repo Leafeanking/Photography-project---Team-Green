@@ -3,7 +3,6 @@
 <?php
 require_once("secure.php");
 require_once("functions.php");
-include_once("javafunctions.php");
 if(!isset($_SESSION['view']) or $_SESSION['view'] == 'home'){
 	if($_SESSION['access'] == 'admin'){
 		header('Location: teacherhome.php');

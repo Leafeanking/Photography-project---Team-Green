@@ -15,14 +15,15 @@ print_r($_FILES);
 		<link rel="stylesheet" type="text/css" href="photography.css">
 		<title>DSU Photography</title>
 		<script  src="photography.js"></script>
+		<script src="javafunctions.js"></script>
 	</head>
 	<body>
-	
+	<div id='shadow' onclick='hide_all()'></div>
 	<!--Upload Images, hidden div------------------------------------------------------------------------------------------>
 	<div id='manage_images'>
-	<form target='index.php' method='post' enctype='multipart/form-data' target="_self">
+	<form target='nowhere.php' method='post'>
 		<!--Server Must have max-upload size in php.ini adjusted to allow admin to upload full class files -->
-		<input type='file' name='file'></input>
+		<input type='text' name='file'></input>
 		
 		<input type='submit' name='upload_file' value='Upload'></input>
 	</form></div>	
@@ -34,7 +35,6 @@ print_r($_FILES);
 		</header>
 			
 		</div>
-		<?php include_once("javafunctions.php");?>
 		<div class="redline links">
 		<ul>
 	

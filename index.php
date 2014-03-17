@@ -1,6 +1,5 @@
 <?php
 include_once('functions.php');
-include_once('javafunctions.php');
 session_start();
 
 //LOG OUT USER
@@ -55,6 +54,7 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 		//Upload Zip folder
 		if(isset($_FILES['file'])){
 		print_r($_FILES);
+		set_time_limit(100);
 			//Server Must have max-upload size in php.ini adjusted to allow admin to upload full class files
 			/*print_r($_FILES);
 			$zip = new ZipArchive;
@@ -101,6 +101,7 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 	<body>
 		<header id="logo">
 		<h1>Photography</h1>
+		<script src="javafunctions.js"></script>
 		</header>
 		<form action='index.php' method='POST'>
 		<div class="menubar">

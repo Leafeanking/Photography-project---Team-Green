@@ -8,8 +8,7 @@ if($_SESSION['access'] != 'admin'){
 	header('Location: index.php');
 }
 
-set_time_limit(100);
-include_once('javafunctions.php');
+
 ?>
 
 
@@ -22,10 +21,11 @@ include_once('javafunctions.php');
 		<script src="photography.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 		<script src="dropit.js"></script>
+		<script src="javafunctions.js"></script>
 		<link rel="stylesheet" href="dropit.css" type="text/css" />
 	</head>
 	<body>
-	
+	<div id='shadow' onclick='hide_all()'></div>
 <!--Create Project, hidden div------------------------------------------------------------------------->
 		<div id = "create_project">
 		<h3>Create Project</h3>

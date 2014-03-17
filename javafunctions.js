@@ -1,4 +1,4 @@
-<script>
+
 	function hide_element(elm){
 		var element = document.getElementById(elm);
 		if(typeof(element) != 'undefined' && element != null){
@@ -76,7 +76,3 @@
 		show_element('shadow');
 	}
 	
-</script>
-
-
-<div id='shadow' onclick='hide_all()'></div>
