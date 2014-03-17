@@ -1,10 +1,8 @@
 <?php
 require_once("secure.php");
-require_once("functions.php");
 if(isset($_GET['folder'])){
-	$_SESSION['view'] = $_GET['folder'];
-}
-print_r($_FILES);
+		$_SESSION['view'] = $_GET['folder'];
+	}
 ?>
 
 
@@ -53,13 +51,6 @@ print_r($_FILES);
 			</ul>
 		</div>
 		<div class="center links" >
-		<?php
-					if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
-						echo "<div id='location'>";
-						$theme = get_theme($_SESSION['view']);
-						echo "<a href='studenthome.php?folder=home'>Home</a> >> Gallery: $theme";
-					}
-				?>
 			<?php
 			if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
 				include 'viewfolder.php';

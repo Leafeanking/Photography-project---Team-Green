@@ -1,14 +1,11 @@
 <?php
 require_once("secure.php");
-require_once("functions.php");
-if(isset($_GET['folder'])){
-	$_SESSION['view'] = $_GET['folder'];
-}
 if($_SESSION['access'] != 'admin'){
 	header('Location: index.php');
 }
-
-
+if(isset($_GET['folder'])){
+		$_SESSION['view'] = $_GET['folder'];
+	}
 ?>
 
 
@@ -123,14 +120,7 @@ if($_SESSION['access'] != 'admin'){
         </div>
        
 		<div class="center links">
-		<?php
-                        if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
-                            echo "<div id='location'>";
-                            $theme = get_theme($_SESSION['view']);
-                            echo "<a href='teacherhome.php?folder=home'>Home</a> >> Gallery: $theme";
- 
-                        }
-                    ?>
+
 			<?php
 			if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
 				include 'viewfolder.php';

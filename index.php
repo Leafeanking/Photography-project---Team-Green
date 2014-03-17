@@ -15,6 +15,10 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 
 //FORWARD WHEN LOGGING IN, OR ALREADY LOGGING IN AND SUBMITTING POST FORM DATA
 if(isset($_SESSION['access']) and $_SESSION['access'] != false){
+	//Manage user view for admin or student
+	if(isset($_GET['folder'])){
+		$_SESSION['view'] = $_GET['folder'];
+	}
 	if($_SESSION['access'] == 'admin'){
 		//PROSESS REQUESTS SENT TO INDEX.PHP
 		//Delete a comment
