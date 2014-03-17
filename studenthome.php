@@ -19,9 +19,9 @@ if(isset($_GET['folder'])){
 	<div id='shadow' onclick='hide_all()'></div>
 	<!--Upload Images, hidden div------------------------------------------------------------------------------------------>
 	<div id='manage_images'>
-	<form target='nowhere.php' method='post'>
+	<form action='nowhere.php' method='post' enctype="multipart/form-data">
 		<!--Server Must have max-upload size in php.ini adjusted to allow admin to upload full class files -->
-		<input type='text' name='file'></input>
+		<input type='file' name='file'></input>
 		
 		<input type='submit' name='upload_file' value='Upload'></input>
 	</form></div>	

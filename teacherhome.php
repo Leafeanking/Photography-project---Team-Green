@@ -62,7 +62,7 @@ if(isset($_GET['folder'])){
 <!--Edit Class, hidden div------------------------------------------------------------------------------------------>		
 	<div id='edit_classes'>
 		<h3>Create Class</h3>
-		<form target='teacherhome.php' method='post'>
+		<form action='teacherhome.php' method='post'>
 			<input type="hidden" name="MAX_FILE_SIZE" value="4194304" /> 
 			<input type='text' name='class'>
 			<input type='submit' name='create_class' value='Create New Class'>
