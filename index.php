@@ -19,6 +19,7 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 	if(isset($_GET['folder'])){
 		$_SESSION['view'] = $_GET['folder'];
 	}
+	//ADMIN PROCESSES///////////////////////////////////////////
 	if($_SESSION['access'] == 'admin'){
 		//PROSESS REQUESTS SENT TO INDEX.PHP
 		//Delete a comment
@@ -39,6 +40,7 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 		//FORWARD TO CURRENT/OPENING PAGE
 		header('Location: teacherhome.php');
 	}
+	//STUDENT PROCESSES/////////////////////////////////////////
 	else{
 		//PROSESS REQUESTS SENT TO INDEX.PHP
 		//Delete a personal picture

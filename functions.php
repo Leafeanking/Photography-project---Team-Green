@@ -31,7 +31,7 @@ function dbDo($query){
 function authenticate($user,$pass){
 	//check if user is authentic, return false if not, return access if they are.
 	//Outer functions responsibility to set $_Session['user'], if user is correct.
-	$query = "SELECT access FROM users where username = '$user' and password = '$pass'";
+	$query = "SELECT access FROM users where email = '$user' and password = '$pass'";
 	$results = dbGet($query);
 	if(mysql_num_rows($results)!=0){
 		$val = mysql_fetch_row($results);

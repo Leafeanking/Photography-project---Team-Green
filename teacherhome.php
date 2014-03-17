@@ -29,7 +29,7 @@ if(isset($_GET['folder'])){
 		<div id = "create_project">
 		<h3>Create Project</h3>
 		<button onclick='switch_to_edit_classes()'>Edit Classes</button>
-		<form method = 'post' action = 'teacherhome.php'>
+		<form method = 'post' action = 'index.php'>
 		Class: 
 		<?php  
 			$classes = get_classes();

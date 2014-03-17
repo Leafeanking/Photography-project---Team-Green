@@ -26,7 +26,6 @@ if(isset($_GET['folder'])){
 		<input type='file' name='file'></input>
 		<?php
 		$data = list_viewable_no_pic($_SESSION['username'],$_SESSION['access']);
-		print_r($data);
 		echo "Project: <select name='project'>";
 		echo "<option value='none' selected>Choose</option>";
 		foreach($data as $project){
