@@ -1,8 +1,10 @@
 <?php
 require_once("secure.php");
+require_once("functions.php");
 if(isset($_GET['folder'])){
 		$_SESSION['view'] = $_GET['folder'];
 	}
+
 ?>
 
 
@@ -22,7 +24,16 @@ if(isset($_GET['folder'])){
 	<form action='index.php' method='post' enctype="multipart/form-data">
 		<!--Server Must have max-upload size in php.ini adjusted to allow admin to upload full class files -->
 		<input type='file' name='file'></input>
-		
+		<?php
+		$data = list_viewable_no_pic($_SESSION['username'],$_SESSION['access']);
+		print_r($data);
+		echo "Project: <select name='project'>";
+		echo "<option value='none' selected>Choose</option>";
+		foreach($data as $project){
+			echo "<option value = $project[0]>$project[1]</option>";
+		}
+		echo "</option>";
+		?>
 		<input type='submit' name='upload_file' value='Upload'></input>
 	</form></div>	
 	

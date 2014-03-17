@@ -14,7 +14,7 @@ stylesheet{
 }
 
 */
-
+define('DEFAULT_IMG',"<image src='picture_icon.png'>"); 
 
 //////////////////////////////////////////////////////////////////Full Scope Functions///////////////////////////////////
 function dbGet($query){
@@ -52,7 +52,6 @@ function list_viewable($user,$access){
 	//checks project list for projects that a class($access) belongs to, and then
 	//grabs first photo from corresponding student 'folders'
 	//returns an array(array(projectID,theme,<img>coverPhoto))
-	define('DEFAULT_IMG',"<image src='picture_icon.png'>"); 
 	if($access != 'admin'){ //Student View
 		$query = "select projectID, theme from projects where class = '$access'";
 		$results = dbGet($query);
@@ -87,6 +86,32 @@ function list_viewable($user,$access){
 				$picture = DEFAULT_IMG;
 			}
 			$packet = array($item['projectID'],$item['theme'],$picture);
+			array_push($return,$packet); 
+		}
+		return $return;
+	}
+}
+
+function list_viewable_no_pic($user,$access){
+	//checks project list for projects that a class($access) belongs to, and then
+	//grabs first photo from corresponding student 'folders'
+	//returns an array(array(projectID,theme)) 
+	if($access != 'admin'){ //Student View
+		$query = "select projectID, theme from projects where class = '$access'";
+		$results = dbGet($query);
+		$return = array();
+		while($item = mysql_fetch_assoc($results)){
+			$packet = array($item['projectID'],$item['theme']);
+			array_push($return,$packet); 
+		}
+		return $return;
+	}
+	else if($access == 'admin'){ //Teacher View
+		$query = "select projectID, theme from projects";
+		$results = dbGet($query);
+		$return = array();
+		while($item = mysql_fetch_assoc($results)){
+			$packet = array($item['projectID'],$item['theme']);
 			array_push($return,$packet); 
 		}
 		return $return;

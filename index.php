@@ -57,26 +57,30 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 		}
 		//Upload Zip folder
 		if(isset($_FILES['file'])){
-		print_r($_FILES);
-		set_time_limit(100);
-			//Server Must have max-upload size in php.ini adjusted to allow admin to upload full class files
-			/*print_r($_FILES);
-			$zip = new ZipArchive;
-			$zip->open($_FILES['file']['tmp_name']);
-			$zip->extractTo(ini_get('upload_tmp_dir'));
-			//$project = $_POST['project'];
-			for($i = 0;$i < $zip->numFiles; $i++){
-				$owner = $zip->getNameIndex($i);
-				$owner = trim(str_replace(range(0,9),'',$owner));
-				$owner = str_replace("'",'',$owner);
-				$owner = str_replace('_',' ',$owner);
-				$owner = strtolower($owner);
-				$owner = str_replace(array('.jpg','.png','.gif'),'',$owner);
-				$name = '/'.$zip->getNameIndex($i);
-				$image = addslashes(file_get_contents(ini_get('upload_tmp_dir').$name));
-				dbGet("insert into images (owner,data,projectID) values ('$owner','$image',4)");
-				unlink(ini_get('upload_tmp_dir').$name);
-			}*/
+			set_time_limit(100);
+			if($_FILES['file']['type'] == "application/x-zip-compressed"){
+				//Manage Zip files
+				//Server Must have max-upload size in php.ini adjusted to allow admin to upload full class files
+				$zip = new ZipArchive;
+				$zip->open($_FILES['file']['tmp_name']);
+				$zip->extractTo(ini_get('upload_tmp_dir'));
+				//$project = $_POST['project'];
+				for($i = 0;$i < $zip->numFiles; $i++){
+					$owner = $zip->getNameIndex($i);
+					$owner = trim(str_replace(range(0,9),'',$owner));
+					$owner = str_replace("'",'',$owner);
+					$owner = str_replace('_',' ',$owner);
+					$owner = strtolower($owner);
+					$owner = str_replace(array('.jpg','.png','.gif'),'',$owner);
+					$name = '/'.$zip->getNameIndex($i);
+					$image = addslashes(file_get_contents(ini_get('upload_tmp_dir').$name));
+					dbGet("insert into images (owner,data,projectID) values ('$owner','$image',4)");
+					unlink(ini_get('upload_tmp_dir').$name);
+				}
+			}
+			else if($_FILES['file']['type'] == "image/jpeg"){
+				//Uploading an image file
+			}
 		}
 		
 		//FORWARD TO CURRENT/OPENING PAGE

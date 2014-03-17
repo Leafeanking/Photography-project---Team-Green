@@ -1,11 +1,13 @@
 <?php
 require_once("secure.php");
+require_once("functions.php");
 if($_SESSION['access'] != 'admin'){
 	header('Location: index.php');
 }
 if(isset($_GET['folder'])){
 		$_SESSION['view'] = $_GET['folder'];
 	}
+	
 ?>
 
 
