@@ -21,6 +21,7 @@ if(isset($_GET['folder'])){
 	<div id='shadow' onclick='hide_all()'></div>
 	<!--Upload Images, hidden div------------------------------------------------------------------------------------------>
 	<div id='manage_images'>
+	<h2>Upload JPG file or Zip packed with JPG files.</h2>
 	<form action='index.php' method='post' enctype="multipart/form-data">
 		<!--Server Must have max-upload size in php.ini adjusted to allow admin to upload full class files -->
 		<input type='file' name='file'></input>

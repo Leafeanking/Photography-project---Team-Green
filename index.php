@@ -57,9 +57,10 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 		$query = "update comments set report=1 where imageID=$_POST[picture] and author='$_POST[author]'";
 		dbDo($query);
 		}
-		//Upload Zip folder
-		if(isset($_FILES['file'])){
+		//Upload Images, currently only jpg support.
+		if(isset($_FILES['file']) and $_POST['project'] != 'none'){
 			set_time_limit(100);
+			$owner = $_SESSION['username'];
 			if($_FILES['file']['type'] == "application/x-zip-compressed"){
 				//Manage Zip files
 				//Server Must have max-upload size in php.ini adjusted to allow admin to upload full class files
@@ -68,20 +69,18 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 				$zip->extractTo(ini_get('upload_tmp_dir'));
 				//$project = $_POST['project'];
 				for($i = 0;$i < $zip->numFiles; $i++){
-					$owner = $zip->getNameIndex($i);
-					$owner = trim(str_replace(range(0,9),'',$owner));
-					$owner = str_replace("'",'',$owner);
-					$owner = str_replace('_',' ',$owner);
-					$owner = strtolower($owner);
-					$owner = str_replace(array('.jpg','.png','.gif'),'',$owner);
 					$name = '/'.$zip->getNameIndex($i);
-					$image = addslashes(file_get_contents(ini_get('upload_tmp_dir').$name));
-					dbGet("insert into images (owner,data,projectID) values ('$owner','$image',4)");
+					if(strpos(strtolower($name),'.jpg') != false){
+						$image = addslashes(file_get_contents(ini_get('upload_tmp_dir').$name));
+						dbDo("insert into images (owner,data,projectID) values ('$owner','$image',$_POST[project])");
+					}
 					unlink(ini_get('upload_tmp_dir').$name);
 				}
 			}
 			else if($_FILES['file']['type'] == "image/jpeg"){
-				//Uploading an image file
+				//Upload Image file, current support only jpeg
+				$image = addslashes(file_get_contents($_FILES['file']['tmp_name']));
+				dbDo("insert into images (owner,data,projectID) values ('$owner','$image',$_POST[project])");
 			}
 		}
 		
