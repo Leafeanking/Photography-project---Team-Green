@@ -73,7 +73,9 @@ if(isset($_GET['folder'])){
 		<h3>Delete Class</h3>
 		<?php 
 			$data = get_classes();
-			echo "<form action='teacherhome.php' method='post'>";
+			$quote = '"';
+			$confirm = "return confirm('Deleting a class will remove all connected students, images, comments, ratings and projects associated with this class. Do you want to do this?')";
+			echo "<form action='teacherhome.php' method='post' onsubmit=$quote$confirm$quote>";
 			echo "<select name='class'>";
 			echo "<option value='none'>Select</option>";
 			foreach($data as $class){
