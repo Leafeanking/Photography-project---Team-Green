@@ -25,7 +25,7 @@ function dbGet($query){
 	return $result;
 }
 function dbDo($query){
-	dbGet($query);
+	return dbGet($query);
 }
 
 function authenticate($user,$pass){
