@@ -37,6 +37,40 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 		dbDo($query3);
 		}
 		
+		if(isset($_POST['create_project']) and isset($_POST['scale1']) and $_POST['scale1']!='none'){
+			srand(time());
+			function create_id($project,$question){
+				$id = (string)(rand()*rand())%999999999;
+				if(strlen($project) > 3){
+					$id = substr(strrev($project),0,3).$id;
+				}
+				if(strlen($question) > 3 ){
+					$id = $id.$question;
+				}
+				return $id;
+			}
+			$class = $_POST['class'];
+			$theme = str_replace("'","`",$_POST['theme']);
+			$question1 = str_replace("'","`",$_POST['question1']);
+			$q1ID = create_id($theme,$question1);
+			dbDo("insert into projects (class,theme,q1,q1ID,scale1) values ('$class','$theme','$question1','$q1ID','$_POST[scale1]')");
+			$projectID = mysql_insert_id();
+			for($i = 2;$i <= 20;$i++){
+				if($_POST['question'.$i] != '' and $_POST['scale'.$i] != ''){
+					$question = str_replace("'","`",$_POST['question'.$i]);
+					$scale = $_POST['scale'.$i];
+					$qid = create_id($theme,$question);
+					$qidIdentifier = 'q'.$i.'ID';
+					$query = "update projects set q$i = '$question', scale$i = '$scale', $qidIdentifier = '$qid' where projectID = $projectID";
+					dbDo($query);
+				}
+				else{
+					break;
+				}
+			}
+		}
+		
+		
 		//FORWARD TO CURRENT/OPENING PAGE
 		header('Location: teacherhome.php');
 	}

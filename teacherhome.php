@@ -34,6 +34,7 @@ if(isset($_GET['folder'])){
 		<?php  
 			$classes = get_classes();
 			echo "<select name='class'>";
+			echo "<option value = 'none'>Choose</option>";
 			foreach($classes as $class){
 				echo "<option value='$class'>$class</option>";
 			}
