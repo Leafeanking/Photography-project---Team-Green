@@ -43,8 +43,13 @@
 					$total = $total + ($i-1)*$rat[$i]; //-1 so that a vote of '1' is worth 0 points, making it possible to have 0%.
 					$possible = $possible + ($rat['scale']-1)*$rat[$i]; //a rating of '10' is worth 9 points. 
 				}
-			}	
-			echo "<li>Total: ".(string)(($total/$possible)*100)."%</li>";
+			}
+			if($possible == 0){
+				echo "<li>Total: 0%</li>";
+			}
+			else{
+				echo "<li>Total: ".(string)(($total/$possible)*100)."%</li>";
+			}
 			echo "</ul>";
 			echo "</div>";
 		}

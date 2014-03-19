@@ -130,10 +130,13 @@ function create_rating_for_image($imageID,$projectID){
 		if($question != NULL and $questionID != NULL and $scale != NULL){
 			$query="insert into ratings (imageID,questionID,question,scale) values ('$imageID','$questionID','$question','$scale')";
 			dbDo($query);
-			for($j=1;$j<=$scale;$j++){
-				//Set votes to 0 in the values up to size 'scale'
-				dbDo("update ratings set $j = 0 where imageID = '$imageID' and questionID = '$questionID'");
-			}
+				//!!!!!!!!!!!!!!!!///
+				//Restructure////////
+				//Database needs to have field names be longer than 
+				//an integer in the rating field
+				//all functions accessing ratings table
+				//need to be restructured
+				//and database needs to be altered. 
 		}
 	}
 }
