@@ -19,7 +19,9 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 	if(isset($_GET['folder'])){
 		$_SESSION['view'] = $_GET['folder'];
 	}
+	////////////////////////////////////////////////////////////
 	//ADMIN PROCESSES///////////////////////////////////////////
+	////////////////////////////////////////////////////////////
 	if($_SESSION['access'] == 'admin'){
 		//PROSESS REQUESTS SENT TO INDEX.PHP
 		//Delete a comment
@@ -72,11 +74,45 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 			}
 		}
 		
+		//Create class
+		if(isset($_POST['create_class']) and $_POST['class'] != ''){
+			$class = str_replace("'","`",$_POST['class']);
+			$query = "insert into classes values('class')";
+			dbDo($query);
+		}
+		
+		//Delete Class
+		//Also deletes associated students, images, comments and ratings.
+		if(isset($_POST['delete_class']) and $_POST['class'] != 'none'){
+			$class = $_POST['class'];
+			//Set longer wait time, all deletes could take a while. 
+			set_time_limit(100);
+			//Get list of users from class
+			$users = dbGet("select email from users where access = '$class'");
+			while($email = mysql_fetch_assoc($users)){
+				//get associated imageID's connected to each user
+				$assocImages = dbGet("select imageID from images where owner = '$email[email]'");
+				while($image = mysql_fetch_assoc($assocImages)){
+					//Delete everything from comments, ratings, and images associated to each imageID.
+					dbDo("delete from comments where imageID = '$imageID[imageID]'");
+					dbDo("delete from ratings where imageID = '$imageID[imageID]'");
+					dbDo("delete from images where imageID = '$image[imageID]'");
+				}
+				//delete user.
+				dbDo("delete from users where email = '$email[email]'");
+			}
+			//Delete class. Save till end in case script doesn't finish.
+			dbDo("delete from classes where class='$class'");
+		}
+		
+		//Delete Class
 		
 		//FORWARD TO CURRENT/OPENING PAGE
 		header('Location: teacherhome.php');
 	}
+	////////////////////////////////////////////////////////////
 	//STUDENT PROCESSES/////////////////////////////////////////
+	////////////////////////////////////////////////////////////
 	else{
 		//PROSESS REQUESTS SENT TO INDEX.PHP
 		//Delete a personal picture
