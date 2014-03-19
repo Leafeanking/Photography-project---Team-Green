@@ -18,7 +18,7 @@ header h1{
 
 .links a{
 	color: #FFFFFF;
-    text-decoration: none;
+	text-decoration: none;
 	hover:
 }
 
@@ -154,6 +154,14 @@ input{
 	color: #664466;
 }
 
+/*Gallery css*/
+.galleria{
+	margin: 0px auto;
+	width : 900px;
+	height : 600px;
+	background : #000;
+}
+
 footer{
 	text-align:center;
 }
@@ -223,90 +231,90 @@ footer{
 }
 
 #image_and_comments{
- display:none;
- position:fixed;
- top:50px;
- left:10%;
- width:80%;
- height:500px;
- background-color:white;
- z-index:11;
- padding:10px;
- border-radius:10px;
+	display:none;
+	position:fixed;
+	top:50px;
+	left:10%;
+	width:80%;
+	height:500px;
+	background-color:white;
+	z-index:11;
+	padding:10px;
+	border-radius:10px;
 }
 
 #selectedImage{
-width:65%;
-float:left;
-overflow:hidden;
-height:inherit;
+	width:65%;
+	float:left;
+	overflow:hidden;
+	height:inherit;
 }
 
 #selectedImage img{
-max-width:100%;
-max-height:95%;
+	max-width:100%;
+	max-height:95%;
 }
 
 #comments_ratings{
-background-color:white;
-overflow:scroll;
-width:28%;
-padding-left:3%;
-padding-right:3%;
-height:inherit;
-float:right;
-text-align:right;
+	background-color:white;
+	overflow:scroll;
+	width:28%;
+	padding-left:3%;
+	padding-right:3%;
+	height:inherit;
+	float:right;
+	text-align:right;
 }
 
 #comments_ratings h3{
-text-align:center;
+	text-align:center;
 }
 
 #comments_ratings li{
-display:block;
-text-align:center;
+	display:block;
+	text-align:center;
 }
 
 #create_project{
- display:none;
- position:absolute;
- top:50px;
- left:10%;
- width:80%;
- height:500px;
- background-color:white;
- z-index:11;
- padding:10px;
- border-radius:10px;
- overflow:scroll;
+	display:none;
+	position:absolute;
+	top:50px;
+	left:10%;
+	width:80%;
+	height:500px;
+	background-color:white;
+	z-index:11;
+	padding:10px;
+	border-radius:10px;
+	overflow:scroll;
 }
 
 #edit_classes{
- display:none;
- position:absolute;
- top:50px;
- left:10%;
- width:80%;
- height:500px;
- background-color:white;
- z-index:11;
- padding:10px;
- border-radius:10px;
- overflow:scroll;
+	display:none;
+	position:absolute;
+	top:50px;
+	left:10%;
+	idth:80%;
+	eight:500px;
+	ackground-color:white;
+	-index:11;
+	adding:10px;
+	order-radius:10px;
+	verflow:scroll;
 }
 
 #manage_images{
- display:none;
- position:absolute;
- top:50px;
- left:10%;
- width:80%;
- height:500px;
- background-color:white;
- z-index:11;
- padding:10px;
- border-radius:10px;
- overflow:scroll;
+	isplay:none;
+	osition:absolute;
+	op:50px;
+	eft:10%;
+	idth:80%;
+	eight:500px;
+	ackground-color:white;
+	-index:11;
+	adding:10px;
+	order-radius:10px;
+	verflow:scroll;
 }
 
 #shadow{
@@ -324,31 +332,31 @@ z-index:10;
 .menu ul { display: none; } /* Hide before plugin loads */
 
 .menu ul.dropit-submenu {
-    background-color: #fff;
-    border: 1px solid #b2b2b2;
-    padding: 6px 0;
-    margin: 3px 0 0 1px;
-    -webkit-border-radius: 3px;
-       -moz-border-radius: 3px;
-            border-radius: 3px;
-    -webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
-       -moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
-            box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
+	background-color: #fff;
+	border: 1px solid #b2b2b2;
+	padding: 6px 0;
+	margin: 3px 0 0 1px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+			border-radius: 3px;
+	-webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
+	-moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
+			box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
 }
 
 .menu ul.dropit-submenu a {
-    display: block;
-    font-size: 14px;
-    line-height: 25px;
-    color: #7a868e;
-    padding: 0 18px;
+	display: block;
+	font-size: 14px;
+	line-height: 25px;
+	color: #7a868e;
+	padding: 0 18px;
 }
 
 .menu ul.dropit-submenu a:hover {
-    background: #248fc1;
-    color: #fff;
+	background: #248fc1;
+	color: #fff;
 	font-size: 14px;
 	font-weight: normal;
-    text-decoration: none;
+	text-decoration: none;
 }
 

@@ -14,6 +14,7 @@ if(isset($_GET['folder'])){
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="photography.css">
 		<title>DSU Photography</title>
+		<script src="jquery.min.js"></script>
 		<script  src="photography.js"></script>
 		<script src="javafunctions.js"></script>
 	</head>
