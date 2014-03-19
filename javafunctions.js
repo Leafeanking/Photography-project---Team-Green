@@ -76,3 +76,10 @@
 		show_element('shadow');
 	}
 	
+	function show_students_table(){
+		var view = document.getElementById('students_in_class_table');
+		var sel = document.getElementById('students_in_class_selector');
+		var clas = sel.options[sel.selectedIndex].value;
+		view.innerHTML = clas;
+	}
+	
