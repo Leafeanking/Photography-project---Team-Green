@@ -78,8 +78,15 @@
 	
 	function show_students_table(){
 		var view = document.getElementById('students_in_class_table');
+		
 		var sel = document.getElementById('students_in_class_selector');
 		var clas = sel.options[sel.selectedIndex].value;
-		view.innerHTML = clas;
+		
+		var ajx = new XMLHttpRequest();
+		ajx.onreadystatechange = function(){
+			view.innerHTML = ajx.responseText;
+		}
+		ajx.open("GET", "class_students_table.php?class="+clas,true);
+		ajx.send();
 	}
 	

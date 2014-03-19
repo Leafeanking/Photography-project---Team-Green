@@ -22,6 +22,20 @@ if(isset($_GET['folder'])){
 		<script src="dropit.js"></script>
 		<script src="javafunctions.js"></script>
 		<link rel="stylesheet" href="dropit.css" type="text/css" />
+		<script>
+		function admin_delete_student(email){
+			var result = confirm("Want to delete?");
+			if (result==true) {
+				var ajx = new XMLHttpRequest();
+				ajx.onreadystatechange = function(){
+					show_students_table();
+				}
+				ajx.open("GET", "delete_student.php?email="+email,true);
+				ajx.send();
+			}
+		}
+		
+		</script>
 	</head>
 	<body>
 	<div id='shadow' onclick='hide_all()'></div>
