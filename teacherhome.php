@@ -22,6 +22,20 @@ if(isset($_GET['folder'])){
 		<script src="dropit.js"></script>
 		<script src="javafunctions.js"></script>
 		<link rel="stylesheet" href="dropit.css" type="text/css" />
+		<script>
+		function admin_delete_student(email){
+			var result = confirm("Want to delete?");
+			if (result==true) {
+				var ajx = new XMLHttpRequest();
+				ajx.onreadystatechange = function(){
+					show_students_table();
+				}
+				ajx.open("GET", "delete_student.php?email="+email,true);
+				ajx.send();
+			}
+		}
+		
+		</script>
 	</head>
 	<body>
 	<div id='shadow' onclick='hide_all()'></div>
@@ -64,27 +78,44 @@ if(isset($_GET['folder'])){
 		
 <!--Edit Class, hidden div------------------------------------------------------------------------------------------>		
 	<div id='edit_classes'>
-		<h3>Create Class</h3>
-		<form action='index.php' method='post'>
-			<input type="hidden" name="MAX_FILE_SIZE" value="4194304" /> 
-			<input type='text' name='class'>
-			<input type='submit' name='create_class' value='Create New Class'>
-		</form>
-		<h3>Delete Class</h3>
-		<?php 
-			$data = get_classes();
-			$quote = '"';
-			$confirm = "return confirm('Deleting a class will remove all connected students, images, comments, ratings and projects associated with this class. Do you want to do this?')";
-			echo "<form action='index.php' method='post' onsubmit=$quote$confirm$quote>";
-			echo "<select name='class'>";
-			echo "<option value='none'>Select</option>";
-			foreach($data as $class){
-				echo "<option value='$class'>$class</option>";
-			}
-			echo "</select>";
-			echo "<input type='submit' name='delete_class' value='Delete Class'>";
-			echo "</form>";
-		?>
+		<div id='class_create_delete'>
+			<h3>Create Class</h3>
+			<form action='index.php' method='post'>
+				<input type="hidden" name="MAX_FILE_SIZE" value="4194304" /> 
+				<input type='text' name='class'>
+				<input type='submit' name='create_class' value='Create New Class'>
+			</form>
+			<h3>Delete Class</h3>
+			<?php 
+				$data = get_classes();
+				$quote = '"';
+				$confirm = "return confirm('Deleting a class will remove all connected students, images, comments, ratings and projects associated with this class. Do you want to do this?')";
+				echo "<form action='index.php' method='post' onsubmit=$quote$confirm$quote>";
+				echo "<select name='class'>";
+				echo "<option value='none'>Select</option>";
+				foreach($data as $class){
+					echo "<option value='$class'>$class</option>";
+				}
+				echo "</select>";
+				echo "<input type='submit' name='delete_class' value='Delete Class'>";
+				echo "</form>";
+			?>
+		</div>
+		<div id='students_in_class'>
+			<select name="view_class_students" id='students_in_class_selector'
+				onchange="show_students_table()">
+			<?php
+				$data = get_classes();
+				echo "<option value='none'>Select</option>";
+				foreach($data as $class){
+					echo "<option value='$class' onclick=''>$class</option>";
+				}
+			?>
+			</select>
+			<div id='students_in_class_table'>
+			
+			</div>
+		</div>
 	</div>
 		
 

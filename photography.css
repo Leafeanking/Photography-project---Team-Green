@@ -299,7 +299,7 @@ footer{
 
 #comments_ratings{
 	background-color:white;
-	overflow:scroll;
+	overflow-y:scroll;
 	width:28%;
 	padding-left:3%;
 	padding-right:3%;
@@ -342,8 +342,32 @@ footer{
 	z-index:11;
 	padding:10px;
 	border-radius:10px;
-	overflow:scroll;
+	overflow:hidden;
+	min-width:1000px;
 
+}
+
+#class_create_delete{
+	background-color:white;
+	overflow-y:hidden;
+	width:40%;
+	padding-left:3%;
+	padding-right:3%;
+	height:inherit;
+	float:left;
+	text-align:right;
+}
+
+#students_in_class{
+	background-color:white;
+	overflow-y:scroll;
+	width:40%;
+	padding-left:3%;
+	padding-right:3%;
+	height:inherit;
+	float:right;
+	text-align:right;
+	height:100%;
 }
 
 #manage_images{
@@ -372,6 +396,8 @@ footer{
 	background-color:rgba(100,100,100,0.5);
 	z-index:10;
 }
+
+
 
 .menu ul { display: none; } /* Hide before plugin loads */
 
