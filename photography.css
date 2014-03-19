@@ -178,7 +178,7 @@ input{
 	width: 677px; /*take the pictures width (707) minus the comments padding (15+15): 707-30=677*/
 	height: 180px;
 	padding: 15px 15px;
-	margin-left: 10px;
+	margin-top: 10px;
 	border-radius: 10px;
 	font-size: 13px;
 }
@@ -193,7 +193,9 @@ input{
 	padding: 3px 18px;
 }
 
+/*Where the exit button is (little black strip above img gallery)*/
 #exitButton {
+	background-color:#000;
 	text-decoration: none;
 	font-family: Arial, Helvetica, sans-serif;
 	color: #CEC2C2;
@@ -202,6 +204,12 @@ input{
 	top:30px;
 	margin:0;
 	font-size: 20px;
+}
+
+.blackspace{
+	background-color: #000;
+	margin: 0 190px;
+	font-size: 25px;
 }
 
 footer{
