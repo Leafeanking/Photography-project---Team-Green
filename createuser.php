@@ -19,12 +19,12 @@
 			$errors = array(
 				"NO CLASS CHOSEN",
 				"PASSWORDS DO NOT MATCH",
-				"EMAIL ALREADY USED",
-				"A FIELD WAS LEFT EMPTY"
+				"A FIELD WAS LEFT EMPTY",
+				"EMAIL ALREADY USED"				
 				);
-			
+			$fail =$errors[$_GET['fail']];
 			echo "<h2>Create User Failed:</h2>";
-			echo "<h3>$errors[$_GET[fail]]</h3>";
+			echo "<h3>$fail</h3>";
 		}
 		?>
 		<form action='index.php' method='POST'>

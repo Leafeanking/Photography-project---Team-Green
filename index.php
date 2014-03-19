@@ -15,13 +15,50 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 
 //CREATE USER AND LOGIN
 if(isset($_POST['submit_new_user'])){
-	$first = $_POST['FirstName'];
-	$last = $_POST['LastName'];
-	$email = $_POST['username'];
-	$password1 = $_POST['password'];
-	$password2 = $_POST['passwordconfirm'];
+
+	$first = addslashes($_POST['FirstName']);
+	$last = addslashes($_POST['LastName']);
+	$email = addslashes($_POST['username']);
+	$password1 = addslashes($_POST['password']);
+	$password2 = addslashes($_POST['passwordconfirm']);
 	$class = $_POST['class'];
-	
+	$results = dbGet("select * from users where email = '$email'");
+	//Check if a class was selected.
+	if($class == 'none'){
+		header("Location: createuser.php?fail=0");
+	}
+	//Check if password matches in both fields.
+	else if($password1 != $password2){
+		header("Location: createuser.php?fail=1");
+	}
+	//Check if any fields were left empty.
+	else if($first == '' or $last=='' or $email == '' or $password1 == ''){
+		header("Location: createuser.php?fail=2");
+	}
+	//Check if email already exists.
+	else if(mysql_num_rows($results) >=1){
+		header("Location: createuser.php?fail=3");
+	}
+	//Check for sneaky POST requests attempting to create self as admin.
+	else if($class == 'admin'){
+		header("Location: createuser.php?fail=4");
+	}
+	//Create User.
+	else{
+		//Name, replace ' with ` to avoid code conflicts.
+		//set all strings to lower case, and then uppercase the first letter.
+		//concatenate string together. 
+		$name = str_replace("'","`",
+			ucfirst(strtolower(trim($first)))
+			.' '.
+			ucfirst(strtolower(trim($last)))
+			);
+		$query = "insert into users (username,password,access,email) values ('$name','$password1','$class','$email')";
+		dbDo($query);
+		//Set login info
+		$_SESSION['access'] = $class;
+		$_SESSION['username'] = $email;
+	}
 }
 
 //FORWARD WHEN LOGGING IN, OR ALREADY LOGGING IN AND SUBMITTING POST FORM DATA
