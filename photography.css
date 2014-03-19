@@ -294,39 +294,41 @@ footer{
 	position:absolute;
 	top:50px;
 	left:10%;
-	idth:80%;
-	eight:500px;
-	ackground-color:white;
-	-index:11;
-	adding:10px;
-	order-radius:10px;
-	verflow:scroll;
+	width:80%;
+	height:500px;
+	background-color:white;
+	z-index:11;
+	padding:10px;
+	border-radius:10px;
+	overflow:scroll;
+
 }
 
 #manage_images{
-	isplay:none;
-	osition:absolute;
-	op:50px;
-	eft:10%;
-	idth:80%;
-	eight:500px;
-	ackground-color:white;
-	-index:11;
-	adding:10px;
-	order-radius:10px;
-	verflow:scroll;
+	display:none;
+	position:absolute;
+	top:50px;
+	left:10%;
+	width:80%;
+	height:500px;
+	background-color:white;
+	z-index:11;
+	padding:10px;
+	border-radius:10px;
+	overflow:scroll;
+
 }
 
 #shadow{
-clear:both;
-display:none;
-position:fixed;
-top:0px;
-left:0px;
-width:100%;
-height:100%;
-background-color:rgba(100,100,100,0.5);
-z-index:10;
+	clear:both;
+	display:none;
+	position:fixed;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	background-color:rgba(100,100,100,0.5);
+	z-index:10;
 }
 
 .menu ul { display: none; } /* Hide before plugin loads */

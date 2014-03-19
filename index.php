@@ -177,6 +177,7 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 		$query = "update comments set report=1 where imageID=$_POST[picture] and author='$_POST[author]'";
 		dbDo($query);
 		}
+		
 		//Upload Images, currently only jpg support.
 		if(isset($_FILES['file']) and $_POST['project'] != 'none'){
 			set_time_limit(100);
