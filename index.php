@@ -195,7 +195,7 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 						dbDo("insert into images (owner,data,projectID) values ('$owner','$image',$_POST[project])");
 						//Grab imageID from creation and make new field for ratings in ratings table.
 						$imageID = mysql_insert_id();
-						create_rating_for_image($imageID,$_POST['project']));
+						create_rating_for_image($imageID,$_POST['project']);
 					}
 					unlink(ini_get('upload_tmp_dir').$name);
 				}
@@ -206,7 +206,7 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 				dbDo("insert into images (owner,data,projectID) values ('$owner','$image',$_POST[project])");
 				//Grab imageID from creation and make new field for ratings in ratings table.
 				$imageID = mysql_insert_id();
-				create_rating_for_image($imageID,$_POST['project']));
+				create_rating_for_image($imageID,$_POST['project']);
 			}
 		}
 		
