@@ -154,6 +154,7 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 			remove_associated_to_user($_POST['student_username']);
 		}
 		
+		/////////////////////////////////
 		//FORWARD TO CURRENT/OPENING PAGE
 		header('Location: teacherhome.php');
 	}
@@ -192,6 +193,9 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 					if(strpos(strtolower($name),'.jpg') != false){
 						$image = addslashes(file_get_contents(ini_get('upload_tmp_dir').$name));
 						dbDo("insert into images (owner,data,projectID) values ('$owner','$image',$_POST[project])");
+						//Grab imageID from creation and make new field for ratings in ratings table.
+						$imageID = mysql_insert_id();
+						create_rating_for_image($imageID,$_POST['project']));
 					}
 					unlink(ini_get('upload_tmp_dir').$name);
 				}
@@ -200,9 +204,13 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 				//Upload Image file, current support only jpeg
 				$image = addslashes(file_get_contents($_FILES['file']['tmp_name']));
 				dbDo("insert into images (owner,data,projectID) values ('$owner','$image',$_POST[project])");
+				//Grab imageID from creation and make new field for ratings in ratings table.
+				$imageID = mysql_insert_id();
+				create_rating_for_image($imageID,$_POST['project']));
 			}
 		}
 		
+		/////////////////////////////////
 		//FORWARD TO CURRENT/OPENING PAGE
 		header('Location: studenthome.php');
 	}
