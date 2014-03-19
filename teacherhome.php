@@ -18,7 +18,7 @@ if(isset($_GET['folder'])){
 		<link rel="stylesheet" type="text/css" href="photography.css">
 		<title>DSU Photography</title>
 		<script src="photography.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+		<script src="jquery.min.js"></script>
 		<script src="dropit.js"></script>
 		<script src="javafunctions.js"></script>
 		<link rel="stylesheet" href="dropit.css" type="text/css" />

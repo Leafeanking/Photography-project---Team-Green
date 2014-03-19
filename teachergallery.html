@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="photography.css">
+		<title>DSU Photography</title>
+		<!--Image Slider Galleria-->
+		<script src="jquery.min.js"></script>
+		<script type="text/javascript" src="galleria/galleria-1.3.5.min.js"></script>
+		<link rel="stylesheet" href="dropit.css" type="text/css" />
+		<style>
+			.galleria{ width : 700px; height : 400px; background : #000; }
+		</style>
+	</head>
+	<body>
+		<div class="galleria">
+			<img src="test_images/img_a.jpg" />
+			<img src="test_images/img_b.jpg" />
+			<img src="test_images/img_c.jpg" />
+			<img src="test_images/img_d.jpg" />
+			<img src="test_images/img_e.jpg" />
+			<img src="test_images/img_f.jpg" />
+			<img src="test_images/img_g.jpg" />
+		</div>
+	</body>
+	<script type="text/javascript">
+		Galleria.loadTheme('galleria/themes/classic/galleria.classic.min.js');
+		Galleria.run('.galleria');
+	</script>
+</html>
