@@ -192,7 +192,7 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 			<div class="submitButton">
 			<input type="submit" name = "Login">
 			</div>
-			<a class="center_link" href="createuser.html">Create New User Account</a>
+			<a class="center_link" href="createuser.php">Create New User Account</a>
 			<p onclick="forgotPassword()">Forgot password</p>
 		</form>
 		</div>
