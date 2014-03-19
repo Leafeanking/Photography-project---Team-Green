@@ -13,19 +13,42 @@
 		<h1>Create New User Account</h1>
 		</header>
 		<div class="menubar">
+		<?php
+		//Fail messages in case creation of user account has problems.
+		if(isset($_GET['fail'])){
+			$errors = array(
+				"NO CLASS CHOSEN",
+				"PASSWORDS DO NOT MATCH",
+				"EMAIL ALREADY USED",
+				"A FIELD WAS LEFT EMPTY"
+				);
+			
+			echo "<h2>Create User Failed:</h2>";
+			echo "<h3>$errors[$_GET[fail]]</h3>";
+		}
+		?>
+		<form action='index.php' method='POST'>
 			<div class="newUser_inputBoxes">
+				
 				First name: <input type="text" name="FirstName" value=""><br>
 				Last name: <input  type="text" name="LastName" value=""><br>
 				Username/Email: <input type="email" name="username" value=""><br>
 				Password: <input type="password" name="password" value=""><br>
-				Re-enter password: <input type="password" name="password" value=""><br>
-				Choose class: <select>
-					<!--options of class go here-->
-					<option value=""></option>
+				Re-enter password: <input type="password" name="passwordconfirm" value=""><br>
+				Choose class: <select name='class'>
+				<option value="none">Choose</option>
+					<?php
+						include_once("functions.php");
+						$query = "select class from classes";
+						$results = dbGet($query);
+						while($class = mysql_fetch_assoc($results)){
+							echo "<option value='$class[class]'>$class[class]</option>";
+						}
+					?>
 				</select>
 			</div>
 			<div class="submitButton">
-			<input type="submit" name="submit">
+			<input type="submit" name="submit_new_user">
 			</div>
 		</form>
 		</div>

@@ -13,6 +13,17 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 	$_SESSION['access'] = authenticate($_POST['username'],$_POST['password']);
 }
 
+//CREATE USER AND LOGIN
+if(isset($_POST['submit_new_user'])){
+	$first = $_POST['FirstName'];
+	$last = $_POST['LastName'];
+	$email = $_POST['username'];
+	$password1 = $_POST['password'];
+	$password2 = $_POST['passwordconfirm'];
+	$class = $_POST['class'];
+	
+}
+
 //FORWARD WHEN LOGGING IN, OR ALREADY LOGGING IN AND SUBMITTING POST FORM DATA
 if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 	//Manage user view for admin or student
