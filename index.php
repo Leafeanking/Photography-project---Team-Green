@@ -91,21 +91,17 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 			$users = dbGet("select email from users where access = '$class'");
 			while($email = mysql_fetch_assoc($users)){
 				//get associated imageID's connected to each user
-				$assocImages = dbGet("select imageID from images where owner = '$email[email]'");
-				while($image = mysql_fetch_assoc($assocImages)){
-					//Delete everything from comments, ratings, and images associated to each imageID.
-					dbDo("delete from comments where imageID = '$imageID[imageID]'");
-					dbDo("delete from ratings where imageID = '$imageID[imageID]'");
-					dbDo("delete from images where imageID = '$image[imageID]'");
-				}
-				//delete user.
-				dbDo("delete from users where email = '$email[email]'");
+				remove_associated_to_user($email['email']);
 			}
 			//Delete class. Save till end in case script doesn't finish.
 			dbDo("delete from classes where class='$class'");
 		}
 		
-		//Delete Class
+		//Delete Student
+		//Also deletes associated images, commments, and ratings.
+		if(isset($_POST['delete_student'])){
+			remove_associated_to_user($_POST['student_username']);
+		}
 		
 		//FORWARD TO CURRENT/OPENING PAGE
 		header('Location: teacherhome.php');

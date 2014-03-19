@@ -47,7 +47,6 @@ function get_theme($projectID){
 	return $data[0];
 }
 
-//////////////////////////Edit for admin acception!!!!!!!!!!!!!!!!!!!!!!
 function list_viewable($user,$access){
 	//checks project list for projects that a class($access) belongs to, and then
 	//grabs first photo from corresponding student 'folders'
@@ -181,6 +180,18 @@ function create_project($classID,$theme,$q1,$q1ID,$scale1,
 	$query = "Insert into projects ($fields) values ($values)";
 	echo $query;
 	//dbDo($query);
+}
+
+function remove_associated_to_user($email){
+	$assocImages = dbGet("select imageID from images where owner = '$email'");
+		while($image = mysql_fetch_assoc($assocImages)){
+			//Delete everything from comments, ratings, and images associated to each imageID.
+			dbDo("delete from comments where imageID = '$imageID[imageID]'");
+			dbDo("delete from ratings where imageID = '$imageID[imageID]'");
+			dbDo("delete from images where imageID = '$image[imageID]'");
+		}
+	//delete user.
+	dbDo("delete from users where email = '$email'");
 }
 
 
