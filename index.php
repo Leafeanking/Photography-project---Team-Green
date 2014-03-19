@@ -77,16 +77,19 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 		//Create class
 		if(isset($_POST['create_class']) and $_POST['class'] != ''){
 			$class = str_replace("'","`",$_POST['class']);
-			$query = "insert into classes values('class')";
+			$query = "insert into classes values('$class')";
+			echo $query;
 			dbDo($query);
 		}
 		
 		//Delete Class
-		//Also deletes associated students, images, comments and ratings.
+		//Also deletes associated students, projects, images, comments and ratings.
 		if(isset($_POST['delete_class']) and $_POST['class'] != 'none'){
 			$class = $_POST['class'];
 			//Set longer wait time, all deletes could take a while. 
 			set_time_limit(100);
+			//Delete projects associated with class
+			dbDo("delete from projects where class='$class'");			
 			//Get list of users from class
 			$users = dbGet("select email from users where access = '$class'");
 			while($email = mysql_fetch_assoc($users)){

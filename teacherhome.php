@@ -65,7 +65,7 @@ if(isset($_GET['folder'])){
 <!--Edit Class, hidden div------------------------------------------------------------------------------------------>		
 	<div id='edit_classes'>
 		<h3>Create Class</h3>
-		<form action='teacherhome.php' method='post'>
+		<form action='index.php' method='post'>
 			<input type="hidden" name="MAX_FILE_SIZE" value="4194304" /> 
 			<input type='text' name='class'>
 			<input type='submit' name='create_class' value='Create New Class'>
@@ -75,7 +75,7 @@ if(isset($_GET['folder'])){
 			$data = get_classes();
 			$quote = '"';
 			$confirm = "return confirm('Deleting a class will remove all connected students, images, comments, ratings and projects associated with this class. Do you want to do this?')";
-			echo "<form action='teacherhome.php' method='post' onsubmit=$quote$confirm$quote>";
+			echo "<form action='index.php' method='post' onsubmit=$quote$confirm$quote>";
 			echo "<select name='class'>";
 			echo "<option value='none'>Select</option>";
 			foreach($data as $class){
