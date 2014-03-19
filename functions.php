@@ -119,8 +119,23 @@ function list_viewable_no_pic($user,$access){
 }
 
 //Create Rating field for newly made image
-function create_rating_for_image($imageID,$projectId){
-	
+function create_rating_for_image($imageID,$projectID){
+	$results = dbGet("select * from projects where projectID = '$projectID'");
+	$project = mysql_fetch_assoc($results);
+	//create a rating field for each question that exists in a project for the selected project and image. 
+	for($i = 1;$i<=20;$i++){
+		$question = $project['q'.(string)$i];
+		$questionID = $project['q'.(string)$i.'ID'];
+		$scale = $project['scale'.(string)$i];
+		if($question != NULL and $questionID != NULL and $scale != NULL){
+			$query="insert into ratings (imageID,questionID,question,scale) values ('$imageID','$questionID','$question','$scale')";
+			dbDo($query);
+			for($j=1;$j<=$scale;$j++){
+				//Set votes to 0 in the values up to size 'scale'
+				dbDo("update ratings set $j = 0 where imageID = '$imageID' and questionID = '$questionID'");
+			}
+		}
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////
