@@ -37,6 +37,7 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 		dbDo($query3);
 		}
 		
+		//Create a project.
 		if(isset($_POST['create_project']) and isset($_POST['scale1']) and $_POST['scale1']!='none'){
 			srand(time());
 			function create_id($project,$question){
@@ -51,11 +52,12 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 			}
 			$class = $_POST['class'];
 			$theme = str_replace("'","`",$_POST['theme']);
+			//Writes first question. There is always one rating question Required.
 			$question1 = str_replace("'","`",$_POST['question1']);
 			$q1ID = create_id($theme,$question1);
-			dbDo("insert into projects (class,theme,q1,q1ID,scale1) values ('$class','$theme','$question1','$q1ID','$_POST[scale1]')");
+			dbDo("insert into projects (class,theme) values ('$class','$theme')");
 			$projectID = mysql_insert_id();
-			for($i = 2;$i <= 20;$i++){
+			for($i = 1;$i <= 20;$i++){
 				if($_POST['question'.$i] != '' and $_POST['scale'.$i] != ''){
 					$question = str_replace("'","`",$_POST['question'.$i]);
 					$scale = $_POST['scale'.$i];
