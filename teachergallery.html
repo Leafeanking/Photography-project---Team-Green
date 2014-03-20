@@ -32,6 +32,13 @@
 	</body>
 	<script type="text/javascript">
 		Galleria.loadTheme('galleria/themes/classic/galleria.classic.min.js');
+		Galleria.run('.galleria'); // initialize the galleria
+		
+		// do something when someone clicks an element with the ID 'mylink'
+		$('#enterFullscreen').click(function() {
+				$('.galleria').data('galleria').enterFullscreen(); // will start slideshow attached to #image when the element #play is clicked
+					
+					});
 		Galleria.run('.galleria');
 	</script>
 </html>
