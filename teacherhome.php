@@ -44,7 +44,7 @@ if(isset($_GET['folder'])){
 		
 		<div id = "edit_project">
 			<div id = "create_project">
-				<h3>Create Project</h3>
+				<h2>Create Project</h2>
 				<button onclick='switch_to_edit_classes()'>Edit Classes</button>
 				<form method = 'post' action = 'index.php'>
 				Class: 
@@ -77,6 +77,40 @@ if(isset($_GET['folder'])){
 				<i>Select a scale to move onto another question or create project</i></br>
 				<input type='submit' value='Create New Project' name='create_project'>
 				</form>
+			</div>
+			<div id='delete_project'>
+				<h2>View and Delete projects</h2>
+				<?php
+					$results = dbGet("select * from projects order by class");
+					$class = '';
+					$quote = '"';
+					$confirm = "return confirm('Deleting a project will remove all connected images, comments, and ratings associated with this project. Do you want to do this?')";
+
+					while($projects = mysql_fetch_assoc($results)){
+						if($class != $projects['class']){
+							$class = $projects['class'];
+							echo "<hr><h3>$class</h3>";
+						}
+						echo "<table><tr><td><u>$projects[theme]</u></td></tr></table>";
+						echo "<table><tr><th>Scale</th><th>Question</th></tr>";
+						for($i=1;$i<=20;$i++){
+							$question = $projects['q'.$i];
+							$scale = $projects['scale'.$i];
+							if($question!= NULL and $scale != NULL){
+								
+								echo "<tr><td>$scale</td><td>$question</td></tr>";
+							}
+							else{
+								break;
+							}
+						}
+						echo "</table>";
+						echo "<form action = 'index.php' method = 'POST' onsubmit=$quote$confirm$quote>";
+						echo "<input type='hidden' name='projectID' value='$projects[projectID]'>";
+						echo "<input type='submit' name = 'delete_project' value = 'Delete Project' >";
+						echo "</form><br/><br/>";
+					}
+				?>
 			</div>
 		</div>
 		

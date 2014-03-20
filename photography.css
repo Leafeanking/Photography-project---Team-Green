@@ -336,7 +336,28 @@ footer{
 	z-index:11;
 	padding:10px;
 	border-radius:10px;
-	overflow:scroll;
+	overflow-y:scroll;
+	overflow-x:hidden;
+}
+
+#create_project{
+	width:40%;
+	margin-left:3px;
+	float:left;
+}
+
+#delete_project{
+	width:40%;
+	height:100%;
+	overflow-y:scroll;
+	margin-right:3px;
+	float:right;
+	text-align:left;
+
+}
+
+#delete_project td{
+	padding-right:40px;
 }
 
 #edit_classes{
