@@ -43,7 +43,7 @@
 	}
 	
 	function show_create_project(){
-		show_element('create_project');
+		show_element('edit_project');
 		show_element('shadow');	
 	}
 	
@@ -51,7 +51,7 @@
 	function hide_all(){
 		hide_element('manage_images');
 		hide_element('edit_classes');
-		hide_element('create_project');
+		hide_element('edit_project');
 		hide_element('image_and_comments');
 		document.getElementById('shadow').style.display = 'none';
 	}
