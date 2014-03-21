@@ -161,25 +161,23 @@ input{
 	margin-top: -50px;
 }
 
-#galleryExit {
-	background-image: url("exit.png");
-	background-position: center;
-	padding:25px;
-	background-repeat: no-repeat;
+#galleryExit{
 	position: relative;
-	top: -25px;
-	margin-left: 855px;
+	top: -13px;
+	left: 77%;
 }
 
 .blackBorder{
 	background-color:#000;
-	padding: 10px 96.5px 280px;
+	padding: 30px 96.5px 280px;
 }
 
 .galleriaStudent, .galleriaStudent img{
 	margin: 0px auto;
 	width : 707px;
 	height : 530px;
+	padding-top: 45px;
+	margin-top: -50px;
 }
 
 /*Comments box in gallery*/
