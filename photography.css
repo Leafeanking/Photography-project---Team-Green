@@ -28,12 +28,9 @@ header h1{
 
 #logo{
 	background-image: url('logo.png');
-	background-size:279px,82px;
 	background-repeat: no-repeat;
-	background-position: center;	
-	padding:25px 0px 10px 0px;	
-	margin-top:0px;
-	min-width:300px;
+	background-position: center;
+	padding:25px 0px 10px 0px;
 }
 
 h1{
@@ -68,7 +65,7 @@ h1{
 	background-color: #690004;
 	height:30px;
 	margin:0px;
-	text-align:center;	
+	text-align:center;
 }
 
 .right{
@@ -160,6 +157,18 @@ input{
 	width : 900px;
 	height : 600px;
 	background : #000;
+	padding-top: 30px;
+	margin-top: -50px;
+}
+
+#galleryExit {
+	background-image: url("exit.png");
+	background-position: center;
+	padding:25px;
+	background-repeat: no-repeat;
+	position: relative;
+	top: -25px;
+	margin-left: 855px;
 }
 
 .blackBorder{
