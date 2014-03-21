@@ -11,30 +11,26 @@ function Join() {
 	}
 }
 
-//request for password to send. 
-function send_password(email){
-	//returns string 'true' or 'false' values depending on result.
-	var comments = document.getElementById("forgotPassword");
-	var ajx = new XMLHttpRequest();
-	ajx.onreadystatechange = function(){
-		return ajx.responseText;
-	}
-	ajx.open("GET", "forgot.php?email="+email,true);
-	ajx.send();
-}
-
 //Forgot password link in homepage
 function forgotPassword()
 {
 	var email=prompt("Forgot password? Please enter your Dmail user name.");
-	var result = send_password(email);
-	if(result == 'true')
-	{
-		var ok=confirm("Your password has been sent to your email.");
-		
+	var comments = document.getElementById("forgotPassword");
+	var ajx = new XMLHttpRequest();
+	ajx.onreadystatechange = function(){
+		//4: request finished and response is ready
+		//200: page found. 
+		if (ajx.readyState==4 && ajx.status==200){
+			var str = ajx.responseText;
+			if(str == 'true'){
+				var ok=confirm("Your password has been sent to your email.");
+			}
+			else{
+				var ok=confirm("Your email does not exist in our system.");
+			}
+		}
 	}
-	else{
-		var ok=confirm("Your email does not exist in our system.");
-	}
+	ajx.open("GET", "forgot.php?email="+email,true);
+	ajx.send();
 }
 
