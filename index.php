@@ -254,7 +254,6 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 	<body>
 		<header id="logo">
 		<h1>Photography</h1>
-		<script src="javafunctions.js"></script>
 		</header>
 		<form action='index.php' method='POST'>
 		<div class="menubar">

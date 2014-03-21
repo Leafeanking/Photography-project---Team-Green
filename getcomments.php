@@ -10,19 +10,19 @@
 			echo "<div class='comment'>";
 			echo "<h3>$com[author]</h3>";
 			echo "<p>$com[comment]</p>";
-			if($_SESSION['access']=='admin'){
+			if($_SESSION['access']=='admin'){ //Admin Delete a bad comment. 
 				echo "<form method='POST' action='index.php'>";
 				echo "<input type='hidden' name='author' value='$com[author]'>";
 				echo "<input type='hidden' name='picture' value='$_GET[imageId]'>";
 				echo "<input type='submit' name='delete_comment' value='Delete Comment'>";
 				echo "</form>";
 			}
-			else{
-				echo "<form method='POST' action='index.php'>";
+			else{ //Student Report a bad comment. 
+				/*echo "<form method='POST' action='index.php'>";
 				echo "<input type='hidden' name='author' value='$com[author]'>";
 				echo "<input type='hidden' name='picture' value='$_GET[imageId]'>";
 				echo "<input type='submit' name='report_comment' value='Report Comment'>";
-				echo "</form>";
+				echo "</form>";*///Need To create place for Teacher to view reported comments. 
 			}
 			echo "</div>";
 		}
