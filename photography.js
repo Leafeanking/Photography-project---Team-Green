@@ -11,6 +11,18 @@ function Join() {
 	}
 }
 
+//request for password to send. 
+function send_password(email){
+	//returns string 'true' or 'false' values depending on result.
+	var comments = document.getElementById("forgotPassword");
+	var ajx = new XMLHttpRequest();
+	ajx.onreadystatechange = function(){
+		return ajx.responseText;
+	}
+	ajx.open("GET", "forgot.php?email="+email,true);
+	ajx.send();
+}
+
 //Forgot password link in homepage
 function forgotPassword()
 {
@@ -25,3 +37,4 @@ function forgotPassword()
 		var ok=confirm("Your email does not exist in our system.");
 	}
 }
+
