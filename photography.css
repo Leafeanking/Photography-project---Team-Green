@@ -365,6 +365,14 @@ footer{
 
 }
 
+#project_choose_multiple{
+	display:none;
+}
+
+#projects_choose_single{
+	display:block;
+}
+
 #delete_project td{
 	padding-right:40px;
 }

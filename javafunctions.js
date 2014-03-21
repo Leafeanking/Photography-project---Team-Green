@@ -60,6 +60,11 @@
 		show_element('project_create_question_'+next);	
 	}
 	
+	function projects_select_multiple_classes(){
+		show_element('project_choose_multiple');
+		hide_element('projects_choose_single');
+	}
+	
 	function show_edit_classes(){
 		show_element('edit_classes');
 		show_element('shadow');

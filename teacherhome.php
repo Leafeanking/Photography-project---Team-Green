@@ -48,6 +48,7 @@ if(isset($_GET['folder'])){
 				<button onclick='switch_to_edit_classes()'>Edit Classes</button>
 				<form method = 'post' action = 'index.php'>
 				Class: 
+				<div id='projects_choose_single'>
 				<?php  
 					$classes = get_classes();
 					echo "<select name='class'>";
@@ -57,6 +58,15 @@ if(isset($_GET['folder'])){
 					}
 					echo "</select>";
 				?>
+				<input type='checkbox' onclick="projects_select_multiple_classes()">Choose Multiple.
+				</div>
+				<div id="project_choose_multiple">
+				<?php  
+					foreach($classes as $class){
+						echo "<input type='checkbox' name='classes[]' value='$class'>$class<br/>";
+					}
+				?>
+				</div>
 				<br/>Theme: <input type='text' name='theme'>
 				<?php 
 					//Each Question is in a separate div, so that when you select the Scale of the previous one, a new question is made 

@@ -87,8 +87,13 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 		dbDo($query3);
 		}
 		
+		//Delete a Project
+		if(isset($_POST['delete_project'])){
+			dbDo("delete from projects where projectID = $_POST[projectID]");
+		}
+		
 		//Create a project.
-		if(isset($_POST['create_project']) and isset($_POST['scale1']) and $_POST['scale1']!='none'){
+		if(isset($_POST['create_project'])){
 			srand(time());
 			function create_id($project,$question){
 				$id = (string)(rand()*rand())%999999999;
@@ -100,24 +105,35 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 				}
 				return $id;
 			}
-			$class = $_POST['class'];
-			$theme = str_replace("'","`",$_POST['theme']);
-			//Writes first question. There is always one rating question Required.
-			$question1 = str_replace("'","`",$_POST['question1']);
-			$q1ID = create_id($theme,$question1);
-			dbDo("insert into projects (class,theme) values ('$class','$theme')");
-			$projectID = mysql_insert_id();
-			for($i = 1;$i <= 20;$i++){
-				if($_POST['question'.$i] != '' and $_POST['scale'.$i] != ''){
-					$question = str_replace("'","`",$_POST['question'.$i]);
-					$scale = $_POST['scale'.$i];
-					$qid = create_id($theme,$question);
-					$qidIdentifier = 'q'.$i.'ID';
-					$query = "update projects set q$i = '$question', scale$i = '$scale', $qidIdentifier = '$qid' where projectID = $projectID";
-					dbDo($query);
+			function create_class_project($post){
+				$class = $post['class'];
+				$theme = str_replace("'","`",$post['theme']);
+				//Writes first question. There is always one rating question Required.
+				dbDo("insert into projects (class,theme) values ('$class','$theme')");
+				$projectID = mysql_insert_id();
+				for($i = 1;$i <= 20;$i++){
+					if($post['question'.$i] != '' and $post['scale'.$i] != ''){
+						$question = str_replace("'","`",$post['question'.$i]);
+						$scale = $post['scale'.$i];
+						$qid = create_id($theme,$question);
+						$qidIdentifier = 'q'.$i.'ID';
+						$query = "update projects set q$i = '$question', scale$i = '$scale', $qidIdentifier = '$qid' where projectID = $projectID";
+						dbDo($query);
+					}
+					else{
+						break;
+					}
 				}
-				else{
-					break;
+			
+			}
+			
+			if(count($_POST['classes']) == 0){//Single Class
+				create_class_project($_POST);
+			}
+			else{//Multiple classes
+				foreach($_POST['classes'] as $class){
+					$_POST['class'] = $class;
+					create_class_project($_POST);
 				}
 			}
 		}

@@ -51,7 +51,7 @@ function get_theme($projectID){
 function list_viewable($user,$access){
 	//checks project list for projects that a class($access) belongs to, and then
 	//grabs first photo from corresponding student 'folders'
-	//returns an array(array(projectID,theme,<img>coverPhoto))
+	//student returns an array(array(projectID,theme,<img>coverPhoto))
 	if($access != 'admin'){ //Student View
 		$query = "select projectID, theme from projects where class = '$access'";
 		$results = dbGet($query);
@@ -71,8 +71,9 @@ function list_viewable($user,$access){
 		}
 		return $return;
 	}
+	//Teacher returns an array(array(projectID,theme,<img>coverPhoto,class))
 	else if($access == 'admin'){ //Teacher View
-		$query = "select projectID, theme from projects";
+		$query = "select projectID, theme, class from projects order by class";
 		$results = dbGet($query);
 		$return = array();
 		while($item = mysql_fetch_assoc($results)){
@@ -85,7 +86,7 @@ function list_viewable($user,$access){
 			else{
 				$picture = DEFAULT_IMG;
 			}
-			$packet = array($item['projectID'],$item['theme'],$picture);
+			$packet = array($item['projectID'],$item['theme'],$picture,$item['class']);
 			array_push($return,$packet); 
 		}
 		return $return;
