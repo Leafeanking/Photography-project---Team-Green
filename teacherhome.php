@@ -85,7 +85,7 @@ if(isset($_GET['folder'])){
 						$next = $i+1;
 						if($i==1){echo "<div id='project_create_question_$i'>Question $i: <input type='text' name='question$i' placeholder='Leave empty for nothing.'>";}
 						else{echo "<div id='project_create_question_$i' style='display:none;'>Question $i: <input type='text' name='question$i' placeholder='Leave empty for nothing.'>";}
-						echo " Scale (1-10): <select name='scale$i' onclick='show_next_create_question_field($next)'>";
+						echo " Scale 1 to: <select name='scale$i' onclick='show_next_create_question_field($next)'>";
 						echo "<option value='none' selected>Select</option>";
 						for($j=2;$j<=10;$j++){
 							echo "<option value=$j>$j</option>";
