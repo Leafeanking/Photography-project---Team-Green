@@ -15,6 +15,7 @@ stylesheet{
 
 */
 define('DEFAULT_IMG',"<image src='picture_icon.png'>"); 
+define('MAXIMUM_CLASSES',10);
 //////////////////////////////////////////////////////////////////////////////
 //Full Scope Functions////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -30,13 +31,20 @@ function dbDo($query){
 }
 
 function authenticate($user,$pass){
+	session_start();
 	//check if user is authentic, return false if not, return access if they are.
 	//Outer functions responsibility to set $_Session['user'], if user is correct.
-	$query = "SELECT access FROM users where email = '$user' and password = '$pass'";
+	$query = "SELECT * FROM users where email = '$user' and password = '$pass'";
 	$results = dbGet($query);
 	if(mysql_num_rows($results)!=0){
-		$val = mysql_fetch_row($results);
-		return $val[0];
+		$val = mysql_fetch_assoc($results);
+		$_SESSION['access'] = $val['access'];
+		//Set access for multiple classes if student is in multiple classes.
+		for($i = 2; $i <= MAXIMUM_CLASSES;$i++){
+			if($val["access$i"]!= NULL){
+				$_SESSION["access$i"] = $val["access$i"];
+			}
+		}
 	}
 	return false;
 }

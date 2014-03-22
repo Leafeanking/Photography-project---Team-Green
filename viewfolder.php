@@ -22,8 +22,9 @@ else{
 }
 //Image and comments Popup window.
 echo "<div id='image_and_comments'>";
-echo "<div id='comments_ratings'></div>";
-echo "<div id='selectedImage'></div></div>";
+	echo "<div id='comments_ratings'></div>";
+	echo "<div id='selectedImage'></div>";
+echo "</div>";
 
 ///////////////////////////////////////////
 

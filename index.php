@@ -10,7 +10,8 @@ if(isset($_POST['Logout']) and session_id() != false){
 //CHECK LOGIN CREDENTIALS 
 if(isset($_POST['username']) and isset($_POST['password'])){
 	$_SESSION['username'] = $_POST['username'];
-	$_SESSION['access'] = authenticate($_POST['username'],$_POST['password']);
+	//Sets $_SESSION['access'] inside of function. Allong with access2...access10;
+	authenticate($_POST['username'],$_POST['password']);
 }
 
 //CREATE USER AND LOGIN
