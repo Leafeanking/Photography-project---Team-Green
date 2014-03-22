@@ -184,9 +184,7 @@ if(isset($_GET['folder'])){
 		
 
 <!--Actual Page------------------------------------------------------------------------------------------------------>		
-		<div id = "logo" class="center">
-            <header >
-                <h1>Photography</h1>
+            <header id="logo">
             </header>
 			
 		</div>
