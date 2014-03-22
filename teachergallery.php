@@ -1,3 +1,16 @@
+<?php
+require_once("secure.php");
+require_once("functions.php");
+if($_SESSION['access'] != 'admin'){
+	header('Location: index.php');
+}
+
+//Temporary Static variables
+$_SESSION['project'] = 1;
+$_SESSION['accessCode'] = 'abcd';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -19,13 +32,12 @@
 		</div>
 		<a href="studenthome.php" id="galleryExit" title="Exit Session" alt="Exit Session"><img src="exit.png"></a>
 		<div class="galleria">
-			<img src="test_images/img_a.jpg" />
-			<img src="test_images/img_b.jpg" />
-			<img src="test_images/img_c.jpg" />
-			<img src="test_images/img_d.jpg" />
-			<img src="test_images/img_e.jpg" />
-			<img src="test_images/img_f.jpg" />
-			<img src="test_images/img_g.jpg" />
+		<?php
+			$data = access_full_project($_SESSION['project']);
+			foreach($data as $image){
+				echo $image[1];
+			}
+		?>
 		</div>
 	</body>
 	<script type="text/javascript">
