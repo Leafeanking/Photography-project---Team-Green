@@ -86,3 +86,16 @@
 		ajx.send();
 	}
 	
+	function show_projects_by_class_dropdown(){
+		var view = document.getElementById('projects_uploadable_to');
+		var sel = document.getElementById('multi-class-selector');
+		var clas = sel.options[sel.selectedIndex].value;
+		
+		ajx = new XMLHttpRequest();
+		ajx.onreadystatechange = function(){
+			view.innerHTML = ajx.responseText;
+		}
+		ajx.open("GET","create_dropdown_of_projects.php?class="+clas,true);
+		ajx.send();
+	}
+	
