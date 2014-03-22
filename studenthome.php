@@ -52,9 +52,7 @@ if(isset($_GET['folder'])){
 	</form></div>	
 	
 	<!--Actual Page------------------------------------------>
-		<div id = "logo" class="center">
-		<header>
-				<h1 >Photography</h1>
+		<header id="logo">
 		</header>
 			
 		</div>

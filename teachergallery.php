@@ -25,11 +25,8 @@ $_SESSION['accessCode'] = 'abcd';
 		</style>
 	</head>
 	<body class="centerGrouping">
-		<div id = "logo">
-			<header >
-				<h1></h1>
+			<header id="logo">
 			</header>
-		</div>
 		<a href="studenthome.php" id="galleryExit" title="Exit Session" alt="Exit Session"><img src="exit.png"></a>
 		<div class="galleria">
 		<?php
