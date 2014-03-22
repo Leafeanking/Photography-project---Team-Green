@@ -35,6 +35,16 @@ if(isset($_GET['folder'])){
 			}
 		}
 		
+		function Create_session() {
+			var access=prompt("Enter access code to join the session");
+			//if they typed in the right access code, they jump to the session page
+			if(access=="true"){
+				window.location="sessionpage.php";
+			}
+			else{
+				alert("There is no session going on with that access code.");
+			}
+		}
 		</script>
 	</head>
 	<body>
@@ -75,7 +85,7 @@ if(isset($_GET['folder'])){
 						$next = $i+1;
 						if($i==1){echo "<div id='project_create_question_$i'>Question $i: <input type='text' name='question$i' placeholder='Leave empty for nothing.'>";}
 						else{echo "<div id='project_create_question_$i' style='display:none;'>Question $i: <input type='text' name='question$i' placeholder='Leave empty for nothing.'>";}
-						echo " Scale (2-10): <select name='scale$i' onclick='show_next_create_question_field($next)'>";
+						echo " Scale (1-10): <select name='scale$i' onclick='show_next_create_question_field($next)'>";
 						echo "<option value='none' selected>Select</option>";
 						for($j=2;$j<=10;$j++){
 							echo "<option value=$j>$j</option>";
@@ -199,7 +209,7 @@ if(isset($_GET['folder'])){
                     <input type='submit' name = 'Logout' value='Logout'>
                     </form>
                 </li>
-				<li class="right"> <button onclick="Join()">Start</button>
+				<li class="right"> <button onclick="Create_session()">Start</button>
 			</ul>
         </div>
        
