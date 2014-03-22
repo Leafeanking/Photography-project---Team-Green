@@ -45,8 +45,10 @@
 		document.getElementById('shadow').style.display = 'none';
 	}
 	
-	function show_next_create_question_field(next){
-		show_element('project_create_question_'+next);	
+	var QUESTION = 2;
+	function show_next_create_question_field(){
+		show_element('project_create_question_'+QUESTION);
+		QUESTION = QUESTION +1;
 	}
 	
 	function projects_select_multiple_classes(){

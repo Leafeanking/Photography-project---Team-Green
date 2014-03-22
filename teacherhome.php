@@ -77,24 +77,30 @@ if(isset($_GET['folder'])){
 					}
 				?>
 				</div>
-				<br/>Theme: <input type='text' name='theme'>
+				<br/>Theme: <input type='text' name='theme'><br/>
 				<?php 
 					//Each Question is in a separate div, so that when you select the Scale of the previous one, a new question is made 
 					//available if you want to create a new one. Goes up to 20, by restriction of the database structure, and this particular code.
 					for($i = 1; $i <= 20;$i++){
-						$next = $i+1;
-						if($i==1){echo "<div id='project_create_question_$i'>Question $i: <input type='text' name='question$i' placeholder='Leave empty for nothing.'>";}
-						else{echo "<div id='project_create_question_$i' style='display:none;'>Question $i: <input type='text' name='question$i' placeholder='Leave empty for nothing.'>";}
-						echo " Scale 1 to: <select name='scale$i' onclick='show_next_create_question_field($next)'>";
+						if($i==1){
+							echo "<div id='project_create_question_$i'>Question $i: <input type='text' name='question$i' placeholder='Leave empty for nothing.'>";
+						}
+						else{
+							echo "<div id='project_create_question_$i' style='display:none;'>Question $i: <input type='text' name='question$i' placeholder='Leave empty for nothing.'>";
+						}
+						echo " Scale 1 to: <select name='scale$i'>";
 						echo "<option value='none' selected>Select</option>";
 						for($j=2;$j<=10;$j++){
 							echo "<option value=$j>$j</option>";
 						}
 						echo "</select>";
 						echo "</div>";
+						
 					}
+					echo "<button type='button' onclick='show_next_create_question_field();return false;'>+</button>";
 				?>
-				<i>Select a scale to move onto another question or create project</i></br>
+				<br/>
+				<br/>
 				<input type='submit' value='Create New Project' name='create_project'>
 				</form>
 			</div>
