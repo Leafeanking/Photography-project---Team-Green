@@ -1,6 +1,11 @@
 <?php
 include_once("secure.php");
 include_once("functions.php");
+	//Add functionality that detects this page is requested by
+	//xmlhttprequest. Also that the user has access to this picture
+	//or that the picture is on the list of pictures being viewed 
+	//in any session running. 
+
 	$data = $_GET['imageID'];
 	$query = "select data from images where imageID = '$data'";
 	$results = dbGet($query);
@@ -10,6 +15,8 @@ include_once("functions.php");
 	
 	
 	if(isset($_SERVER['HTTP_IF_NONE_MATCH']) AND $_SERVER['HTTP_IF_NONE_MATCH'] == $ETAG){
+		header_remove("Expires");
+		header_remove("Cache-Control");
 		header('HTTP/1.1 304 Not Modified'); 
         exit(0); 
 	}
@@ -17,7 +24,7 @@ include_once("functions.php");
 		session_cache_limiter('public');
 		header("content-type: image/jpeg");
 		header("ETag: $ETAG"); 
-		define("MAXSECONDS",36000);//5 MINUTES
+		define("MAXSECONDS",300);//5 MINUTES 300 seconds
 		header_remove("Cache-Control");
 		header_remove("Pragma");
 		header_remove("X-Powered-By");
