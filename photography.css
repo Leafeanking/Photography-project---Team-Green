@@ -151,20 +151,27 @@ input{
 	color: #664466;
 }
 
+
 /*Gallery css*/
 .galleria{
 	margin: 0px auto;
-	width : 900px;
 	height : 600px;
 	background : #000;
 	padding-top: 30px;
 	margin-top: -50px;
 }
 
+/*Groups all content that goes together: used in gallery*/
+.centerGrouping{
+	margin: 0 auto;
+	width: 900px;
+	height: 600px;
+}
+
 #galleryExit{
 	position: relative;
 	top: -13px;
-	left: 77%;
+	left: 94%;
 }
 
 .blackBorder{
