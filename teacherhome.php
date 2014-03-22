@@ -77,7 +77,7 @@ if(isset($_GET['folder'])){
 					}
 				?>
 				</div>
-				<br/>Theme: <input type='text' name='theme'><br/>
+				<br/>Title: <input type='text' name='theme'><br/>
 				<?php 
 					//Each Question is in a separate div, so that when you select the Scale of the previous one, a new question is made 
 					//available if you want to create a new one. Goes up to 20, by restriction of the database structure, and this particular code.
