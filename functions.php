@@ -56,6 +56,15 @@ function get_theme($projectID){
 	return $data[0];
 }
 
+function username_from_email($email){
+	$results = dbGet("select username from users where email = '$email'");
+	if(mysql_num_rows($results) != 0){
+		$data = mysql_fetch_assoc($results);
+		return $data['username'];
+	}
+	return "Name";
+}
+
 function list_viewable($user,$access){
 	//checks project list for projects that a class($access) belongs to, and then
 	//grabs first photo from corresponding student 'folders'
@@ -216,7 +225,15 @@ function create_project($classID,$theme,$q1,$q1ID,$scale1,
 	//dbDo($query);
 }
 
-function remove_associated_to_user($email){
+function remove_associated_to_user_and_class($email,$class){
+	//Deletes all items associated with a user and class together.
+	//If the user no longer has any associations with any classes,
+	//The user is then deleted.
+	
+	////////////
+	////////////Last thing to change, and deleting students from a class should work. 
+	////////////
+	
 	$assocImages = dbGet("select imageID from images where owner = '$email'");
 		while($image = mysql_fetch_assoc($assocImages)){
 			//Delete everything from comments, ratings, and images associated to each imageID.

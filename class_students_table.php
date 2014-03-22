@@ -15,7 +15,7 @@ if($_SESSION['access'] == 'admin'){
 					echo "<td>$student[username]</td>";
 					echo "<td>$student[email]</td>";
 					$delete = '"'.$student['email'].'"';
-					echo "<td><button onclick='admin_delete_student($delete)'>Delete Student</button></td>";
+					echo "<td><button onclick='admin_delete_student_from_class($delete,$_GET[class])'>Delete Student</button></td>";
 				echo "</tr>";
 			}
 			echo "</table>";

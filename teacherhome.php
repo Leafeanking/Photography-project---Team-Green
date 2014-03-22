@@ -23,14 +23,14 @@ if(isset($_GET['folder'])){
 		<script src="javafunctions.js"></script>
 		<link rel="stylesheet" href="dropit.css" type="text/css" />
 		<script>
-		function admin_delete_student(email){
+		function admin_delete_student_from_class(email,clas){
 			var result = confirm("Want to delete?");
 			if (result==true) {
 				var ajx = new XMLHttpRequest();
 				ajx.onreadystatechange = function(){
 					show_students_table();
 				}
-				ajx.open("GET", "delete_student.php?email="+email,true);
+				ajx.open("GET", "delete_student_from_class.php?email="+email"&class="+clas,true);
 				ajx.send();
 			}
 		}

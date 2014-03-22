@@ -26,16 +26,29 @@ if(isset($_GET['folder'])){
 	<form action='index.php' method='post' enctype="multipart/form-data">
 		<!--Server Must have max-upload size in php.ini adjusted to allow admin to upload full class files -->
 		<input type='file' name='file'></input>
+		Class: <select name='multi-class-selector' id='multi-class-selector' onchange='show_projects_by_class_dropdown()'>
+		<option value='none'>Choose</option>
 		<?php
-			$data = list_viewable_no_pic($_SESSION['username'],$_SESSION['access']);
-			echo "Project: <select name='project'>";
-			echo "<option value='none' selected>Choose</option>";
-			foreach($data as $project){
-				echo "<option value = $project[0]>$project[1]</option>";
+			for($i=1;$i<=MAXIMUM_CLASSES;$i++){
+				if($i==1){
+					$access = 'access';
+				}
+				else{
+					$access = "access$i";
+				}
+				
+				if(isset($_SESSION[$access])){
+					echo "<option value='$_SESSION[$access]'>$_SESSION[$access]</option>";
+				}
+				else{
+					break;
+				}
 			}
-			echo "</option>";
 		?>
-		<input type='submit' name='upload_file' value='Upload'></input>
+		</select>
+		<!--This is where the javascript will fill what projects can be uploaded to.-->
+		<div id= 'projects_uploadable_to'>
+		</div>
 	</form></div>	
 	
 	<!--Actual Page------------------------------------------>
@@ -49,7 +62,11 @@ if(isset($_GET['folder'])){
 		<ul>
 	
 			<li class="left avatar"> <a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> </li>
-			<li class="left"> <a href="profileupdate.html">Name</a> </li>
+			<?php
+				$name = username_from_email($_SESSION['username']);
+				echo "<li class='left'> <a href='profileupdate.html'>$name</a> </li>";
+			?>
+			
 			<li class="left"><button onclick=show_manage_images()>Upload Images</button>
 			<li class="right "> <form action='index.php' method='POST'>
 					<input type='submit' name = 'Logout' value='Logout'>
@@ -81,3 +98,4 @@ if(isset($_GET['folder'])){
 		
 	</body>
 </html>
+
