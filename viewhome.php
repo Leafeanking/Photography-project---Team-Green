@@ -44,12 +44,11 @@ for($i=1;$i<=MAXIMUM_CLASSES;$i++){
 			if($_SESSION['access'] == 'admin'){//teacher View
 				echo "<h2><a href=teacherhome.php?folder=$folder[0]>$folder[1]</a></h2>";
 				echo "<div class='icon'><a href=teacherhome.php?folder=$folder[0]>$folder[2]</a></div>";
-				echo "<a href=teacherhome.php?folder=$folder[0]><img src='Folder-icon.png' alt='blue folder'></a>";
 			}
 			else{//student View
 				echo "<h2><a href=studenthome.php?folder=$folder[0]>$folder[1]</a></h2>";
 				echo "<div class='icon'><a href=studenthome.php?folder=$folder[0]>$folder[2]</a></div>";
-				echo "<a href=studenthome.php?folder=$folder[0]><img src='Folder-icon.png' alt='blue folder'></a>";
+				
 			}
 
 			echo "</div>";
