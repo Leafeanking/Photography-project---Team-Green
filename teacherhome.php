@@ -22,15 +22,16 @@ if(isset($_GET['folder'])){
 		<script src="dropit.js"></script>
 		<script src="javafunctions.js"></script>
 		<link rel="stylesheet" href="dropit.css" type="text/css" />
-		<script>
+		<script  type="text/javascript">
 		function admin_delete_student_from_class(email,clas){
+			clas = clas.replace(' ', "%20");
 			var result = confirm("Want to delete?");
 			if (result==true) {
 				var ajx = new XMLHttpRequest();
 				ajx.onreadystatechange = function(){
 					show_students_table();
 				}
-				ajx.open("GET", "delete_student_from_class.php?email="+email"&class="+clas,true);
+				ajx.open("GET", "delete_student_from_class.php?email="+email+"&class="+clas,true);
 				ajx.send();
 			}
 		}

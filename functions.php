@@ -49,12 +49,34 @@ function authenticate($user,$pass){
 	return false;
 }
 
+function list_classes_in($user){
+	//Returns a list of classes/access that the student has
+	//Returns as array(class,class,class...);
+	$query = "select * from users where email='$user'";
+	$results = dbGet($query);
+	$return = array();
+	$data = mysql_fetch_assoc($results);
+	for($i=1;$i<=MAXIMUM_CLASSES;$i++){
+		if($i==1){
+			$access = 'access';
+		}
+		else{
+			$access = "access$i";
+		}
+		if($data[$access] != '' and $data[$access] != NULL){
+			array_push($return,$data[$access]);
+		}
+	}
+	return $return;
+}
+
 function get_theme($projectID){
 	$query = "select theme from projects where projectID = $projectID";
 	$results = dbGet($query);
 	$data = mysql_fetch_row($results);
 	return $data[0];
 }
+
 
 function username_from_email($email){
 	$results = dbGet("select username from users where email = '$email'");
@@ -124,6 +146,7 @@ function list_viewable_no_pic($user,$access){
 		}
 		return $return;
 	}
+	//returns an array of all projects. 
 	else if($access == 'admin'){ //Teacher View
 		$query = "select projectID, theme from projects";
 		$results = dbGet($query);
@@ -229,20 +252,69 @@ function remove_associated_to_user_and_class($email,$class){
 	//Deletes all items associated with a user and class together.
 	//If the user no longer has any associations with any classes,
 	//The user is then deleted.
-	
-	////////////
-	////////////Last thing to change, and deleting students from a class should work. 
-	////////////
-	
-	$assocImages = dbGet("select imageID from images where owner = '$email'");
+
+	$projects_of_class = list_viewable_no_pic($email,$class);
+	foreach($projects_of_class as $proj){
+		$assocImages = dbGet("select imageID from images where owner = '$email' and projectID = $proj[0]");
 		while($image = mysql_fetch_assoc($assocImages)){
 			//Delete everything from comments, ratings, and images associated to each imageID.
-			dbDo("delete from comments where imageID = '$imageID[imageID]'");
-			dbDo("delete from ratings where imageID = '$imageID[imageID]'");
+			dbDo("delete from comments where imageID = '$image[imageID]'");
+			dbDo("delete from ratings where imageID = '$image[imageID]'");
 			dbDo("delete from images where imageID = '$image[imageID]'");
 		}
+	}
 	//delete user.
-	dbDo("delete from users where email = '$email'");
+	$result = dbGet("select * from users where email = '$email'");
+	$data = mysql_fetch_assoc($result);
+	$flag = false; //Flag to keep track if the certain class has been reached;
+	
+	//A one time bubble sort. Only has to go up it once. 
+	//Finds the class that needs to be removed, then copies the values
+	//above it downward. 
+	for($i=1;$i<=MAXIMUM_CLASSES;$i++){
+		if($i==1){
+			$access = 'access';
+		}
+		else{
+			$access = "access$i";
+		}
+		$next = $i+1;
+		$next = "access$next";
+		
+		//Code specific to the last item. 
+		if($i == MAXIMUM_CLASSES){
+			//accessMAXIMUM_CLASSES will always go to null when a class is removed, since the list goes downward.
+			dbDo("update users set $access = NULL where email = '$email'");
+			break; //accessMAXIMUM_CLASSES must break, it does not have a 'next' so the following code will not work for it. 
+		}
+		
+		//If the class has been found, take all other classes/access' and move them down the list. 
+		if($flag){
+			if($data[$next] == ''){
+				dbDo("update users set $access = NULL where email='$email'");
+			}
+			else{
+				dbDo("update users set $access = '$data[$next]' where email='$email'");
+			}
+		}
+		else if($data[$access] == $class){
+			//If the current access field is the class being removed, remove class;
+			if($data[$next] == ''){
+				dbDo("update users set $access = NULL where email='$email'");
+			}
+			else{
+				dbDo("update users set $access = '$data[$next]' where email='$email'");
+			}
+			$flag = true;
+		}
+	}
+	$result = dbGet("select access from users where email = '$email'");
+	$data = mysql_fetch_assoc($result);
+	print_r($data);
+	//If not tied to any classes, delete user. 
+	if($data['access'] === NULL or $data['access'] == ''){
+		dbDo("delete from users where email = '$email'");
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////
