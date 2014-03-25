@@ -31,7 +31,9 @@ function dbDo($query){
 }
 
 function authenticate($user,$pass){
-	session_start();
+	if(!isset($_SESSION)){
+		session_start();
+	}
 	//check if user is authentic, return false if not, return access if they are.
 	//Outer functions responsibility to set $_Session['user'], if user is correct.
 	$query = "SELECT * FROM users where email = '$user' and password = '$pass'";
@@ -203,7 +205,7 @@ function access_full_project($projectID){
 	$results = dbGet($query);
 	$return = array();
 	while($item = mysql_fetch_assoc($results)){
-		$picture = "<img src='image.php?imageID=$item[imageID]'/>";
+		$picture = "<img src='image.php?imageID=$item[imageID]' id='image$item[imageID]' class='imageBlob' />";
 		$packet = array($item['imageID'],$picture,$item['owner']);
 		array_push($return,$packet);
 	}
