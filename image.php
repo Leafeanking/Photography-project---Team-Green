@@ -29,7 +29,7 @@ include_once("functions.php");
 	
 	$query = "select data from images where imageID = '$data'";
 	$results = dbGet($query);
-	$data = mysql_fetch_assoc($results);
+	$data = mysql_fetch_row($results);
 	//Header stuff
 	
 	
@@ -48,8 +48,8 @@ include_once("functions.php");
 		header("Last-Modified: ".gmdate('D, d M Y H:i:s \G\M\T', time())); 
 		header_remove("Pragma");
 		header_remove("X-Powered-By");
-		header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time()+(MAXSECONDS))); 		
-		echo $data['data'];
+		header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time()+(MAXSECONDS)));  
+		echo $data[0];
 	}
 	else{
 		header("content-type: image/jpeg");

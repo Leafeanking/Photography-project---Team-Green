@@ -151,13 +151,6 @@ if(isset($_GET['folder'])){
 				<input type='submit' name='create_class' value='Create New Class'>
 			</form>
 			<h3>Delete Class</h3>
-			
-			<!--
-			!!!Fix delete Class to work along with multi-class function. 
-			!!!
-			-->
-			
-			
 			<?php 
 				$data = get_classes();
 				$quote = '"';
