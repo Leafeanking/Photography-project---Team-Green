@@ -42,17 +42,20 @@ $_SESSION['accessCode'] = 'abcd';
 	</body>
 	<script type="text/javascript">
 		var ImageID=0;
-		function update_database_image(){
-			var active = document.getElementsByClassName("galleria-image active");
-			var divv = active[0];
-			if(divv != undefined){
-				//alert(divv.getChildNodes);
-				//alert(divv.getClassName());
-				//var imagelist = divv.getElementByTagName('*');
-				//alert(imagelist);
+		function update_database_image(e){
+			var thumb = document.getElementsByClassName("galleria-thumbnails");
+			if(thumb.length!=0){
+				//alert(Galleria.thumbTarget);
+				//alert(this.getIndex());
 			}
 		}
-		Galleria.loadTheme('galleria/themes/classic/galleria.classic.min.js');
+		Galleria.on('image',function(e){
+			Galleria.log(this);
+			Galleria.log(e.imageTarget);
+			alert('hey');
+		});
+		Galleria.loadTheme('galleria/themes/classic/galleria.classic.js');
+		
 		Galleria.run('.galleria'); // initialize the galleria
 		
 		// do something when someone clicks an element with the ID 'mylink'
