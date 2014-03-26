@@ -9,7 +9,7 @@
 		<!--DON'T NEED THIS JAVASCRIPT LINE: <script src="photography.js"></script>-->
 	</head>
 	<body>
-		<header>
+		<header id="logo">
 		<h1>User Account Information</h1>
 		</header>
 		<div class="redline links">
@@ -25,19 +25,19 @@
 		</div>
 		<div class="menubar">
 			<div class="newUser_inputBoxes">
-				First name: <input type="text" name="FirstName" value="First Name"><br>
-				Last name: <input  type="text" name="LastName" value="Last Name"><br>
-				Username/Email: <input type="email" name="username" value="email@gmail.com"><br>
-				Old Password: <input type="password" name="password" value=""><br>
-				New password: <input type="password" name="password" value=""><br>
-				Re-enter new password: <input type="password" name="password" value=""><br>
-				Choose class: <select>
+				<br>
+				<label>First name:</label><input type="text" name="FirstName" value="First Name"><br>
+				<label>Last name:</label><input type="text" name="LastName" value="Last Name"><br>
+				<label>Email:</label> <input type="email" name="username" value="email@gmail.com"><br>
+				<label>Old Password:</label><input type="password" name="password" value=""><br>
+				<label>New password:</label><input type="password" name="password" value=""><br>
+				<label>Re-enter new password:</label><input type="password" name="password" value=""><br>
+				<label>Choose class:</label><select>
 					<!--options of class go here-->
 					<option value=""></option>
 				</select>
 			</div>
 			<div>
-				<input class="backButton" type="button" name="Back" value="Back">
 				<input class="saveButton" type="submit" name="submit" value="Save">
 			</div>
 		</form>
