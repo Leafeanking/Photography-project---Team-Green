@@ -8,6 +8,7 @@ if($_SESSION['access'] != 'admin'){
 //Temporary Static variables
 $_SESSION['project'] = 1;
 $_SESSION['accessCode'] = 'abcd';
+$code = $_SESSION['accessCode'];
 ?>
 
 
@@ -19,7 +20,7 @@ $_SESSION['accessCode'] = 'abcd';
 		<title>DSU Photography</title>
 		<!--Image Slider Galleria-->
 		<script src="jquery.min.js"></script>
-		<script type="text/javascript" src="galleria/galleria-1.3.5.min.js"></script>
+		<script type="text/javascript" src="galleria/galleria-1.3.5.js"></script>
 		<link rel="stylesheet" href="dropit.css" type="text/css" />
 		<style>
 		</style>
@@ -38,8 +39,37 @@ $_SESSION['accessCode'] = 'abcd';
 		</div>
 	</body>
 	<script type="text/javascript">
-		Galleria.loadTheme('galleria/themes/classic/galleria.classic.min.js');
+
+		Galleria.loadTheme('galleria/themes/classic/galleria.classic.js');
+		
+		//Manages the database, shows what image the teacher has selected.
+		var AccessCode = '<?php echo $code;?>';
+		var CurID = -1;
+		
+		Galleria.on('image',function(e){
+			Galleria.log(this);
+			Galleria.log(e.imageTarget);
+			var str = e.thumbTarget.outerHTML;
+			var n = str.search("imageID");
+			if(n!=-1){
+				var sec_half = str.split("imageID=")[1];
+				var quote = sec_half.search('"');
+				var num = sec_half.substr(0,quote);
+				var picID = parseInt(num);
+				if(CurID != picID){
+					CurID = picID;
+					var ajx = new XMLHttpRequest();
+					ajx.open("GET", "update_session_image.php?imageID="+CurID+"&session="+AccessCode,true);
+					ajx.send();
+				}
+			}
+			else{
+				alert("ImageID not found, Updates to database are not being made.");
+			}
+		});
+		
 		Galleria.run('.galleria'); // initialize the galleria
+		
 		
 		// do something when someone clicks an element with the ID 'mylink'
 		$('#enterFullscreen').click(function() {
