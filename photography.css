@@ -191,7 +191,7 @@ input, button, select{
 
 /*Comments box in gallery*/
 #commentBox{
-	width: 677px; /*take the pictures width (707) minus the comments padding (15+15): 707-30=677*/
+	width: 500px; /*take the pictures width (707) minus the comments padding (15+15): 707-30=677*/
 	height: 180px;
 	padding: 15px 15px;
 	margin-top: 10px;
@@ -199,12 +199,17 @@ input, button, select{
 	font-size: 13px;
 }
 
+.sliderRatings{
+	color: #FBFBFB;
+	font-family: Arial, Helvetica, sans-serif;
+	float: right;
+	position: relative;
+	bottom: 200px;
+	text-align: center;
+}
+
 /*Submit button for the gallery*/
 #submitComment{
-	background-color: #504849;
-	color: #CEC2C2;
-	border: #504849;
-	border-radius: initial;
 	margin-left: 620px;
 	padding: 3px 18px;
 }
