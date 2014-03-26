@@ -266,7 +266,7 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 			<p id="login" onclick="forgotPassword()">Forgot password</p>
 		</form>
 		</div>
-		<footer>
+		<footer id="footerLogin">
 		<small><i><p>Copyright &copy; 2014 </p></i></small>
 		</footer>
 	</body>
