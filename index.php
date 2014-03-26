@@ -258,7 +258,7 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 		<form action='index.php' method='POST'>
 		<div class="menubar">
 			<div class="inputBoxes">
-			<input type="username" name="username" placeholder="Username"/><br>
+			<input type="username" name="username" placeholder="Email"/><br>
 			<input type="password" name="password" placeholder="Password"/>
 			</div>
 			<div class="submitButton">
