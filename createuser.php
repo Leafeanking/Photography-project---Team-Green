@@ -9,7 +9,7 @@
 		<!--DON'T NEED THIS JAVASCRIPT LINE: <script src="photography.js"></script>-->
 	</head>
 	<body>
-		<header>
+		<header id="logo">
 		<h1>Create New User Account</h1>
 		</header>
 		<div class="menubar">
@@ -29,13 +29,13 @@
 		?>
 		<form action='index.php' method='POST'>
 			<div class="newUser_inputBoxes">
-				
-				First name: <input type="text" name="FirstName" value=""><br>
-				Last name: <input  type="text" name="LastName" value=""><br>
-				Username/Email: <input type="email" name="username" value=""><br>
-				Password: <input type="password" name="password" value=""><br>
-				Re-enter password: <input type="password" name="passwordconfirm" value=""><br>
-				Choose class: <select name='class'>
+				<br>
+				<label>First name:</label><input type="text" name="FirstName" value=""><br>
+				<label>Last name:</label><input  type="text" name="LastName" value=""><br>
+				<label>Email:</label><input type="email" name="username" value=""><br>
+				<label>Password:</label><input type="password" name="password" value=""><br>
+				<label>Re-enter password:</label><input type="password" name="passwordconfirm" value=""><br>
+				<label>Choose class:</label><select name='class'>
 				<option value="none">Choose</option>
 					<?php
 						include_once("functions.php");
@@ -47,9 +47,7 @@
 					?>
 				</select>
 			</div>
-			<div class="submitButton">
-			<input type="submit" name="submit_new_user">
-			</div>
+			<input class="submitButton" type="submit" name="submit_new_user" value="Create Account">
 		</form>
 		</div>
 		<footer>

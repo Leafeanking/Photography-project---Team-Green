@@ -41,7 +41,7 @@ h1{
 	line-height:75%;
 	font-family:Georgia, "Times New Roman", Times, serif;
 	font-style:italic;
-	padding:85px 25px 0px 0px;
+	padding:160px 25px 0px 0px;
 }
 
 .avatar{
@@ -80,10 +80,14 @@ h1{
 }
 
 .newUser_inputBoxes input, .newUser_inputBoxes select{
-	margin-left: auto;
-	margin-right: auto;
-	width: 150px;
-	margin-bottom: 20px;
+	display: block;
+}
+
+.newUser_inputBoxes label{
+	float: left;
+	width: 45%;
+	text-align: right;
+	padding-right: 28px;
 }
 
 input{
@@ -95,7 +99,6 @@ input{
 }
 
 .submitButton{
-	width: 60px;
 	position: relative;
 	left: 150px;
 	top: 5px;
