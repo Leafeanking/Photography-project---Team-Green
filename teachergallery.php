@@ -45,6 +45,7 @@ $code = $_SESSION['accessCode'];
 		//Manages the database, shows what image the teacher has selected.
 		var AccessCode = '<?php echo $code;?>';
 		var CurID = -1;
+		
 		Galleria.on('image',function(e){
 			Galleria.log(this);
 			Galleria.log(e.imageTarget);
@@ -57,6 +58,9 @@ $code = $_SESSION['accessCode'];
 				var picID = parseInt(num);
 				if(CurID != picID){
 					CurID = picID;
+					var ajx = new XMLHttpRequest();
+					ajx.open("GET", "update_session_image.php?imageID="+CurID+"&session="+AccessCode,true);
+					ajx.send();
 				}
 			}
 			else{
