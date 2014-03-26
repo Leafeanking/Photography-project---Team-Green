@@ -257,19 +257,17 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 		</header>
 		<form action='index.php' method='POST'>
 		<div class="menubar">
-			<div class="inputBoxes">
+		<div id="inputBoxes">
 			<input type="username" name="username" placeholder="Email"/><br>
-			<input type="password" name="password" placeholder="Password"/>
-			</div>
-			<div class="submitButton">
-			<input type="submit" name="Login" value="Login">
-			</div>
-			<a class="center_link" href="createuser.php">Create New User Account</a>
-			<p onclick="forgotPassword()">Forgot password</p>
+			<input type="password" name="password" placeholder="Password"/><br>
+		</div>
+		<input class="submitButton" type="submit" name="Login" value="Login">
+			<a id="login" href="createuser.php">Create New User Account</a>
+			<p id="login" onclick="forgotPassword()">Forgot password</p>
 		</form>
 		</div>
 		<footer>
-		<small><i>Copyright &copy; 2014 <br></i></small>
+		<small><i><p>Copyright &copy; 2014 </p></i></small>
 		</footer>
 	</body>
 </html>

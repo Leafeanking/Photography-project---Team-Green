@@ -90,24 +90,15 @@ input{
 	border-radius: 5px;
 }
 
-.inputBoxes input{
-	margin-left: auto;
-	margin-right: auto;
-	width: 150px;
-}
-
-.inputBoxes{
-	margin-left: auto;
-	margin-right: auto;
-	width:150px;
+#inputBoxes input{
+	width:170px;
 }
 
 .submitButton{
-	margin-left: auto;
-	margin-right: auto;
 	width: 60px;
 	position: relative;
-	left: 50px;
+	left: 150px;
+	top: 5px;
 }
 
 .saveButton{
@@ -135,21 +126,25 @@ input{
 }
 
 /*Create New User Account uses this*/
-.center_link {
-	color: black;
-	display: inline-block;
+#login {
+	color: white;
 	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	position: relative;
+	top: 40px;
+	right: 20px;
+	margin: 5px 0;
 }
 
 /*Forgot password text/link*/
 .menubar p:hover, .menubar a:hover{
-	color: #334477;
+	color: #4A4396;
 	cursor: pointer;
 	cursor: hand;
 }
 
 .menubar p:visited, .menubar a:visited{
-	color: #664466;
+	color: #CA728B;
 }
 
 
@@ -229,6 +224,7 @@ input{
 
 footer{
 	text-align:center;
+	margin-top: 25%;
 }
 
 .folder {
