@@ -59,7 +59,7 @@ if(isset($_GET['folder'])){
 		<div class="redline links">
 		<ul>
 	
-			<li class="left avatar"> <a> <img src="icon3.png" alt="avatar" height="64" width="64"></a> </li>
+			<li class="left avatar"> <a> <img src="icon3.png" alt="avatar" title="Change Picture" height="64" width="64"></a> </li>
 			<?php
 				$name = username_from_email($_SESSION['username']);
 				echo "<li class='left'> <a href='profileupdate.html'>$name</a> </li>";
