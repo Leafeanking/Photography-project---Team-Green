@@ -90,8 +90,11 @@ h1{
 	padding-right: 28px;
 }
 
-input{
+input, button{
 	border-radius: 5px;
+	background-color: #EEE;
+	border: #BBB 1px solid;
+	min-width: 45px;
 }
 
 #inputBoxes input{
