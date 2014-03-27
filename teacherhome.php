@@ -52,7 +52,8 @@ if(isset($_GET['folder'])){
 			echo "Class: <select id='multi-class-selector' name='class' onchange='show_projects_by_class_dropdown()'>";
 			echo "<option value='none'>Select</option>";
 			$results = dbGet("select class from classes");
-			while($class = mysql_fetch_assoc($results)['class']){
+			while($class = mysql_fetch_assoc($results)){
+				$class = $class['class'];
 				echo "<option value='$class'>$class</option>";
 			}
 			echo "</select>";
