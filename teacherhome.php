@@ -36,20 +36,31 @@ if(isset($_GET['folder'])){
 			}
 		}
 		
-		function Create_session() {
-			var access=prompt("Enter access code to join the session");
-			//if they typed in the right access code, they jump to the session page
-			if(access=="true"){
-				window.location="sessionpage.php";
-			}
-			else{
-				alert("There is no session going on with that access code.");
-			}
+		function show_session() {
+			show_element('create_session');
+			show_element('shadow');
 		}
 		</script>
 	</head>
 	<body>
 	<div id='shadow' onclick='hide_all()'></div>
+<!--Create Session, hidden div------------------------------------------------------------------------->
+	<div id = 'create_session'>
+		<form action='teachergallery.php' method='POST'>
+		Access Code:<input type = 'text' name='accessCode' id='session' required><br/>
+		<?php
+			echo "Class: <select id='multi-class-selector' name='class' onchange='show_projects_by_class_dropdown()'>";
+			echo "<option value='none'>Select</option>";
+			$results = dbGet("select class from classes");
+			while($class = mysql_fetch_assoc($results)['class']){
+				echo "<option value='$class'>$class</option>";
+			}
+			echo "</select>";
+		?>
+		<div id='class_projects_session'>
+		</div>
+		</form>
+	</div>
 <!--Create Project, hidden div------------------------------------------------------------------------->
 		
 		
@@ -214,7 +225,7 @@ if(isset($_GET['folder'])){
                     <input type='submit' name = 'Logout' value='Logout'>
                     </form>
                 </li>
-				<li class="right"> <button onclick="Create_session()">Start</button>
+				<li class="right"> <button onclick="show_session()">Start</button>
 			</ul>
         </div>
        

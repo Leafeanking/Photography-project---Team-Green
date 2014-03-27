@@ -42,6 +42,7 @@
 		hide_element('edit_classes');
 		hide_element('edit_project');
 		hide_element('image_and_comments');
+		hide_element('create_session');
 		document.getElementById('shadow').style.display = 'none';
 	}
 	
@@ -87,7 +88,12 @@
 	}
 	
 	function show_projects_by_class_dropdown(){
+		//use of function on student page.
 		var view = document.getElementById('projects_uploadable_to');
+		//use of function on teacher page. 
+		if(view == undefined){
+			view = document.getElementById('class_projects_session');
+		}
 		var sel = document.getElementById('multi-class-selector');
 		var clas = sel.options[sel.selectedIndex].value;
 		

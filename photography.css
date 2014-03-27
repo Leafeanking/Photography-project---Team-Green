@@ -447,6 +447,18 @@ footer{
 
 }
 
+#create_session{
+	display:none;
+	position:fixed;
+	top:0px;
+	right:0px;
+	width:250px;
+	z-index:11;
+	background-color:white;
+	border-radius:10px;
+	padding:5px;
+}
+
 #shadow{
 	clear:both;
 	display:none;

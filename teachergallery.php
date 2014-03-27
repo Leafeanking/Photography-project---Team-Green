@@ -6,9 +6,13 @@ if($_SESSION['access'] != 'admin'){
 }
 
 //Temporary Static variables
-$_SESSION['project'] = 1;
-$_SESSION['accessCode'] = 'abcd';
-$code = $_SESSION['accessCode'];
+if(isset($_POST['project']) and isset($_POST['accessCode'])){
+	$_SESSION['project'] = $_POST['project'];
+	$_SESSION['accessCode'] = $_POST['accessCode'];
+}
+else if(!isset($_SESSION['project']) or !isset($_SESSION['accessCode'])){
+	header("Location: index.php");
+}
 ?>
 
 
@@ -25,7 +29,7 @@ $code = $_SESSION['accessCode'];
 		<style>
 		</style>
 		<script>
-		var AccessCode = '<?php echo $code;?>';
+		var AccessCode = '<?php echo $_SESSION['accessCode'];?>';
 		var CurID = -1;
 		
 		function end_session(){

@@ -9,6 +9,13 @@ include_once("functions.php");
 			echo "<option value = $project[0]>$project[1]</option>";
 		}
 		echo "</option>";
-		echo "<input type='submit' name='upload_file' value='Upload'></input>";
+		//Teacher uses this function for selecting project to use in a session. 
+		if($_SESSION['access']=='admin'){
+			echo "<input type='submit' name='start_session' value='Start Session'>";
+		}
+		//Student uses this function for uploading images to the database. 
+		else{
+			echo "<input type='submit' name='upload_file' value='Upload'>";
+		}
 	}
 ?>
