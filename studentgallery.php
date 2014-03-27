@@ -55,9 +55,14 @@ require_once("secure.php");
 			<input id="submitComment" type="submit" name="submit"></input>
 		</div>
 	</body>
-	<script>
-	check_image();
-	</script>
 </html>
+<script>
+
+function loop(){
+	check_image();
+	setTimeout(function(){loop();},5000);
+	}
+	loop()
+</script>
 
 

@@ -24,11 +24,24 @@ $code = $_SESSION['accessCode'];
 		<link rel="stylesheet" href="dropit.css" type="text/css" />
 		<style>
 		</style>
+		<script>
+		var AccessCode = '<?php echo $code;?>';
+		var CurID = -1;
+		
+		function end_session(){
+			var ajx = new XMLHttpRequest();
+			ajx.open("GET", "close_session.php?session="+AccessCode,false);
+			ajx.send();
+		};
+		window.onbeforeunload = function(){
+			end_session();
+		};
+		</script>
 	</head>
 	<body class="centerGrouping">
 			<header id="logo">
 			</header>
-		<a href="studenthome.php" id="galleryExit" title="Exit Session" alt="Exit Session"><img src="exit.png"></a>
+		<a href="index.php" id="galleryExit" title="Exit Session" alt="Exit Session"><img src="exit.png"></a>
 		<div class="galleria">
 		<?php
 			$data = access_full_project($_SESSION['project']);
@@ -39,12 +52,12 @@ $code = $_SESSION['accessCode'];
 		</div>
 	</body>
 	<script type="text/javascript">
+		
 
 		Galleria.loadTheme('galleria/themes/classic/galleria.classic.js');
 		
 		//Manages the database, shows what image the teacher has selected.
-		var AccessCode = '<?php echo $code;?>';
-		var CurID = -1;
+		
 		
 		Galleria.on('image',function(e){
 			Galleria.log(this);
