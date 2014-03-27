@@ -40,6 +40,9 @@ if(!isset($_SESSION['accessCode'])){
 						//check if there is a new imageID
 						if(ajx.readyState ==4 && Number(ajx.responsText) != imageID){
 							imageID = Number(ajx.responseText);
+							if(imageID == -1){
+								window.location="index.php";
+							}
 							update_image(imageID);
 						}
 				}
@@ -66,7 +69,7 @@ if(!isset($_SESSION['accessCode'])){
 
 function loop(){
 	check_image();
-	setTimeout(function(){loop();},5000);
+	setTimeout(function(){loop();},3000);
 	}
 	loop()
 </script>
