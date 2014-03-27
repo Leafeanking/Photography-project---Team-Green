@@ -1,4 +1,3 @@
-<!--<input type=range is a slider bar-->
 <?php
 require_once("secure.php");
 if(isset($_POST['accessCode'])){
@@ -8,7 +7,7 @@ if(!isset($_SESSION['accessCode'])){
 	header("Location: index.php");
 }
 ?>
-
+<!--<input type=range is a slider bar-->
 <!DOCTYPE html>
 <html lang="en">
 	<head>
