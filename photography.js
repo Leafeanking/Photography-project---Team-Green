@@ -3,12 +3,20 @@
 function Join() {
 	var access=prompt("Enter access code to join the session");
 	//if they typed in the right access code, they jump to the session page
-	if(access=="true"){
-		window.location="sessionpage.php";
+	var ajx = new XMLHttpRequest();
+	ajx.onreadystatechange = function(){
+		if(ajx.readyState == 4){
+			var reply = ajx.responseText;
+			if(reply == 'true'){
+				window.location="studentgallery.php";
+			}
+			else{
+				alert("There is no session going on with that access code.");
+			}
+		}
 	}
-	else{
-		alert("There is no session going on with that access code.");
-	}
+	ajx.open("GET","student_enter_session.php?accessCode="+access,true);
+	ajx.send();
 }
 
 //Forgot password link in homepage

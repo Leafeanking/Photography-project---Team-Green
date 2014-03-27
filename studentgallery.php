@@ -1,6 +1,12 @@
 <!--<input type=range is a slider bar-->
 <?php
 require_once("secure.php");
+if(isset($_POST['accessCode'])){
+	$_SESSION['accessCode'] = $_POST['accessCode'];
+}
+if(!isset($_SESSION['accessCode'])){
+	header("Location: index.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +19,7 @@ require_once("secure.php");
 		<link rel="stylesheet" href="dropit.css" type="text/css" />
 	<script>
 		var imageID=-1;
-		var code = 'abcd';
+		var code = '<?php echo $_SESSION['accessCode'];?>';
 		function update_image(id){
 			//Get new image and fill in space.
 			var ajximg = new XMLHttpRequest();
@@ -46,7 +52,7 @@ require_once("secure.php");
 			<header id="logo">
 			</header>
 		<!--Large picture-->
-		<a href="teacherhome.php" id="galleryExit" title="Exit Session" alt="Exit Session"><img src="exit.png"></a>
+		<a href="index.php" id="galleryExit" title="Exit Session" alt="Exit Session"><img src="exit.png"></a>
 		<div class="galleriaStudent blackBorder">
 			<!--place holder picture-->
 			<div id='session_image_view'>
