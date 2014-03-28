@@ -54,6 +54,7 @@ else if(!isset($_SESSION['project']) or !isset($_SESSION['accessCode'])){
 			}
 		?>
 		</div>
+		
 	</body>
 	<script type="text/javascript">
 		

@@ -112,7 +112,7 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 				//Writes first question. There is always one rating question Required.
 				dbDo("insert into projects (class,theme) values ('$class','$theme')");
 				$projectID = mysql_insert_id();
-				for($i = 1;$i <= 20;$i++){
+				for($i = 1;$i <= MAXIMUM_QUESTIONS;$i++){
 					if($post['question'.$i] != '' and $post['scale'.$i] != ''){
 						$question = str_replace("'","`",$post['question'.$i]);
 						$scale = $post['scale'.$i];

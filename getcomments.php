@@ -35,13 +35,14 @@
 			$possible = 0;
 			echo "<ul>";
 			for($i = 1;$i <=$rat['scale'];$i++){
-				if(empty($rat[$i])){
+				$rating = $rat['v'.$i];
+				if(empty($rating)){
 					echo "<li>$i: 0</li>";
 				}
 				else{
-					echo "<li>$i: $rat[$i]</li>";
-					$total = $total + ($i-1)*$rat[$i]; //-1 so that a vote of '1' is worth 0 points, making it possible to have 0%.
-					$possible = $possible + ($rat['scale']-1)*$rat[$i]; //a rating of '10' is worth 9 points. 
+					echo "<li>$i: $rating</li>";
+					$total = $total + ($i-1)*$rating; //-1 so that a vote of '1' is worth 0 points, making it possible to have 0%.
+					$possible = $possible + ($rat['scale']-1)*$rating; //a rating of '10' is worth 9 points. 
 				}
 			}
 			if($possible == 0){

@@ -17,9 +17,26 @@ if(!isset($_SESSION['accessCode'])){
 		<!--Image Slider Galleria-->
 		<link rel="stylesheet" href="dropit.css" type="text/css" />
 	<script>
-		var imageID=-1;
+		var imageID = -1;
 		var code = '<?php echo $_SESSION['accessCode'];?>';
-		function update_image(id){
+		function update_selected_value(id){
+			var sliderval = document.getElementById('slider'+id).value;
+			document.getElementById(id).innerHTML = sliderval;
+		}
+		
+		function get_vote_form(){
+			var ajxvote = new XMLHttpRequest();
+			ajxvote.onreadystatechange = function(){
+				if(ajxvote.readyState == 4){
+					var view = document.getElementById('vote_sliders');
+					view.innerHTML = ajxvote.responseText;
+				}
+			};
+			ajxvote.open("GET","get_session_image.php?session="+code+"&votes",true);
+			ajxvote.send();
+		}
+		
+		function update_image(){
 			//Get new image and fill in space.
 			var ajximg = new XMLHttpRequest();
 			ajximg.onreadystatechange = function(){
@@ -27,8 +44,9 @@ if(!isset($_SESSION['accessCode'])){
 				if(ajximg.readyState==4){
 					var view = document.getElementById('session_image_view');
 					view.innerHTML = ajximg.responseText;
+					get_vote_form();
 				}
-			}
+			};
 			ajximg.open("GET","get_session_image.php?session="+code+"&pull",true);
 			ajximg.send();
 		}
@@ -36,15 +54,15 @@ if(!isset($_SESSION['accessCode'])){
 		function check_image(){
 			var ajx = new XMLHttpRequest();
 			ajx.onreadystatechange = function(){
-						//check if there is a new imageID
-						if(ajx.readyState ==4 && Number(ajx.responsText) != imageID){
+						//check if there is a new imageID\
+						if(ajx.readyState ==4 && Number(ajx.responseText) != imageID){
 							imageID = Number(ajx.responseText);
 							if(imageID == -1){
 								window.location="index.php";
 							}
-							update_image(imageID);
+							update_image();
 						}
-				}
+				};
 			ajx.open("GET","get_session_image.php?session="+code,true);
 			ajx.send();
 		}
@@ -58,6 +76,9 @@ if(!isset($_SESSION['accessCode'])){
 		<div class="galleriaStudent blackBorder">
 			<!--place holder picture-->
 			<div id='session_image_view'>
+			</div>
+			<div id='vote_sliders'>
+				
 			</div>
 			<textarea id="commentBox" name="comments" placeholder="Comments"></textarea>
 			<input id="submitComment" type="submit" name="submit"></input>

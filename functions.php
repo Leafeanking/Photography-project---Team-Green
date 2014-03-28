@@ -14,6 +14,7 @@ stylesheet{
 }
 
 */
+define('MAXIMUM_QUESTIONS',20);
 define('DEFAULT_IMG',"<image src='picture_icon.png'>"); 
 define('MAXIMUM_CLASSES',10);
 //////////////////////////////////////////////////////////////////////////////

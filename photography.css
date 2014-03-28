@@ -471,7 +471,11 @@ footer{
 	z-index:10;
 }
 
-
+#vote_sliders{
+	color:white;
+	background-color:black;
+	clear:both;
+}
 
 .menu ul { display: none; } /* Hide before plugin loads */
 
