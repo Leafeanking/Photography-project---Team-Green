@@ -17,16 +17,30 @@ stylesheet{
 define('MAXIMUM_QUESTIONS',20);
 define('DEFAULT_IMG',"<image src='picture_icon.png'>"); 
 define('MAXIMUM_CLASSES',10);
+define('SERVER','68.178.216.155');
+define('SERVER_USER','dsuphotography');
+define('SERVER_PASSWORD','P1ctur3#1000');
 //////////////////////////////////////////////////////////////////////////////
 //Full Scope Functions////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 function dbGet($query){
 	//used to access database for any query line, get, insert, update.
-	$con = mysql_connect('68.178.216.155','dsuphotography','P1ctur3#1000') or die(mysql_error());
+	$con = mysql_connect(SERVER,SERVER_USER,SERVER_PASSWORD) or die(mysql_error());
 	mysql_select_db('dsuphotography',$con);
 	$result = mysql_query($query)  or die ("Fail: ".$query);
 	return $result;
 }
+
+function dbDo_noErr($query){
+	//Does not report error on query. Used if multiple submits of form
+	//is possible, and still want to submit other valid parts of form.
+	//used to access database for any query line, get, insert, update.
+	$con = mysql_connect(SERVER,SERVER_USER,SERVER_PASSWORD) or die(mysql_error());
+	mysql_select_db('dsuphotography',$con);
+	$result = mysql_query($query);
+	return $result;
+}
+
 function dbDo($query){
 	return dbGet($query);
 }

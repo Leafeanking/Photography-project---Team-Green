@@ -102,7 +102,7 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 					$id = substr(strrev($project),0,3).$id;
 				}
 				if(strlen($question) > 3 ){
-					$id = $id.$question;
+					$id = $id.str_replace(' ','',$question);
 				}
 				return $id;
 			}

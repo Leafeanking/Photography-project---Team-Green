@@ -21,6 +21,7 @@ if(!isset($_SESSION['accessCode'])){
 		var imageID = -1;
 		var code = '<?php echo $_SESSION['accessCode'];?>';
 		var storedInfo = {};
+		var user = '<?php echo $_SESSION['username'];?>';
 		
 		function save_data(){
 			storedInfo = {};
@@ -29,6 +30,11 @@ if(!isset($_SESSION['accessCode'])){
 				storedInfo[votes[i].name] = votes[i].value;
 			}
 			storedInfo['comments'] = document.getElementById('commentBox').value;
+			storedInfo['imageID'] = imageID;
+			storedInfo['user'] = user;
+			//In case if screen is not refreshing, save data button
+			//can be resorted to as a panic button to make program work. 
+			check_image();
 		}
 		
 		function submit_data(){
