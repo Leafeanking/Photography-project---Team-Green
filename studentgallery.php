@@ -19,11 +19,31 @@ if(!isset($_SESSION['accessCode'])){
 	<script>
 		var imageID = -1;
 		var code = '<?php echo $_SESSION['accessCode'];?>';
+		var storedInfo = {};
+		
+		function save_data(){
+			storedInfo = {};
+			var votes = document.getElementById('vote_sliders').getElementsByTagName('input');
+			for(var i = 0; i < votes.length; ++i){
+				storedInfo[votes[i].name] = votes[i].value;
+			}
+			storedInfo['comments'] = document.getElementById('commentBox').value;
+		}
+		
+		function submit_data(){
+			for(var key in storedInfo){
+				if(storedInfo.hasOwnProperty(key)){
+					alert(key+" - "+storedInfo[key]);
+				}
+			}
+		}
+		
 		function update_selected_value(id){
 			var sliderval = document.getElementById('slider'+id).value;
 			document.getElementById(id).innerHTML = sliderval;
 		}
 		
+		//Update Voting form. 
 		function get_vote_form(){
 			var ajxvote = new XMLHttpRequest();
 			ajxvote.onreadystatechange = function(){
@@ -36,6 +56,7 @@ if(!isset($_SESSION['accessCode'])){
 			ajxvote.send();
 		}
 		
+		//Update Image
 		function update_image(){
 			//Get new image and fill in space.
 			var ajximg = new XMLHttpRequest();
@@ -44,7 +65,6 @@ if(!isset($_SESSION['accessCode'])){
 				if(ajximg.readyState==4){
 					var view = document.getElementById('session_image_view');
 					view.innerHTML = ajximg.responseText;
-					get_vote_form();
 				}
 			};
 			ajximg.open("GET","get_session_image.php?session="+code+"&pull",true);
@@ -60,12 +80,28 @@ if(!isset($_SESSION['accessCode'])){
 							if(imageID == -1){
 								window.location="index.php";
 							}
+							//All processed at time that screen changes. 
+							//Send saved data
+							submit_data();
+							//Delete saved data
+							storedInfo = {};
+							//Empty Comment box
+							document.getElementById('commentBox').value = '';
+							//Get new image
 							update_image();
+							//Refresh Vote Form
+							get_vote_form();
 						}
 				};
 			ajx.open("GET","get_session_image.php?session="+code,true);
 			ajx.send();
 		}
+		
+		//Make sure that any daved form data is submitted before closing window.
+		window.onbeforeunload = function(){
+			submit_data();
+			storedInfo = {};
+		};
 	</script>	
 	</head>
 	<body class="centerGrouping">
@@ -81,12 +117,11 @@ if(!isset($_SESSION['accessCode'])){
 				
 			</div>
 			<textarea id="commentBox" name="comments" placeholder="Comments"></textarea>
-			<input id="submitComment" type="submit" name="submit"></input>
+			<input id="submitComment" type="submit" name="submit" value="Save" onclick='save_data()'></input>
 		</div>
 	</body>
 </html>
 <script>
-
 function loop(){
 	check_image();
 	setTimeout(function(){loop();},3000);

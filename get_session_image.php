@@ -27,7 +27,7 @@ if(isset($_GET['session']) and isset($_GET['votes'])){
 			$start = 1;			
 			if($question != '' and $qid != '' and $scale != ''){
 				echo "<h4>$question</h4>";
-				echo "<input id='slider$qid' type='range' name='.$qid' max='$scale' min=1 value=$start onchange='update_selected_value($qidSub)'><span id='$qid'>$start</span>";
+				echo "<input id='slider$qid' type='range' name='$qid' max='$scale' min=1 value=$start onchange='update_selected_value($qidSub)'><span id='$qid'>$start</span>";
 			}
 			else{
 				break;
