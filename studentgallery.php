@@ -16,6 +16,7 @@ if(!isset($_SESSION['accessCode'])){
 		<title>DSU Photography</title>
 		<!--Image Slider Galleria-->
 		<link rel="stylesheet" href="dropit.css" type="text/css" />
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script>
 		var imageID = -1;
 		var code = '<?php echo $_SESSION['accessCode'];?>';
@@ -31,10 +32,14 @@ if(!isset($_SESSION['accessCode'])){
 		}
 		
 		function submit_data(){
-			for(var key in storedInfo){
-				if(storedInfo.hasOwnProperty(key)){
-					alert(key+" - "+storedInfo[key]);
-				}
+			if(!jQuery.isEmptyObject(storedInfo)){
+				jQuery.ajax({
+					type: 'POST',
+					url: "submit_session_comment_rating.php",
+					data: storedInfo,
+					//success: function(data){alert(data);}, //Use for troubleshooting.
+					async: false
+					});
 			}
 		}
 		
