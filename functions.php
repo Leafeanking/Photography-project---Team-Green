@@ -190,9 +190,28 @@ function create_rating_for_image($imageID,$projectID){
 	}
 }
 
+function delete_image($id){
+	$query = "delete from images where imageID = '$id'";
+	$query2 = "delete from comments where imageID = '$id'";
+	$query3 = "delete from ratings where imageID = '$id'";
+	dbDo($query);
+	dbDo($query2);
+	dbDo($query3);
+}
+
 ///////////////////////////////////////////////////////////////////////
 //Admin Functions//////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
+
+function delete_project($projID){
+	$results = dbGet("select imageID from projects where projectID = $projID");
+	while($id = mysql_fetch_assoc($results)){
+		delete_image($id['imageID']);
+	}
+	dbDo("delete from projects where projectID = $projID");
+}
+
+
 function get_classes(){
 //Returns Array of ClassID's 
 $query = "select * from classes";
@@ -266,9 +285,7 @@ function remove_associated_to_user_and_class($email,$class){
 		$assocImages = dbGet("select imageID from images where owner = '$email' and projectID = $proj[0]");
 		while($image = mysql_fetch_assoc($assocImages)){
 			//Delete everything from comments, ratings, and images associated to each imageID.
-			dbDo("delete from comments where imageID = '$image[imageID]'");
-			dbDo("delete from ratings where imageID = '$image[imageID]'");
-			dbDo("delete from images where imageID = '$image[imageID]'");
+			delete_image($image['imageID'])
 		}
 	}
 	//delete user.

@@ -80,17 +80,12 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 		}
 		//Delete a Image
 		if(isset($_POST['delete_image'])){
-		$query = "delete from images where imageID = '$_POST[imageID]'";
-		$query2 = "delete from comments where imageID = '$_POST[imageID]'";
-		$query3 = "delete from ratings where imageID = '$_POST[imageID]'";
-		dbDo($query);
-		dbDo($query2);
-		dbDo($query3);
+			delete_image($_POST['imageID']);
 		}
 		
 		//Delete a Project
 		if(isset($_POST['delete_project'])){
-			dbDo("delete from projects where projectID = $_POST[projectID]");
+			delete_project($_POST['projectID']);
 		}
 		
 		//Create a project.
@@ -154,12 +149,15 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 			//Set longer wait time, all deletes could take a while. 
 			set_time_limit(100);
 			//Delete projects associated with class
-			dbDo("delete from projects where class='$class'");			
+			$result = dbGet("select projectID from projects where class='$class'");
+			while($id = mysql_fetch_assoc($result){
+				delete_project($id['projectID']);
+			}
 			//Get list of users from class
 			$users = dbGet("select email from users where access = '$class'");
 			while($email = mysql_fetch_assoc($users)){
 				//get associated imageID's connected to each user
-				remove_associated_to_user($email['email']);
+				remove_associated_to_user_and_class($email['email'],$class);
 			}
 			//Delete class. Save till end in case script doesn't finish.
 			dbDo("delete from classes where class='$class'");
@@ -182,18 +180,14 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 		//PROSESS REQUESTS SENT TO INDEX.PHP
 		//Delete a personal picture
 		if(isset($_POST['delete_image'])){
-		$query = "delete from images where imageID = '$_POST[imageID]'";
-		$query2 = "delete from comments where imageID = '$_POST[imageID]'";
-		$query3 = "delete from ratings where imageID = '$_POST[imageID]'";
-		dbDo($query);
-		dbDo($query2);
-		dbDo($query3);
+			delete_image($_POST['imageID']);
 		}
 		//Issue a report on a comment
+		/*
 		if(isset($_POST['report_comment'])){
 		$query = "update comments set report=1 where imageID=$_POST[picture] and author='$_POST[author]'";
 		dbDo($query);
-		}
+		}*/
 		
 		//Upload Images, currently only jpg support.
 		if(isset($_FILES['file']) and $_POST['project'] != 'none'){
