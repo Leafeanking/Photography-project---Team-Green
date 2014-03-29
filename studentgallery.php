@@ -67,6 +67,18 @@ if(!isset($_SESSION['accessCode'])){
 			ajxvote.send();
 		}
 		
+		function update_meta_data(){
+			var ajx = new XMLHttpRequest();
+			ajx.onreadystatechange = function(){
+				if(ajx.readyState == 4){
+					var view = document.getElementById('image_meta_data');
+					view.innerHTML = ajx.responseText;
+				}
+			}
+			ajx.open("GET","get_meta_data.php?imageID="+imageID,true);
+			ajx.send();
+		}
+		
 		//Update Image
 		function update_image(){
 			//Get new image and fill in space.
@@ -100,6 +112,8 @@ if(!isset($_SESSION['accessCode'])){
 							document.getElementById('commentBox').value = '';
 							//Get new image
 							update_image();
+							//Get meta data
+							update_meta_data();
 							//Refresh Vote Form
 							get_vote_form();
 						}
@@ -124,8 +138,9 @@ if(!isset($_SESSION['accessCode'])){
 			<!--place holder picture-->
 			<div id='session_image_view'>
 			</div>
+			<div id='image_meta_data'>
+			</div>
 			<div id='vote_sliders'>
-				
 			</div>
 			<textarea id="commentBox" name="comments" placeholder="Comments"></textarea>
 			<input id="submitComment" type="submit" name="submit" value="Save" onclick='save_data()'></input>
