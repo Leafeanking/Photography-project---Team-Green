@@ -144,6 +144,9 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 		
 		//Delete Class
 		//Also deletes associated students, projects, images, comments and ratings.
+		
+		//!!!!!Delete class still needs to 
+		
 		if(isset($_POST['delete_class']) and $_POST['class'] != 'none'){
 			$class = $_POST['class'];
 			//Set longer wait time, all deletes could take a while. 
@@ -154,10 +157,18 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 				delete_project($id['projectID']);
 			}
 			//Get list of users from class
-			$users = dbGet("select email from users where access = '$class'");
-			while($email = mysql_fetch_assoc($users)){
-				//get associated imageID's connected to each user
-				remove_associated_to_user_and_class($email['email'],$class);
+			for($i=1;$i<=MAXIMUM_CLASSES;$i++){
+				if($i==1){
+					$access = 'access';
+				}
+				else{
+					$access = "access$i";
+				}
+				$users = dbGet("select email from users where $access = '$class'");
+				while($email = mysql_fetch_assoc($users)){
+					//get associated imageID's connected to each user
+					remove_associated_to_user_and_class($email['email'],$class);
+				}
 			}
 			//Delete class. Save till end in case script doesn't finish.
 			dbDo("delete from classes where class='$class'");

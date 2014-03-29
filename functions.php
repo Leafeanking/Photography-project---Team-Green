@@ -204,7 +204,7 @@ function delete_image($id){
 ///////////////////////////////////////////////////////////////////////
 
 function delete_project($projID){
-	$results = dbGet("select imageID from projects where projectID = $projID");
+	$results = dbGet("select imageID from images where projectID = $projID");
 	while($id = mysql_fetch_assoc($results)){
 		delete_image($id['imageID']);
 	}
