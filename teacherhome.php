@@ -22,17 +22,26 @@ if(isset($_GET['folder'])){
 		<script src="dropit.js"></script>
 		<script src="javafunctions.js"></script>
 		<link rel="stylesheet" href="dropit.css" type="text/css" />
-		<script  type="text/javascript">
+		<script  type="text/javascript">		
 		function admin_delete_student_from_class(email,clas){
 			clas = clas.replace(' ', "%20");
-			var result = confirm("Want to delete?");
+			
+			var ajx = new XMLHttpRequest();
+			ajx.open("GET", "delete_student_from_class.php?email="+email+"&class="+clas,false);
+			ajx.send();
+		}
+		
+		function admin_delete_selected_students(){
+			var clas = document.getElementById('class_for_student_deletion').value;
+			var result = confirm("Ready to delete students from class?");
 			if (result==true) {
-				var ajx = new XMLHttpRequest();
-				ajx.onreadystatechange = function(){
-					show_students_table();
+				var selected = document.getElementsByClassName('delete_students_checkbox');
+				for(var i = 0; i < selected.length; i++){
+					if(selected[i].checked){
+						admin_delete_student_from_class(selected[i].value,clas);
+					}
 				}
-				ajx.open("GET", "delete_student_from_class.php?email="+email+"&class="+clas,true);
-				ajx.send();
+				show_students_table();
 			}
 		}
 		
@@ -214,10 +223,10 @@ if(isset($_GET['folder'])){
 					<a href="#">Manage</a>
 					<ul>
 						<li>
-							<a onclick="show_create_project()">Create Project</a>
+							<a onclick="show_create_project()">Projects</a>
 						</li>
 						<li>
-							<a onclick="show_edit_classes()">Edit Classes</a>
+							<a onclick="show_edit_classes()">Classes</a>
 						</li>
 					</ul>
 				</li>

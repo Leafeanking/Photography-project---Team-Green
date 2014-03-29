@@ -37,7 +37,8 @@ foreach($data as $image){
 	
 	if(isset($image[2]) and $owner != $image[2]){
 		$owner  = $image[2];
-		echo "<div class='clear'><h2>$owner</h2></div>";
+		$name = email_to_username($owner);
+		echo "<div class='clear'><h2>$name</h2></div>";
 	}
 	echo "<div id='$image[0]' onclick ='manage_image_click($image[0])' >$image[1]</div>";
 }

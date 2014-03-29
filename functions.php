@@ -190,6 +190,24 @@ function create_rating_for_image($imageID,$projectID){
 	}
 }
 
+function email_to_username($email){
+	$result = dbGet("select username from users where email = '$email'");
+	if(mysql_num_rows($result) != 0){
+		$data = mysql_fetch_assoc($result);
+		$name = $data['username'];
+	}
+	else{
+		$len = strpos($email,'@');
+		if($len != false){
+			$name = substr($email,0,$len);
+		}
+		else{
+			$name = $email;
+		}
+	}
+	return $name;
+}
+
 function delete_image($id){
 	$query = "delete from images where imageID = '$id'";
 	$query2 = "delete from comments where imageID = '$id'";

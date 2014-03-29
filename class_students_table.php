@@ -25,11 +25,14 @@ if($_SESSION['access'] == 'admin'){
 						echo "<td>$student[email]</td>";
 						$delete = '"'.$student['email'].'"';
 						$class_insert = '"'.$_GET['class'].'"';
-						echo "<td><button onclick='admin_delete_student_from_class($delete,$class_insert)'>Delete Student</button></td>";
+						echo "<td><input class='delete_students_checkbox' type='checkbox' value='$student[email]'></td>";
 					echo "</tr>";
 				}
+				
 			}
 			echo "</table>";
+			echo "<input type='hidden' id='class_for_student_deletion' value='$_GET[class]'>";
+			echo "<input type='button' onclick='admin_delete_selected_students()' value='Delete Students'>";
 		}
 	}
 }
