@@ -202,7 +202,9 @@ input, button, select{
 #image_meta_data{
 	font-weight:bold;
 	color:white;
+	background-color:black;
 	margin-bottom:10px;
+	padding:10px;
 }
 
 .sliderRatings{
@@ -333,7 +335,7 @@ footer{
 
 #selectedImage img{
 	max-width:100%;
-	max-height:95%;
+	max-height:90%;
 }
 
 #comments_ratings{

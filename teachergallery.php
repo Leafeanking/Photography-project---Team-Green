@@ -32,6 +32,18 @@ else if(!isset($_SESSION['project']) or !isset($_SESSION['accessCode'])){
 		var AccessCode = '<?php echo $_SESSION['accessCode'];?>';
 		var CurID = -1;
 		
+		function update_meta_data(){
+			var ajx = new XMLHttpRequest();
+			ajx.onreadystatechange = function(){
+				if(ajx.readyState == 4){
+					var view = document.getElementById('image_meta_data');
+					view.innerHTML = ajx.responseText;
+				}
+			}
+			ajx.open("GET","get_meta_data.php?imageID="+CurID,true);
+			ajx.send();
+		}
+		
 		function end_session(){
 			var ajx = new XMLHttpRequest();
 			ajx.open("GET", "close_session.php?session="+AccessCode,false);
@@ -54,6 +66,7 @@ else if(!isset($_SESSION['project']) or !isset($_SESSION['accessCode'])){
 			}
 		?>
 		</div>
+		<div id='image_meta_data'></div>
 		
 	</body>
 	<script type="text/javascript">
@@ -80,6 +93,7 @@ else if(!isset($_SESSION['project']) or !isset($_SESSION['accessCode'])){
 					ajx.open("GET", "update_session_image.php?imageID="+CurID+"&session="+AccessCode,true);
 					ajx.send();
 				}
+				update_meta_data();
 			}
 			else{
 				alert("ImageID not found, Updates to database are not being made.");
