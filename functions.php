@@ -285,7 +285,7 @@ function remove_associated_to_user_and_class($email,$class){
 		$assocImages = dbGet("select imageID from images where owner = '$email' and projectID = $proj[0]");
 		while($image = mysql_fetch_assoc($assocImages)){
 			//Delete everything from comments, ratings, and images associated to each imageID.
-			delete_image($image['imageID'])
+			delete_image($image['imageID']);
 		}
 	}
 	//delete user.

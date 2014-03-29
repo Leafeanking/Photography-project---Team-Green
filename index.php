@@ -150,7 +150,7 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 			set_time_limit(100);
 			//Delete projects associated with class
 			$result = dbGet("select projectID from projects where class='$class'");
-			while($id = mysql_fetch_assoc($result){
+			while($id = mysql_fetch_assoc($result)){
 				delete_project($id['projectID']);
 			}
 			//Get list of users from class
