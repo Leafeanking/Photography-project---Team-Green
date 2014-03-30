@@ -37,16 +37,21 @@
 				<label>Re-enter password:</label><input type="password" name="passwordconfirm" value=""><br>
 				<label>Choose class:</label><select name='class'>
 				<option value="none">Choose</option>
-					<?php
-						include_once("functions.php");
-						$query = "select class from classes";
-						$results = dbGet($query);
-						while($class = mysql_fetch_assoc($results)){
-							echo "<option value='$class[class]'>$class[class]</option>";
-						}
-					?>
+					
 				</select>
 			</div>
+			<div id='choose_class_to_join'>
+			<h3>Choose one or more classes</h3>
+			<?php
+				include_once("functions.php");
+				$query = "select class from classes";
+				$results = dbGet($query);
+				while($class = mysql_fetch_assoc($results)){
+					echo "<label>$class[class]</label><input type='checkbox' name='class[]' value='$class[class]'><br/>";
+				}
+			?>
+			</div>
+			<br>
 			<input class="submitButton" type="submit" name="submit_new_user" value="Create Account">
 		</form>
 		</div>

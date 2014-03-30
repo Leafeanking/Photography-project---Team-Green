@@ -23,6 +23,9 @@ if(isset($_POST['submit_new_user'])){
 	$password1 = addslashes($_POST['password']);
 	$password2 = addslashes($_POST['passwordconfirm']);
 	$class = $_POST['class'];
+	$firstClass = $class[0];
+	//print_r($class);
+	//exit();
 	$results = dbGet("select * from users where email = '$email'");
 	//Check if a class was selected.
 	if($class == 'none'){
@@ -54,8 +57,17 @@ if(isset($_POST['submit_new_user'])){
 			.' '.
 			ucfirst(strtolower(trim($last)))
 			);
-		$query = "insert into users (username,password,access,email) values ('$name','$password1','$class','$email')";
+		//Insert first class selected
+		$query = "insert into users (username,password,access,email) values ('$name','$password1','$firstClass','$email')";
 		dbDo($query);
+		//Insert all other classes selected up to the maximum number of classes. 
+		for($i=1;$i<MAXIMUM_CLASSES and $i<count($class);$i++){
+			$nextClass = $class[$i];
+			$j=$i+1;
+			$access = 'access'.$j;
+			$query = "update users set $access = '$nextClass' where email = '$email'";
+			dbDo($query);
+		}
 		//Set login info
 		$_SESSION['access'] = $class;
 		$_SESSION['username'] = $email;
