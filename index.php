@@ -14,6 +14,15 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 	authenticate($_POST['username'],$_POST['password']);
 }
 
+if(isset($_POST['update_user_info'])){
+	if($_POST['name']!=''){
+		dbDo("update users set username ='$_POST[name]' where email = '$_SESSION[username]'");
+	}
+	if($_POST['email']){
+		
+	}
+}
+
 //CREATE USER AND LOGIN
 if(isset($_POST['submit_new_user'])){
 
@@ -69,8 +78,8 @@ if(isset($_POST['submit_new_user'])){
 			dbDo($query);
 		}
 		//Set login info
-		$_SESSION['access'] = $class;
 		$_SESSION['username'] = $email;
+		authenticate($email,$password1);
 	}
 }
 

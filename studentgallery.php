@@ -68,10 +68,11 @@ if(!isset($_SESSION['accessCode'])){
 		}
 		
 		function update_meta_data(){
+			var view = document.getElementById('image_meta_data');
+			view.innerHTML = '';
 			var ajx = new XMLHttpRequest();
 			ajx.onreadystatechange = function(){
 				if(ajx.readyState == 4){
-					var view = document.getElementById('image_meta_data');
 					view.innerHTML = ajx.responseText;
 				}
 			}
