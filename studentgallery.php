@@ -72,7 +72,11 @@ if(!isset($_SESSION['accessCode'])){
 			view.innerHTML = '';
 			var ajx = new XMLHttpRequest();
 			ajx.onreadystatechange = function(){
-				if(ajx.readyState == 4){
+				if(CurID != temp){
+					ajx.abort();
+					return;
+				}
+				else if(ajx.readyState == 4){
 					view.innerHTML = ajx.responseText;
 				}
 			}
