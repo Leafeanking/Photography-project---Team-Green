@@ -71,7 +71,7 @@ if(isset($_GET['folder'])){
 			<li class="left avatar"> <a> <img src="icon3.png" alt="avatar" title="Change Picture" height="64" width="64"></a> </li>
 			<?php
 				$name = username_from_email($_SESSION['username']);
-				echo "<li class='left'> <a href='profileupdate.html'>$name</a> </li>";
+				echo "<li class='left'> <a href='profileupdate.php'>$name</a> </li>";
 			?>
 			
 			<li class="left"><button onclick=show_manage_images()>Upload Images</button>

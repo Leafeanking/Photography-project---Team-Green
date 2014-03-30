@@ -43,7 +43,7 @@
 				$query = "select class from classes";
 				$results = dbGet($query);
 				while($class = mysql_fetch_assoc($results)){
-					echo "<label>$class[class]</label><input type='checkbox' name='class[]' value='$class[class]'><hr/>";
+					echo "<label>$class[class]</label><input type='checkbox' name='class[]' value='$class[class]'><br><hr/>";
 				}
 			?>
 			</div>
