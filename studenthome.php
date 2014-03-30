@@ -90,7 +90,7 @@ if(isset($_GET['folder'])){
 		<footer>
 			<small><i>
 				Copyright &copy; 2014 <br />
-					<a href= "mailto:scawley@dmail.dixie.edu">sara@cawley.com</a>
+					<a href= "greenteam@mail">greenteam@mail</a>
 			</i></small>
 		</footer>
 		

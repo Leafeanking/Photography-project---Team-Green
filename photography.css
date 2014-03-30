@@ -10,9 +10,8 @@ header h1{
 }
 
 .center{
-	background-color: #7e6f72;
-	margin: 0px 20%;
-	padding:25px 0px 10px 0px;	
+	margin: 0px 15%;
+	padding:20px;	
 	min-width:300px;
 }
 
@@ -307,11 +306,12 @@ footer{
 }
 
 .icon img{
+	padding:10px;
 	position:absolute;
 	top:0px;
 	left:0px;
-	height:100%;
-	width:100%;
+	width:250px;
+	height:auto;
 	max-width:350px;
 	max-height:200px;
 	z-index:1;
@@ -319,10 +319,14 @@ footer{
 
 .clear{
 	clear:both;
+	
 }
 
 #iconbar img{
+	padding:10px;
 	max-width:300px;
+	width:200px;
+	height:auto;
 	float:left;
 }
 
