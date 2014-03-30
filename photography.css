@@ -262,9 +262,9 @@ footer{
 }
 
 .folder {
-	padding-top:100px;
+	padding-top:10px;
 	position:relative;
-	width:350px;
+	width:200px;
 	height:200px;
 	overflow:hidden;
 	float:left;
@@ -287,12 +287,11 @@ footer{
 	position:absolute;
 	top:130px;
 	right:0px;
-	width:96px;
-	height:96px;
 	z-index:2;
 }
 
 .folder h2{
+	font-size:1.2em;
 	color:black;
 	position:absolute;
 	top:0px;
@@ -302,32 +301,33 @@ footer{
 	border-radius:15px;
 	margin:5px;
 	padding:5px;
-	max-width:300px;
-}
-
-.icon img{
-	padding:10px;
-	position:absolute;
-	top:0px;
-	left:0px;
-	width:250px;
-	height:auto;
-	max-width:350px;
-	max-height:200px;
-	z-index:1;
+	max-width:200px;
 }
 
 .clear{
 	clear:both;
+	}
 	
+/* images inside of folder*/
+
+.icon img{
+	padding:0px;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:144px;
+	height:auto;
+	max-width:300px;
+	max-height:200px;
+	z-index:1;
 }
 
 #iconbar img{
-	padding:10px;
-	max-width:300px;
-	width:200px;
+	padding:20px;
+	width:144px;
 	height:auto;
 	float:left;
+	max-width:350px;
 }
 
 #image_and_comments{
