@@ -46,7 +46,9 @@ function dbDo($query){
 }
 
 function authenticate($user,$pass){
-	session_start();
+	if(!isset($_SESSION)){
+		session_start();
+	}
 	//check if user is authentic, return false if not, return access if they are.
 	//Outer functions responsibility to set $_Session['user'], if user is correct.
 	$query = "SELECT * FROM users where email = '$user' and password = '$pass'";

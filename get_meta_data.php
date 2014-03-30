@@ -48,14 +48,17 @@ if(isset($_GET['imageID'])){
 		$camShutter = $exif_exif['ShutterSpeedValue'];
 		} else { $camShutter = $notFound; }
 		
-		$return = array();
-		$return['make'] = $camMake;
-		$return['model'] = $camModel;
-		$return['exposure'] = $camExposure;
-		$return['aperture'] = $camAperture;
-		$return['date'] = $camDate;
-		$return['iso'] = $camIso;
-		$return['shutter'] = $camShutter;
+		//if (@array_key_exists('FlashMode',$exif_exif){
+		
+		$basic = array();
+		$basic['make'] = $camMake;
+		$basic['model'] = $camModel;
+		$basic['exposure'] = $camExposure;
+		$basic['aperture'] = $camAperture;
+		$basic['date'] = $camDate;
+		$basic['iso'] = $camIso;
+		$basic['shutter'] = $camShutter;
+		$return = array($basic,$exif_exif);
 		return $return;
 	}
 	$id = $_GET['imageID'];
@@ -63,7 +66,9 @@ if(isset($_GET['imageID'])){
 	if(mysql_num_rows($results) != 0){
 		$data = mysql_fetch_assoc($results);
 		$string = $data['data'];
-		$meta = cameraUsed("data://text/plain;base64,".base64_encode($string));
+		$all = cameraUsed("data://text/plain;base64,".base64_encode($string));
+		$meta = $all[0];
+		$full = $all[1];
 		
 		$make 		= $meta['make'];
 		$model		=$meta['model'];
@@ -74,6 +79,12 @@ if(isset($_GET['imageID'])){
 		$shutter	=$meta['shutter'];
 		
 		echo "Make: $make || Model: $model || Exposure: $exposure || Aperture: $aperture || Date: $date || Iso: $iso || Shutter: $shutter";
+		echo "<br>";
+		echo "<select style='width:200px;'>";
+		foreach($full as $key => $value){
+			echo "<option>[$key]: $value</option>";
+		}
+		echo "</select>";
 	}
 }
 
