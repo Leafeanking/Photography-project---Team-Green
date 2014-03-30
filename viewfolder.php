@@ -10,10 +10,6 @@ if(!isset($_SESSION['view']) or $_SESSION['view'] == 'home'){
 	}
 }
 
-echo "<div id='location'>";
-$theme = get_theme($_SESSION['view']);
-echo "<a href='index.php?folder=home'>Home</a> >> Gallery: $theme";
-
 if($_SESSION['access'] == 'admin'){
 	$data = access_full_project($_SESSION['view']);
 }

@@ -299,9 +299,11 @@ footer{
 	z-index:3;
 	background-color:rgba(255,255,255,.5);
 	border-radius:15px;
-	margin:5px;
 	padding:5px;
-	max-width:200px;
+	margin-top:0px;
+	max-width:134px;
+	max-height:1.2em;
+	overflow:hidden;
 }
 
 .clear{
