@@ -90,6 +90,19 @@ h1{
 	padding-right: 28px;
 }
 
+#choose_class_to_join{
+	width:250px;
+	margin-left:auto;
+	margin-right:auto;
+}
+#choose_class_to_join input{
+	float:right;
+}
+#choose_class_to_join hr{
+	margin:0px;
+}
+
+
 input, button, select{
 	border-radius: 5px;
 	background-color: #EEE;

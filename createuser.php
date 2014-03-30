@@ -35,10 +35,6 @@
 				<label>Email:</label><input type="email" name="username" value=""><br>
 				<label>Password:</label><input type="password" name="password" value=""><br>
 				<label>Re-enter password:</label><input type="password" name="passwordconfirm" value=""><br>
-				<label>Choose class:</label><select name='class'>
-				<option value="none">Choose</option>
-					
-				</select>
 			</div>
 			<div id='choose_class_to_join'>
 			<h3>Choose one or more classes</h3>
@@ -47,7 +43,7 @@
 				$query = "select class from classes";
 				$results = dbGet($query);
 				while($class = mysql_fetch_assoc($results)){
-					echo "<label>$class[class]</label><input type='checkbox' name='class[]' value='$class[class]'><br/>";
+					echo "<label>$class[class]</label><input type='checkbox' name='class[]' value='$class[class]'><hr/>";
 				}
 			?>
 			</div>
