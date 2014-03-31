@@ -86,7 +86,7 @@ if(isset($_GET['folder'])){
 				
 			</ul>
 		</div>
-		<div class="center links valign" >
+		<div class="center links" >
 			<?php
 			if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
 				include 'viewfolder.php';
