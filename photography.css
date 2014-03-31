@@ -10,7 +10,7 @@ header h1{
 }
 
 .center{
-	margin: 0px 15%;
+	margin: 0px 20%;
 	padding:20px;	
 	min-width:300px;
 }
@@ -310,7 +310,7 @@ footer{
 	clear:both;
 	}
 	
-/* images inside of folder*/
+/* folder and images inside */
 
 .icon img{
 	padding:0px;
