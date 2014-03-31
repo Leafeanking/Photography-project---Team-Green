@@ -10,9 +10,13 @@ header h1{
 }
 
 .center{
-	margin: 0px 15%;
+	margin: 0px 20%;
 	padding:20px;	
 	min-width:300px;
+}
+
+.clear{
+	clear:both;
 }
 
 .links a{
@@ -43,6 +47,7 @@ h1{
 	padding:160px 25px 0px 0px;
 }
 
+/* navigation bar */
 .avatar{
 	margin-top: -25px;
 }
@@ -77,7 +82,7 @@ h1{
 	float:left;
 	padding-left:25px;
 }
-
+/*****************/
 .newUser_inputBoxes input, .newUser_inputBoxes select{
 	display: block;
 }
@@ -261,6 +266,12 @@ footer{
 	margin-top: 25%;
 }
 
+/* thumbnails and folders */
+.valign{
+	text-align:center;
+	vertical-align:middle;
+}
+
 .folder {
 	padding-top:10px;
 	position:relative;
@@ -288,6 +299,8 @@ footer{
 	top:130px;
 	right:0px;
 	z-index:2;
+	margin-top:auto;
+	margin-bottom:auto;
 }
 
 .folder h2{
@@ -306,11 +319,31 @@ footer{
 	overflow:hidden;
 }
 
-.clear{
-	clear:both;
-	}
-	
 /* images inside of folder*/
+
+.iconbar img{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  
+  /*
+  Nope =(
+  margin-left: -25%;
+  margin-top: -25%;
+  */
+
+  /* 
+  Yep!
+  */
+  transform: translate(-50%, -50%);
+  
+  /*
+  Not even necessary really. 
+  e.g. Height could be left out!
+  */
+  width: 40%;
+  height: 50%;
+}
 
 .icon img{
 	padding:0px;
@@ -319,8 +352,8 @@ footer{
 	left:0px;
 	width:144px;
 	height:auto;
-	max-width:300px;
-	max-height:200px;
+	text-align:center;
+	vertical-align:middle;
 	z-index:1;
 }
 
