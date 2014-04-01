@@ -2,7 +2,7 @@
 require_once("secure.php");
 require_once("functions.php");
 if(isset($_GET['folder'])){
-		$_SESSION['view'] = $_GET['folder'];
+		$_SESSION['view'] =	addslashes($_GET['folder']);
 	}
 
 ?>

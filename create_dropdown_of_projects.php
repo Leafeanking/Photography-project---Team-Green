@@ -2,7 +2,7 @@
 include_once("secure.php");
 include_once("functions.php");
 	if(isset($_GET['class'])){
-		$data = list_viewable_no_pic($_SESSION['username'],$_GET['class']);
+		$data = list_viewable_no_pic($_SESSION['username'],addslashes($_GET['class']));
 		echo "Project: <select name='project'>";
 		echo "<option value='none' selected>Choose</option>";
 		foreach($data as $project){

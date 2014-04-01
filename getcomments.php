@@ -2,7 +2,7 @@
 	require_once("secure.php");
 	if(isset($_GET['imageId'])){
 		include_once('functions.php');
-		$data=get_comments_ratings($_GET['imageId']);
+		$data=get_comments_ratings(addslashes($_GET['imageId']));
 		$comments = $data[0];
 		$ratings = $data[1];
 		echo "<h2>Ratings</h2><hr>";

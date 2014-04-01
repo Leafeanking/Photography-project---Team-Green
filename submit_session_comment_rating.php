@@ -4,7 +4,8 @@ if(isset($_POST) and isset($_POST['user']) and isset($_POST['imageID']) and isse
 	require_once('functions.php');
 	$user = $_POST['user'];
 	$imageID = $_POST['imageID'];
-	$comments = str_replace("'","`",$_POST['comments']);
+	$comments = addslashes($_POST['comments']);
+	$comments = str_replace("'","`",$comments);
 	unset($_POST['user']);
 	unset($_POST['imageID']);
 	unset($_POST['comments']);

@@ -61,7 +61,7 @@ if(isset($_GET['imageID'])){
 		$return = array($basic,$exif_exif);
 		return $return;
 	}
-	$id = $_GET['imageID'];
+	$id = addslashes($_GET['imageID']);
 	$results = dbGet("select data from images where imageID = $id");
 	if(mysql_num_rows($results) != 0){
 		$data = mysql_fetch_assoc($results);

@@ -4,7 +4,7 @@ require_once("functions.php");
 
 //echo form data for voting. 
 if(isset($_GET['session']) and isset($_GET['votes'])){
-	$session = $_GET['session'];
+	$session = addslashes($_GET['session']);
 	$IDresult = dbGet("select imageID from session where accessCode = '$session'");
 	if(mysql_num_rows($IDresult) != 0){
 		$IDdata = mysql_fetch_assoc($IDresult);
@@ -38,7 +38,7 @@ if(isset($_GET['session']) and isset($_GET['votes'])){
 }
 //echo image.
 else if(isset($_GET['session']) and isset($_GET['pull'])){
-	$session = $_GET['session'];
+	$session = addslashes($_GET['session']);
 	$result = dbGet("select * from session where accessCode = '$session'");
 	if(mysql_num_rows($result) != 0){
 		$data = mysql_fetch_assoc($result);
@@ -52,7 +52,7 @@ else if(isset($_GET['session']) and isset($_GET['pull'])){
 }
 //echo image id number.
 else if(isset($_GET['session'])){
-	$session = $_GET['session'];
+	$session = addslashes($_GET['session']);
 	$result = dbGet("select * from session where accessCode = '$session'");
 	if(mysql_num_rows($result) != 0){
 		$data = mysql_fetch_assoc($result);
