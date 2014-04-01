@@ -10,7 +10,7 @@ header h1{
 }
 
 .center{
-	margin: 0px 20%;
+	margin: 10px 20%;
 	padding:20px;	
 	min-width:300px;
 }
@@ -31,7 +31,8 @@ header h1{
 	background-position: center;
 	height: 150px;
 	width:auto;
-	padding-bottom: 40px;
+	margin:20px;
+	padding:20px 20px 20px 40px;
 }
 
 h1{
@@ -138,11 +139,10 @@ input, button, select{
 
 .menubar{
 	width:100%;
+	text-align: center;
+	padding-top:30px;
 }
 
-.menubar{
-	text-align: center;
-}
 
 /*Create New User Account uses this*/
 #login {
@@ -197,7 +197,6 @@ input, button, select{
 .galleriaStudent, .galleriaStudent img{
 	margin: 0px auto;
 	width : 707px;
-	height : 530px;
 	padding-top: 45px;
 	margin-top: -50px;
 }

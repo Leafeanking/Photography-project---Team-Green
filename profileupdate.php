@@ -16,7 +16,6 @@
 	</head>
 	<body>
 		<header id="logo">
-		<h1>User Account Information</h1>
 		</header>
 		<div class="redline links">
 		<ul>
