@@ -9,14 +9,19 @@ if(isset($_POST['Logout']) and session_id() != false){
 
 //CHECK LOGIN CREDENTIALS 
 if(isset($_POST['username']) and isset($_POST['password'])){
-	$_SESSION['username'] = $_POST['username'];
+	$_SESSION['username'] = addslashes($_POST['username']);
+	$pass = addslashes($_POST['password']);
 	//Sets $_SESSION['access'] inside of function. Allong with access2...access10;
-	authenticate($_POST['username'],$_POST['password']);
+	authenticate($_POST['username'],$pass);
 }
 
+//!!!!!!!!!!!!!!!!!!!!
+//!!!!!!!!!!!!!!!!!!!!
+/////!!!!!!!!!!!!!Finish
 if(isset($_POST['update_user_info'])){
 	if($_POST['name']!=''){
-		dbDo("update users set username ='$_POST[name]' where email = '$_SESSION[username]'");
+		$name = addslashes($_POST['name']);
+		dbDo("update users set username ='$name' where email = '$_SESSION[username]'");
 	}
 	if($_POST['email']){
 		
@@ -87,7 +92,7 @@ if(isset($_POST['submit_new_user'])){
 if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 	//Manage user view for admin or student
 	if(isset($_GET['folder'])){
-		$_SESSION['view'] = $_GET['folder'];
+		$_SESSION['view'] = addslashes($_GET['folder']);
 	}
 	////////////////////////////////////////////////////////////
 	//ADMIN PROCESSES///////////////////////////////////////////

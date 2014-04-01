@@ -13,6 +13,7 @@ if(isset($_POST['project']) and isset($_POST['accessCode'])){
 else if(!isset($_SESSION['project']) or !isset($_SESSION['accessCode'])){
 	header("Location: index.php");
 }
+
 ?>
 
 
@@ -35,7 +36,7 @@ else if(!isset($_SESSION['project']) or !isset($_SESSION['accessCode'])){
 		function update_meta_data(){
 			var temp = CurID
 			var view = document.getElementById('image_meta_data');
-			view.innerHTML = '';
+			view.innerHTML = 'Please Wait for Metadata';
 			var ajx = new XMLHttpRequest();
 			ajx.onreadystatechange = function(){
 				if(CurID != temp){

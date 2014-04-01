@@ -68,11 +68,12 @@ if(!isset($_SESSION['accessCode'])){
 		}
 		
 		function update_meta_data(){
+			var temp = imageID;
 			var view = document.getElementById('image_meta_data');
-			view.innerHTML = '';
+			view.innerHTML = 'Please Wait for Metadata';
 			var ajx = new XMLHttpRequest();
 			ajx.onreadystatechange = function(){
-				if(CurID != temp){
+				if(imageID != temp){
 					ajx.abort();
 					return;
 				}
@@ -117,10 +118,11 @@ if(!isset($_SESSION['accessCode'])){
 							document.getElementById('commentBox').value = '';
 							//Get new image
 							update_image();
-							//Get meta data
-							update_meta_data();
 							//Refresh Vote Form
 							get_vote_form();
+							//Get meta data
+							update_meta_data();
+							
 						}
 				};
 			ajx.open("GET","get_session_image.php?session="+code,true);
