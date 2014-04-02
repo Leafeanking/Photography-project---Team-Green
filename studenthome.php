@@ -97,10 +97,10 @@ if(isset($_GET['folder'])){
 			?>
 		</div>
 		<footer>
-			<small><i>
+			<h4 id="copyright"><small ><i>
 				Copyright &copy; 2014 <br />
-					<a href= "greenteam@mail">greenteam@mail</a>
-			</i></small>
+			</i></small></h4>
+            <br>
 		</footer>
 		
 	</body>

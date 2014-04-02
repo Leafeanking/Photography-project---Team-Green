@@ -187,7 +187,9 @@ if(isset($_GET['folder'])){
 				echo "</form>";
 			?>
 		</div>
-		<div id='students_in_class'>
+        
+		<div id='students_in_class'><br>
+        	<h3>Delete Students</h3>
 			<select name="view_class_students" id='students_in_class_selector'
 				onchange="show_students_table()">
 			<?php
@@ -263,10 +265,10 @@ if(isset($_GET['folder'])){
 			?>
 		</div>
 		<footer>
-			<small><i>
+			<h4 id="copyright"><small ><i>
 				Copyright &copy; 2014 <br />
-					<a href= "mailto:scawley@dmail.dixie.edu">sara@cawley.com</a>
-			</i></small>
+			</i></small></h4>
+            <br>
 		</footer>
 			<!--Javascript for the drop down menu-->
 			<script type="text/javascript">
