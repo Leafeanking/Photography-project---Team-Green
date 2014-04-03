@@ -28,7 +28,7 @@
 				echo "<li>Total: 0%</li>";
 			}
 			else{
-				echo "<li>Total: ".(string)(($total/$possible)*100)."%</li>";
+				echo "<li>Total: ".(string)(round(($total/$possible)*100,2))."%</li>";
 			}
 			echo "</ul>";
 			echo "</div>";
