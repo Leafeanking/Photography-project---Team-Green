@@ -199,11 +199,18 @@ function create_rating_for_image($imageID,$projectID){
 	}
 }
 
-function email_to_username($email){
-	$result = dbGet("select username from users where email = '$email'");
+//If include_id is true, returns as an array, else returns as a single value.
+//Had to do this way in order to make sure other uses of this function don't break. 
+function email_to_username($email,$include_id=false){
+	$result = dbGet("select username,idnum from users where email = '$email'");
 	if(mysql_num_rows($result) != 0){
 		$data = mysql_fetch_assoc($result);
-		$name = $data['username'];
+		if($include_id){
+			$name = $data;
+		}
+		else{
+			$name = $data['username'];
+		}
 	}
 	else{
 		$len = strpos($email,'@');
@@ -212,6 +219,9 @@ function email_to_username($email){
 		}
 		else{
 			$name = $email;
+		}
+		if($include_id){
+			$name = array('username'=>$name,'idnum'=>'');
 		}
 	}
 	return $name;

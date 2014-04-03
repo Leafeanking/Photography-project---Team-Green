@@ -77,7 +77,7 @@ else if(!isset($_SESSION['project']) or !isset($_SESSION['accessCode'])){
 		
 	</body>
 	<script type="text/javascript">
-		
+		alert("Might not view properly unless in FireFox");
 
 		Galleria.loadTheme('galleria/themes/classic/galleria.classic.js');
 		

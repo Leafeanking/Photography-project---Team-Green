@@ -37,9 +37,9 @@
 		echo "<h2>Comments</h2><hr>";
 		echo "<div id='comments'>";
 		foreach($comments as $com){
-			$name = email_to_username($com['author']);	
+			$name = email_to_username($com['author'],true);	
 			echo "<div class='comment'>";
-			echo "<h3>$name</h3>";
+			echo "<h3>$name[username]<div id='avatar' style='float:right;margin-left:15px;'><img src='avatar.php?idnum=$name[idnum]'></div></h3>";
 			echo "<p>$com[comment]</p>";
 			if($_SESSION['access']=='admin'){ //Admin Delete a bad comment. 
 				echo "<form method='POST' action='index.php'>";
