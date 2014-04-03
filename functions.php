@@ -371,7 +371,6 @@ function remove_associated_to_user_and_class($email,$class){
 	}
 	$result = dbGet("select access from users where email = '$email'");
 	$data = mysql_fetch_assoc($result);
-	print_r($data);
 	//If not tied to any classes, delete user. 
 	if($data['access'] === NULL or $data['access'] == ''){
 		remove_user_completely($email);

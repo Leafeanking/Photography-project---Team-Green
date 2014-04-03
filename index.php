@@ -230,7 +230,7 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 		if(isset($_POST['create_class']) and $_POST['class'] != ''){
 			$class = str_replace("'","`",$_POST['class']);
 			$query = "insert into classes values('$class')";
-			echo $query;
+			$query = "insert into classes values('$class')";
 			dbDo($query);
 		}
 		
@@ -286,7 +286,7 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 			delete_image($_POST['imageID']);
 		}
 		//Issue a report on a comment
-		/*
+		/*//Removed because not in current use, capable of using though. 
 		if(isset($_POST['report_comment'])){
 		$query = "update comments set report=1 where imageID=$_POST[picture] and author='$_POST[author]'";
 		dbDo($query);

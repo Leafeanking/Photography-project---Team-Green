@@ -50,6 +50,18 @@ h1{
 	margin-top: -25px;
 }
 
+#avatar{
+	width:64px;
+	height:64px;
+	overflow:hidden;
+	border-radius:10px;
+	border:solid 2px black;
+	background-color:black;
+}
+#avatar img{
+	width:100%;
+}
+
 .redline li{
 	padding:0px 15px;
 }

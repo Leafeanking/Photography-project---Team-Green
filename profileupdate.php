@@ -20,7 +20,7 @@
 		<div class="redline links">
 		<ul>
 	
-			<li class="left avatar"> <a> <img src="icon3.png" alt="avatar" title="Change Picture" height="64" width="64"></a> </li>
+			<li class="left avatar"> <a> <div id='avatar'><img src="avatar.php?email=<?php echo $_SESSION['username']?>" alt="avatar" title="Change Picture"></div></a> </li>
 			<li class="left"> <a href="profileupdate.html">Name</a> </li>
 			<li class="right "> <form action='index.php' method='POST'>
 					<input type='submit' name = 'Logout' value='Logout'>
