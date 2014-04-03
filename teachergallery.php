@@ -61,6 +61,9 @@ else if(!isset($_SESSION['project']) or !isset($_SESSION['accessCode'])){
 		};
 		</script>
 	</head>
+	<div class='links' style='float:right;'>
+		<a href='studentgallery.php' target='_blank'>Join Voting</a>
+	</div>
 	<body class="centerGrouping">
 			<header id="logo">
 			</header>

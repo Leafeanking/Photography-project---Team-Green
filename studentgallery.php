@@ -32,6 +32,7 @@ if(!isset($_SESSION['accessCode'])){
 			storedInfo['comments'] = document.getElementById('commentBox').value;
 			storedInfo['imageID'] = imageID;
 			storedInfo['user'] = user;
+			document.getElementById('notify_save').innerHTML = "<h3 style='color:white;'>Your data has been saved, you can continue to make changes and press 'Save'. Your data will submit as soon as the image changes or window closes.</h3>";
 			//In case if screen is not refreshing, save data button
 			//can be resorted to as a panic button to make program work. 
 			check_image();
@@ -43,7 +44,9 @@ if(!isset($_SESSION['accessCode'])){
 					type: 'POST',
 					url: "submit_session_comment_rating.php",
 					data: storedInfo,
-					//success: function(data){alert(data);}, //Use for troubleshooting.
+					success: function(data){
+						document.getElementById('notify_save').innerHTML = "";
+					}, //Use for troubleshooting.
 					async: false
 					});
 			}
@@ -150,6 +153,7 @@ if(!isset($_SESSION['accessCode'])){
 			<div id='vote_sliders'>
 			</div>
 			<textarea id="commentBox" name="comments" placeholder="Comments"></textarea>
+			<div id='notify_save'></div>
 			<input id="submitComment" type="submit" name="submit" value="Save" onclick='save_data()'></input>
 		</div>
 	</body>
