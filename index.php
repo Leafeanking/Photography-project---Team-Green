@@ -9,24 +9,81 @@ if(isset($_POST['Logout']) and session_id() != false){
 
 //CHECK LOGIN CREDENTIALS 
 if(isset($_POST['username']) and isset($_POST['password'])){
-	$_SESSION['username'] = addslashes($_POST['username']);
+	$user = addslashes($_POST['username']);
 	$pass = addslashes($_POST['password']);
 	//Sets $_SESSION['access'] inside of function. Allong with access2...access10;
-	authenticate($_POST['username'],$pass);
+	$auth = authenticate($user,$pass);
+	if($auth){
+		$_SESSION['username'] = $user;
+	}
 }
 
-//!!!!!!!!!!!!!!!!!!!!
-//!!!!!!!!!!!!!!!!!!!!
-/////!!!!!!!!!!!!!Finish
-if(isset($_POST['update_user_info'])){
-	if($_POST['name']!=''){
-		$name = addslashes($_POST['name']);
-		dbDo("update users set username ='$name' where email = '$_SESSION[username]'");
-	}
-	if($_POST['email']){
+//UPDATE USER INFORMATION.
+if(isset($_POST['update_user_info']) and isset($_SESSION['username'])
+	and isset($_POST['passwordOld']) and $_POST['passwordOld'] != ''){
+	//Check password.
+	$pass = addslashes($_POST['passwordOld']);
+	$result = dbGet("select * from users where email = '$_SESSION[username]' and password = '$pass'");
+	if(mysql_num_rows($result)!=0){
+	
+		//update username
+		if($_POST['name']!=''){
+			$name = addslashes($_POST['name']);
+			dbDo("update users set username ='$name' where email = '$_SESSION[username]'");
+		}	
 		
+		//update email
+		if($_POST['email']!='' and $_POST['email'] != $_SESSION['username']){
+			$email = addslashes($_POST['email']);
+			//Update images ownership
+			dbDo("update images set owner = '$email' where owner = '$_SESSION[username]'");
+			//Update users email address
+			dbDo("update users set email = '$email' where email = '$_SESSION[username]'");
+			$_SESSION['username'] = $email;
+		}
+		
+		//update classes/access
+		$count = 1;
+		//Loop through all classes selected
+		//Admin does not want access to be edited.
+		if($_SESSION['access'] != 'admin'){
+			$classes = $_POST['class'];
+			foreach($classes as $cls){
+				if($count > MAXIMUM_CLASSES){
+					break;
+				}
+				if($count == 1){
+					$access = 'access';
+				}
+				else{
+					$access = "access$count";
+				}
+				dbDo("update users set $access = '$cls' where email = '$_SESSION[username]'");
+				$count = $count + 1;
+			}
+			//Set rest of access to null
+			for($i = $count; $i <= MAXIMUM_CLASSES;$i++){
+				if($i == 1){
+					//They are signed into no classes. Delete User. 
+					remove_user_completely($_SESSION['username']);
+					session_destroy();
+					header("Location: index.php");
+				}
+				$access = "access$count";
+				dbDo("update users set $access = NULL where email = '$_SESSION[username]'");
+			}
+			//Update session variables to updated variables
+			authenticate($_SESSION['username'],$pass);
+		}
+		
+		//update password last.
+		if($_POST['passwordNew1'] != '' and $_POST['passwordNew1'] == $_POST['passwordNew2']){
+			$pass = addslashes($_POST['passwordNew1']);
+			dbDo("update users set password = '$pass' where email ='$_SESSION[username]'");
+		}	
 	}
 }
+
 
 //CREATE USER AND LOGIN
 if(isset($_POST['submit_new_user'])){

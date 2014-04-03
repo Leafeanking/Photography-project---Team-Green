@@ -35,13 +35,13 @@
 					
 					<label>Name:</label><input type="text" name="name" value="<?php echo $data['username'];?>"><br>
 					<label>Email:</label> <input type="email" name="email" value="<?php echo $data['email'];?>"><br>
-					<label>Old Password:</label><input type="password" name="passwordOld" value=""><br>
 					<label>New password:</label><input type="password" name="passwordNew1" value=""><br>
 					<label>Re-enter new password:</label><input type="password" name="passwordNew2" value=""><br>
 					<div id='choose_class_to_join'>
 						<?php
 							if($_SESSION['access'] != 'admin'){
-								echo '<h3>Choose one or more classes</h3>';
+								echo '<h3>Check box to belong to class.</h3>';
+								echo '<h5>Having no classes will delete your user</h5>';
 								$query = "select class from classes";
 								$results = dbGet($query);
 								while($class = mysql_fetch_assoc($results)){
@@ -57,7 +57,12 @@
 					</div>
 				</div>
 				<div>
+					<br><br>
+					<h3>Current password must be entered for any changes</h3>
+					<div class="newUser_inputBoxes">
+					<label>Current Password:</label><input type="password" name="passwordOld" value=""><br>
 					<input class="saveButton" type="submit" name="update_user_info" value="Save">
+					</div>
 				</div>
 			</form>
 		</div>

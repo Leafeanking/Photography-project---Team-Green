@@ -61,7 +61,14 @@ function authenticate($user,$pass){
 			if($val["access$i"]!= NULL){
 				$_SESSION["access$i"] = $val["access$i"];
 			}
+			else if(isset($_SESSION["access$i"])){
+				//Remove access from session if exists in session variable, but user no longer 
+				//has that many classes, used for re-initializing session data for what classes
+				//user belongs to. Used when updating profile.
+				unset($_SESSION["access$i"]);
+			}
 		}
+		return true;
 	}
 	return false;
 }
@@ -295,6 +302,15 @@ function create_project($classID,$theme,$q1,$q1ID,$scale1,
 	//dbDo($query);
 }
 
+function remove_user_completely($email){
+	$result = dbGet("select imageID from images where owner ='$email'");
+	while($data = mysql_fetch_assoc($result)){
+		//deletes image, commments, and ratings tied to image. 
+		delete_image($data['imageID']);
+	}
+	dbDo("delete from users where email = '$email'");
+}
+
 function remove_associated_to_user_and_class($email,$class){
 	//Deletes all items associated with a user and class together.
 	//If the user no longer has any associations with any classes,
@@ -358,7 +374,7 @@ function remove_associated_to_user_and_class($email,$class){
 	print_r($data);
 	//If not tied to any classes, delete user. 
 	if($data['access'] === NULL or $data['access'] == ''){
-		dbDo("delete from users where email = '$email'");
+		remove_user_completely($email);
 	}
 }
 
