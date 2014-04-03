@@ -80,14 +80,24 @@ else if(!isset($_SESSION['project']) or !isset($_SESSION['accessCode'])){
 		
 	</body>
 	<script type="text/javascript">
-		alert("Might not view properly unless in FireFox");
 
 		Galleria.loadTheme('galleria/themes/classic/galleria.classic.js');
 		
 		//Manages the database, shows what image the teacher has selected.
-		
+		var Thumbnails_hidden = false;
+		function hide_thumbnails(){
+			if (/Chrome[\/\s](\d+\.\d+)/.test(navigator.userAgent)) {
+				alert("Not all functions supported in chrome.");
+				var elm = document.getElementsByClassName('galleria-thumbnails-container');
+				elm[0].style.display='none';
+				Thumbnails_hidden = true;
+			}
+		}
 		
 		Galleria.on('image',function(e){
+			if(!Thumbnails_hidden){
+				hide_thumbnails();
+			}
 			Galleria.log(this);
 			Galleria.log(e.imageTarget);
 			var str = e.thumbTarget.outerHTML;
@@ -111,7 +121,6 @@ else if(!isset($_SESSION['project']) or !isset($_SESSION['accessCode'])){
 		});
 		
 		Galleria.run('.galleria'); // initialize the galleria
-		
 		
 		// do something when someone clicks an element with the ID 'mylink'
 		$('#enterFullscreen').click(function() {
