@@ -50,7 +50,16 @@ if(isset($_GET['folder'])){
 		<!--This is where the javascript will fill what projects can be uploaded to.-->
 		<div id= 'projects_uploadable_to'>
 		</div>
-	</form></div>	
+	</form></div>
+
+	<!--Update avatar hidden div----------------------------->
+	<div id='update_avatar'>
+		<h2>Update avatar</h2>
+		<form action='index.php' method='post' enctype="multipart/form-data">
+			<input type='file' name='file'></input>
+			<input type='submit' name='update_avatar' value='Update Avatar'>
+		</form>
+	</div>
 	
 	<!--Actual Page------------------------------------------>
     <?php
@@ -68,7 +77,7 @@ if(isset($_GET['folder'])){
 		<div class="redline links">
 		<ul>
 	
-			<li class="left avatar"> <a> <img src="icon3.png" alt="avatar" title="Change Picture" height="64" width="64"></a> </li>
+			<li class="left avatar"> <a onclick='show_update_avatar()'> <img src="icon3.png" alt="avatar" title="Change Picture" height="64" width="64"></a> </li>
 			<?php
 				$name = username_from_email($_SESSION['username']);
 				echo "<li class='left'> <a href='profileupdate.php'>$name</a> </li>";

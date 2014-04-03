@@ -38,11 +38,13 @@
 	
 	
 	function hide_all(){
+		//Add all elements that you want the shadow box to remove;
 		hide_element('manage_images');
 		hide_element('edit_classes');
 		hide_element('edit_project');
 		hide_element('image_and_comments');
 		hide_element('create_session');
+		hide_element('update_avatar');
 		document.getElementById('shadow').style.display = 'none';
 	}
 	
@@ -70,6 +72,11 @@
 	
 	function show_manage_images(){
 		show_element('manage_images');
+		show_element('shadow');
+	}
+	
+	function show_update_avatar(){
+		show_element('update_avatar');
 		show_element('shadow');
 	}
 	

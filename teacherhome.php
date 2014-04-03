@@ -205,6 +205,16 @@ if(isset($_GET['folder'])){
 			</div>
 		</div>
 	</div>
+	
+	
+	<!--Update avatar hidden div----------------------------->
+	<div id='update_avatar'>
+		<h2>Update avatar</h2>
+		<form action='index.php' method='post' enctype="multipart/form-data">
+			<input type='file' name='file'></input>
+			<input type='submit' name='update_avatar' value='Update Avatar'>
+		</form>
+	</div>
 		
 
 <!--Actual Page------------------------------------------------------------------------------------------------------>	
@@ -226,7 +236,7 @@ if(isset($_GET['folder'])){
 			<ul class="menu">
             
                <li class="left avatar"> 
-               		<a> <img src="icon3.png" alt="avatar" title="Change Picture" height="64" width="64"></a> 
+               		<a onclick='show_update_avatar()'> <img src="icon3.png" alt="avatar" title="Change Picture" height="64" width="64"></a> 
                </li>
 			   <?php
 			   $name = username_from_email($_SESSION['username']);

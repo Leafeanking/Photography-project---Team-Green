@@ -18,6 +18,12 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 	}
 }
 
+//UPDATE USER AVATAR
+if(isset($_POST['update_avatar']) and isset($_SESSION['username']) and $_FILES['file']['type'] == 'image/jpeg'){
+	$image = addslashes(file_get_contents($_FILES['file']['tmp_name']));
+	dbDo("update users set avatar='$image' where email='$_SESSION[username]'");
+}
+
 //UPDATE USER INFORMATION.
 if(isset($_POST['update_user_info']) and isset($_SESSION['username'])
 	and isset($_POST['passwordOld']) and $_POST['passwordOld'] != ''){
@@ -145,6 +151,9 @@ if(isset($_POST['submit_new_user'])){
 	}
 }
 
+//////////////////////////////////////////////////////////////////////////////
+//User Specific Processes/////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 //FORWARD WHEN LOGGING IN, OR ALREADY LOGGING IN AND SUBMITTING POST FORM DATA
 if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 	//Manage user view for admin or student
@@ -284,7 +293,7 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 		}*/
 		
 		//Upload Images, currently only jpg support.
-		if(isset($_FILES['file']) and $_POST['project'] != 'none'){
+		if(isset($_FILES['file']) and isset($_POST['project']) and $_POST['project'] != 'none'){
 			set_time_limit(100);
 			$owner = $_SESSION['username'];
 			if($_FILES['file']['type'] == "application/x-zip-compressed"){
