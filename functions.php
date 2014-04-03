@@ -264,44 +264,6 @@ function access_full_project($projectID){
 	return $return;
 }
 
-//uncomment last line of function and comment out echo to finish. !!!!!!!!!!!!!!
-function create_project($classID,$theme,$q1,$q1ID,$scale1,
-			$q2=NULL,$q2ID=NULL,$scale2=NULL,
-			$q3=NULL,$q3ID=NULL,$scale3=NULL,
-			$q4=NULL,$q4ID=NULL,$scale4=NULL,
-			$q5=NULL,$q5ID=NULL,$scale5=NULL,
-			$q6=NULL,$q6ID=NULL,$scale6=NULL,
-			$q7=NULL,$q7ID=NULL,$scale7=NULL,
-			$q8=NULL,$q8ID=NULL,$scale8=NULL,
-			$q9=NULL,$q9ID=NULL,$scale9=NULL,
-			$q10=NULL,$q10ID=NULL,$scale10=NULL,
-			$q11=NULL,$q11ID=NULL,$scale11=NULL,
-			$q12=NULL,$q12ID=NULL,$scale12=NULL,
-			$q13=NULL,$q13ID=NULL,$scale13=NULL,
-			$q14=NULL,$q14ID=NULL,$scale14=NULL,
-			$q15=NULL,$q15ID=NULL,$scale15=NULL,
-			$q16=NULL,$q16ID=NULL,$scale16=NULL,
-			$q17=NULL,$q17ID=NULL,$scale17=NULL,
-			$q18=NULL,$q18ID=NULL,$scale18=NULL,
-			$q19=NULL,$q19ID=NULL,$scale19=NULL,
-			$q20=NULL,$q20ID=NULL,$scale20=NULL){
-	
-	$fields = "class,theme,q1,q1ID,scale1";
-	$values = "'".$classID."','".$theme."','".$q1."','".$q1ID."',".$scale1;
-	for($i=2;$i<=20;$i++){
-		if(${'q'.$i} != NULL and ${'q'.$i.'ID'} != NULL and ${'scale'.$i} != NULL){
-			$fields = $fields.',q'.$i.',q'.$i.'ID,scale'.$i;
-			$values = $values.",'".${'q'.$i}."','".${'q'.$i.'ID'}."',".${'scale'.$i};
-		}
-		else{
-			break;
-		}
-	}	
-	$query = "Insert into projects ($fields) values ($values)";
-	echo $query;
-	//dbDo($query);
-}
-
 function remove_user_completely($email){
 	$result = dbGet("select imageID from images where owner ='$email'");
 	while($data = mysql_fetch_assoc($result)){

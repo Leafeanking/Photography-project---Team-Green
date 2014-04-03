@@ -101,7 +101,6 @@ if(isset($_POST['submit_new_user'])){
 	$password2 = addslashes($_POST['passwordconfirm']);
 	$class = $_POST['class'];
 	$firstClass = $class[0];
-	//print_r($class);
 	//exit();
 	$results = dbGet("select * from users where email = '$email'");
 	//Check if a class was selected.
