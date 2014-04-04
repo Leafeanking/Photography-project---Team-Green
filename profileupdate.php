@@ -67,7 +67,10 @@
 			</form>
 		</div>
 		<footer>
-		<small><i>Copyright &copy; 2014 <br></i></small>
+			<h4 id="copyright"><small ><i>
+				Copyright &copy; 2014 <br />
+			</i></small></h4>
+            <br>
 		</footer>
 	</body>
 </html>
