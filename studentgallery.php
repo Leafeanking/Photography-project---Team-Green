@@ -140,7 +140,7 @@ if(!isset($_SESSION['accessCode'])){
 	</script>	
 	</head>
 	<body class="centerGrouping">
-			<header id="logo">
+			<header>
 			</header>
 		<!--Large picture-->
 		<a href="index.php" id="galleryExit" title="Exit Session" alt="Exit Session"><img src="exit.png"></a>

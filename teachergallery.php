@@ -61,11 +61,11 @@ else if(!isset($_SESSION['project']) or !isset($_SESSION['accessCode'])){
 		};
 		</script>
 	</head>
-	<div class='links' style='float:right;'>
+	<div class='links' style='align-content:left;'>
 		<a href='studentgallery.php' target='_blank'>Join Voting</a>
 	</div>
 	<body class="centerGrouping">
-			<header id="logo">
+			<header>
 			</header>
 		<a href="index.php" id="galleryExit" title="Exit Session" alt="Exit Session"><img src="exit.png"></a>
 		<div class="galleria">
