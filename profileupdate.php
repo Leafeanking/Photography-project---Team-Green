@@ -66,8 +66,8 @@
 				</div>
 			</form>
 		</div>
-		<footer>
-			<h4 id="copyright"><small ><i>
+		<footer class="copyright">
+			<h4><small ><i>
 				Copyright &copy; 2014 <br />
 			</i></small></h4>
             <br>
