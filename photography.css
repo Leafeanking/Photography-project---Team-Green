@@ -14,6 +14,11 @@ header h1{
 	padding:20px;	
 	min-width:300px;
 }
+.breadcrumb{
+	margin: 10px 20%;
+	padding:3px 20px;	
+	min-width:300px;	
+}
 
 /* text links*/
 .links a{
@@ -228,7 +233,7 @@ input, button, select{
 
 #image_meta_data{
 	font-weight:bold;
-	color:white;
+	color:#666;
 	background-color:black;
 	margin-bottom:10px;
 	padding:10px;
@@ -493,7 +498,7 @@ input, button, select{
 	height:500px;
 	background-color:white;
 	z-index:11;
-	padding:10px;
+	padding:40px;
 	border-radius:10px;
 	overflow:scroll;
 }
@@ -515,11 +520,14 @@ input, button, select{
 	position:fixed;
 	top:0px;
 	right:0px;
-	width:250px;
+	width:300px;
 	z-index:11;
 	background-color:white;
 	border-radius:10px;
-	padding:5px;
+	padding:10px;
+}
+#create_session input{
+	margin-bottom:10px;
 }
 
 #shadow{
