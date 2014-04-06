@@ -121,7 +121,6 @@ h1{
 	margin:0px;
 }
 
-
 input, button, select{
 	border-radius: 5px;
 	background-color: #EEE;
@@ -294,7 +293,6 @@ input, button, select{
 	position:relative;
 	width:200px;
 	height:200px;
-	overflow:hidden;
 	float:left;
 }
 
@@ -315,6 +313,10 @@ input, button, select{
 	position:absolute;
 	top:130px;
 	right:0px;
+	width: auto;
+	max-width: 144px;
+	height: auto;
+	max-height: 144px;
 	z-index:2;
 }
 
@@ -329,7 +331,7 @@ input, button, select{
 	border-radius:15px;
 	padding:5px;
 	margin-top:0px;
-	max-width:134px;
+	max-width:133px;
 	max-height:1.2em;
 	overflow:hidden;
 }
@@ -340,24 +342,24 @@ input, button, select{
 	
 /* folder and images inside */
 
-
 .icon img{
 	position:absolute;
 	top:0px;
 	left:0px;
 	padding:0px;
+	width:144px;
+	max-height:144px;
 	min-width:144px;
-    max-width: 144px;
-    max-height: 144px;
-    overflow:hidden;
+	min-height:144px;
+	overflow:hidden;
 	z-index:1;
 }
 
 #iconbar img{
 	padding:20px;
-    max-width: 144px;
-    max-height: 144px;
-    overflow:hidden;
+    width: 144px;
+    height:144px;
+	overflow:hidden;
 	float:left;
 }
 /**************/
