@@ -64,7 +64,7 @@ if(isset($_GET['folder'])){
 	<!--Actual Page------------------------------------------>
     <?php
 	if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
-        echo "<div id='location' class='center links'>";
+        echo "<div id='location' class='breadcrumb links'>";
         $theme = get_theme($_SESSION['view']);
         echo "<a href='index.php?folder=home'>Home</a> >> Gallery: $theme";
 		echo "</div>";
