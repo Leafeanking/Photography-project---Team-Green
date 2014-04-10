@@ -10,7 +10,6 @@
 	</head>
 	<body>
 		<header id="logo">
-		<h1>Create New User Account</h1>
 		</header>
 		<div class="menubar">
 		<?php
@@ -48,11 +47,16 @@
 			?>
 			</div>
 			<br>
-			<input class="submitButton" type="submit" name="submit_new_user" value="Create Account">
-		</form>
+            
+			<input class="submitButton createAccountCenter" type="submit" name="submit_new_user" value="Create Account">
+			
+        </form>
 		</div>
-		<footer>
-		<small><i>Copyright &copy; 2014 <br></i></small>
+		<footer class="copyright">
+			<h4><small ><i>
+				Copyright &copy; 2014 <br />
+			</i></small></h4>
+            <br>
 		</footer>
 	</body>
 </html>

@@ -19,7 +19,10 @@ header h1{
 	padding:3px 20px;	
 	min-width:300px;	
 }
-
+/* Center button under form*/
+.createAccountCenter{
+	margin-left:-300px;
+}
 /* text links*/
 .links a{
 	color: #FFFFFF;
