@@ -2,6 +2,7 @@ body {
 	background-color:#5F5F5F;
 	margin:0px;
 	padding:0px;
+	font-family: “Century Gothic”, CenturyGothic, AppleGothic, sans-serif;
 }
 
 header h1{
@@ -46,12 +47,7 @@ header h1{
 
 h1{
 	color:#FFF;
-	margin-bottom:0px;
-	text-align:right;
-	line-height:75%;
-	font-family:Georgia, "Times New Roman", Times, serif;
-	font-style:italic;
-	padding:160px 25px 0px 0px;
+	text-align:center;
 }
 
 .avatar{

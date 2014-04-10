@@ -25,7 +25,7 @@ echo "</div>";
 ///////////////////////////////////////////
 $theme = get_theme($_SESSION['view']);
 
-echo "<center><h2>$theme</h2></center>";
+echo "<center><h1>$theme</h1></center>";
 
 echo "<div>";
 $owner = "";

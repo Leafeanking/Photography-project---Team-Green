@@ -34,7 +34,7 @@ foreach($data as $access){
 			}
 			echo "<div class='folder'>";
 			if($_SESSION['access'] == 'admin'){//teacher View
-				echo "<h2><a href=teacherhome.php?folder=$folder[0]>$folder[1]</a></h2>";
+				echo "<h2 title='$folder[1]' alt='$folder[1]'><a href=teacherhome.php?folder=$folder[0]>$folder[1]</a></h2>";
 				echo "<a href=teacherhome.php?folder=$folder[0]>$folder[2]</a>";
 			}
 			else{//student View
