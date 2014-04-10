@@ -210,12 +210,22 @@ if(isset($_GET['folder'])){
 	<!--Update avatar hidden div----------------------------->
 	<div id='update_avatar'>
 		<h2>Update avatar</h2>
+		<p>Images are cropped by height</p>
 		<form action='index.php' method='post' enctype="multipart/form-data">
-			<input type='file' name='file'></input>
+			<input type='file' name='file' required></input>
 			<input type='submit' name='update_avatar' value='Update Avatar'>
 		</form>
 	</div>
 		
+	<!--Update logo hidden div----------------------------->
+	<div id='update_logo'>
+		<h2>Update Logo</h2>
+		<p>Make height 150px of png format. Clear browser cache on update</p>
+		<form action='index.php' method='post' enctype="multipart/form-data">
+			<input type='file' name='file' required></input>
+			<input type='submit' name='update_logo' value='Update Logo'>
+		</form>
+	</div>
 
 <!--Actual Page------------------------------------------------------------------------------------------------------>	
 
@@ -227,7 +237,7 @@ if(isset($_GET['folder'])){
 		echo "</div>";
 	}
 	?>	
-            <header id="logo">
+            <div onclick='show_update_logo()'><header id="logo"></div>
             </header>
 			
 		</div>

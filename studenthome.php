@@ -55,8 +55,9 @@ if(isset($_GET['folder'])){
 	<!--Update avatar hidden div----------------------------->
 	<div id='update_avatar'>
 		<h2>Update avatar</h2>
+		<p>Images are cropped by height</p>
 		<form action='index.php' method='post' enctype="multipart/form-data">
-			<input type='file' name='file'></input>
+			<input type='file' name='file' required></input>
 			<input type='submit' name='update_avatar' value='Update Avatar'>
 		</form>
 	</div>

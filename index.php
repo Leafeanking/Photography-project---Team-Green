@@ -271,6 +271,11 @@ if(isset($_SESSION['access']) and $_SESSION['access'] != false){
 			remove_associated_to_user($_POST['student_username']);
 		}
 		
+		//Update Logo
+		if(isset($_POST['update_logo'])){
+			move_uploaded_file($_FILES['file']['tmp_name'], 'logo/logo.png');
+		}
+		
 		/////////////////////////////////
 		//FORWARD TO CURRENT/OPENING PAGE
 		header('Location: teacherhome.php');

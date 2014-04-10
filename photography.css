@@ -32,7 +32,7 @@ header h1{
 }
 /*************/
 #logo{
-	background-image: url('logo.png');
+	background-image: url('logo/logo.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	height: 150px;
@@ -501,6 +501,18 @@ input, button, select{
 }
 
 #update_avatar{
+	display:none;
+	position:fixed;
+	top:0px;
+	left:0px;
+	width:250px;
+	z-index:11;
+	background-color:white;
+	border-radius:10px;
+	padding:5px;
+}
+
+#update_logo{
 	display:none;
 	position:fixed;
 	top:0px;

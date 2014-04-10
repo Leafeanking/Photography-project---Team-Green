@@ -45,6 +45,7 @@
 		hide_element('image_and_comments');
 		hide_element('create_session');
 		hide_element('update_avatar');
+		hide_element('update_logo');
 		document.getElementById('shadow').style.display = 'none';
 	}
 	
@@ -77,6 +78,11 @@
 	
 	function show_update_avatar(){
 		show_element('update_avatar');
+		show_element('shadow');
+	}
+	
+	function show_update_logo(){
+		show_element('update_logo');
 		show_element('shadow');
 	}
 	
