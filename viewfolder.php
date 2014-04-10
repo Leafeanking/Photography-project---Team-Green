@@ -25,7 +25,7 @@ echo "</div>";
 ///////////////////////////////////////////
 
 
-echo "<div id='iconbar'>";
+echo "<div>";
 $owner = "";
 foreach($data as $image){
 	//$image[0] is the image id, which will be sent by javascript to the server to get the comments back. 
@@ -36,7 +36,7 @@ foreach($data as $image){
 		$name = email_to_username($owner);
 		echo "<div class='clear'><h2>$name</h2></div>";
 	}
-	echo "<div id='$image[0]' onclick ='manage_image_click($image[0])' >$image[1]</div>";
+	echo "<div class='folder'><div id='$image[0]' onclick ='manage_image_click($image[0])'>$image[1]</div></div>";
 }
 
 echo "</div>";

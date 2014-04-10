@@ -289,11 +289,14 @@ input, button, select{
 
 /***************/
 .folder {
-	padding-top:10px;
+	
 	position:relative;
-	width:200px;
-	height:200px;
+	width:144px;
+	height:144px;
+	margin:28px;
 	float:left;
+	overflow:hidden;
+	border-radius:10px;
 }
 
 .folder a{
@@ -311,13 +314,11 @@ input, button, select{
 
 .folder img{
 	position:absolute;
-	top:130px;
-	right:0px;
-	width: auto;
-	max-width: 144px;
-	height: auto;
-	max-height: 144px;
+	top:0px;
+	left:0px;
+	max-height: 100%;
 	z-index:2;
+	border-radius:10px;
 }
 
 .folder h2{
@@ -355,13 +356,7 @@ input, button, select{
 	z-index:1;
 }
 
-#iconbar img{
-	padding:20px;
-    width: 144px;
-    height:144px;
-	overflow:hidden;
-	float:left;
-}
+
 /**************/
 
 #image_and_comments{
