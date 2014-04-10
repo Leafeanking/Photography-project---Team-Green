@@ -104,7 +104,7 @@ if(isset($_POST['submit_new_user'])){
 	//exit();
 	$results = dbGet("select * from users where email = '$email'");
 	//Check if a class was selected.
-	if($class == 'none'){
+	if(sizeof($class) == 0){
 		header("Location: createuser.php?fail=0");
 	}
 	//Check if password matches in both fields.

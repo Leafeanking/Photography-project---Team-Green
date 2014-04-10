@@ -397,7 +397,7 @@ input, button, select{
 	padding-right:3%;
 	height:inherit;
 	float:right;
-	text-align:right;
+	text-align:left;
 }
 
 #comments_ratings h3{
