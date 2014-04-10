@@ -229,14 +229,7 @@ if(isset($_GET['folder'])){
 
 <!--Actual Page------------------------------------------------------------------------------------------------------>	
 
-	<?php
-	if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
-        echo "<div id='location' class='breadcrumb links'>";
-        $theme = get_theme($_SESSION['view']);
-        echo "<a href='index.php?folder=home'>Home</a> >> Gallery: $theme";
-		echo "</div>";
-	}
-	?>	
+		
             <div onclick='show_update_logo()'><header id="logo"></div>
             </header>
 			
@@ -244,26 +237,37 @@ if(isset($_GET['folder'])){
         
         <div class="redline links">
 			<ul class="menu">
-            
-               <li class="left avatar"> 
+				<li class="left avatar"> 
                		<a onclick='show_update_avatar()'><div id='avatar'><img src="avatar.php?email=<?php echo $_SESSION['username']?>" alt="avatar" title="Change Picture"></div></a> 
-               </li>
+				</li>
+				<?php
+					if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
+						echo "<li class='left'>";
+						echo "<a href='index.php?folder=home'>Back</a>";
+						echo "</li>";
+					}
+					else{
+						$name = username_from_email($_SESSION['username']);
+						echo "<li class='left'><a href='profileupdate.php'>$name</a></li> 	";
+						echo "<li class='left'>                                             ";
+						echo "	<a href='#'>Manage</a>                                      ";
+						echo "	<ul>                                                        ";
+						echo "		<li>                                                    ";
+						echo "			<a onclick='show_create_project()'>Projects</a>     ";
+						echo "		</li>                                                   ";
+						echo "		<li>                                                    ";
+						echo "			<a onclick='show_edit_classes()'>Classes</a>        ";
+						echo "		</li>                                                   ";
+						echo "	</ul>                                                       ";
+						echo "</li>                                                         ";
+					}
+				?>
+               
 			   <?php
-			   $name = username_from_email($_SESSION['username']);
-               echo "<li class='left'><a href='profileupdate.php'>$name</a></li>"; 
+			   
 			   ?>
                
-				<li class='left'>
-					<a href="#">Manage</a>
-					<ul>
-						<li>
-							<a onclick="show_create_project()">Projects</a>
-						</li>
-						<li>
-							<a onclick="show_edit_classes()">Classes</a>
-						</li>
-					</ul>
-				</li>
+				
                 <li class="right">
                     <form action='index.php' method='POST'>
                     <input type='submit' name = 'Logout' value='Logout'>

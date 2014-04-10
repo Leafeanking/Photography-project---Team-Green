@@ -63,14 +63,7 @@ if(isset($_GET['folder'])){
 	</div>
 	
 	<!--Actual Page------------------------------------------>
-    <?php
-	if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
-        echo "<div id='location' class='breadcrumb links'>";
-        $theme = get_theme($_SESSION['view']);
-        echo "<a href='index.php?folder=home'>Home</a> >> Gallery: $theme";
-		echo "</div>";
-	}
-	?>
+
 		<header id="logo">
 		</header>
 			
@@ -80,11 +73,18 @@ if(isset($_GET['folder'])){
 	
 			<li class="left avatar"> <a onclick='show_update_avatar()'><div id='avatar'><img src="avatar.php?email=<?php echo $_SESSION['username']?>" alt="avatar" title="Change Picture"></div></a> </li>
 			<?php
-				$name = username_from_email($_SESSION['username']);
-				echo "<li class='left'> <a href='profileupdate.php'>$name</a> </li>";
+				if(isset($_SESSION['view']) and $_SESSION['view'] != 'home'){
+					echo "<li class='left'>";
+					echo "<a href='index.php?folder=home'>Back</a>";
+					echo "</li>";
+				}
+				else{
+					$name = username_from_email($_SESSION['username']);
+					echo "<li class='left'> <a href='profileupdate.php'>$name</a> </li>";
+					echo "<li class='left'><button onclick=show_manage_images()>Upload Images</button>";
+				}
 			?>
 			
-			<li class="left"><button onclick=show_manage_images()>Upload Images</button>
 			<li class="right "> <form action='index.php' method='POST'>
 					<input type='submit' name = 'Logout' value='Logout'>
 					</form>

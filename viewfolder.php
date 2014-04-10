@@ -23,7 +23,9 @@ echo "<div id='image_and_comments'>";
 echo "</div>";
 
 ///////////////////////////////////////////
+$theme = get_theme($_SESSION['view']);
 
+echo "<center><h2>$theme</h2></center>";
 
 echo "<div>";
 $owner = "";
