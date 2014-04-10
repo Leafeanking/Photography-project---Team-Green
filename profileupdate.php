@@ -33,10 +33,10 @@
 				<div class="newUser_inputBoxes">
 					<br>
 					
-					<label>Name:</label><input type="text" name="name" value="<?php echo $data['username'];?>"><br>
-					<label>Email:</label> <input type="email" name="email" value="<?php echo $data['email'];?>"><br>
-					<label>New password:</label><input type="password" name="passwordNew1" value=""><br>
-					<label>Re-enter new password:</label><input type="password" name="passwordNew2" value=""><br>
+					<label>*Name:</label><input type="text" name="name" value="<?php echo $data['username'];?>" required><br>
+					<label>*Email:</label> <input type="email" name="email" value="<?php echo $data['email'];?>" required><br>
+					<label>New password:</label><input type="password" name="passwordNew1" value="" placeholder='Only use if changing'><br>
+					<label>Re-enter new password:</label><input type="password" name="passwordNew2" value="" placeholder='Only use if changing'><br>
 					<div id='choose_class_to_join'>
 						<?php
 							if($_SESSION['access'] != 'admin'){
@@ -60,7 +60,7 @@
 					<br><br>
 					<h3>Current password must be entered for any changes</h3>
 					<div class="newUser_inputBoxes">
-					<label>Current Password:</label><input type="password" name="passwordOld" value=""><br>
+					<label>*Current Password:</label><input type="password" name="passwordOld" value="" required><br>
 					<input class="saveButton" type="submit" name="update_user_info" value="Save">
 					</div>
 				</div>
