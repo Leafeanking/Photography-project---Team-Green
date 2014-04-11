@@ -18,6 +18,9 @@ else{
 }
 //Image and comments Popup window.
 echo "<div id='image_and_comments'>";
+	echo "<a href='studenthome.php' id='manageImagesExit' title='Exit' alt='Exit'>";
+	echo "<img src='exit.png'>";
+	echo "</a>";
 	echo "<div id='comments_ratings'></div>";
 	echo "<div id='selectedImage'></div>";
 echo "</div>";

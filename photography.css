@@ -214,9 +214,7 @@ input, button, select{
 }
 
 #manageImagesExit{
-	position: relative;
-	bottom: 40px;
-	left: 98%;
+	float: right;
 }
 
 #galleryExit{
@@ -390,8 +388,6 @@ input, button, select{
 }
 
 #selectedImage{
-	width:65%;
-	float:left;
 	overflow:hidden;
 	height:inherit;
 }
@@ -399,6 +395,15 @@ input, button, select{
 #selectedImage img{
 	max-width:100%;
 	max-height:90%;
+	width: auto;
+	height: auto;
+}
+
+#selectedImage form {
+	float: right;
+	position: relative;
+	top: 470px;
+	clear: both;
 }
 
 #comments_ratings{
