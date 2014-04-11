@@ -201,10 +201,16 @@ input, button, select{
 	height: 600px;
 }
 
-#popupExit{
+#projectsExit{
 	position: relative;
 	bottom: 40px;
 	left: 58%;
+}
+
+#classesExit{
+	position: relative;
+	bottom: 10px;
+	left: 69%;
 }
 
 #galleryExit{
@@ -470,7 +476,7 @@ input, button, select{
 #class_create_delete{
 	background-color:white;
 	overflow-y:hidden;
-	width:40%;
+	width:20%;
 	padding-left:3%;
 	padding-right:3%;
 	height:inherit;
@@ -483,7 +489,7 @@ input, button, select{
 	overflow-y:scroll;
 	width:40%;
 	padding-left:3%;
-	padding-right:3%;
+	padding-right:8%;
 	height:inherit;
 	float:right;
 	text-align:right;
