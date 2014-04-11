@@ -213,6 +213,12 @@ input, button, select{
 	left: 69%;
 }
 
+#manageImagesExit{
+	position: relative;
+	bottom: 40px;
+	left: 98%;
+}
+
 #galleryExit{
 	position: relative;
 	bottom: 13px;
