@@ -76,6 +76,7 @@ if(isset($_GET['folder'])){
 		
 		
 		<div id = "edit_project">
+			<a href="teacherhome.php" id="popupExit" title="Exit" alt="Exit"><img src="exit.png"></a>
 			<div id = "create_project">
 				<h2>Create Project</h2>
 				<button onclick='switch_to_edit_classes()'>Edit Classes</button>

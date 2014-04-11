@@ -68,7 +68,7 @@ else if(!isset($_SESSION['project']) or !isset($_SESSION['accessCode'])){
 	<body class="centerGrouping">
 			<header>
 			</header>
-		<a href="index.php" id="galleryExit" title="Exit Session" alt="Exit Session"><img src="exit.png"></a>
+		<a href="teacherhome.php" id="galleryExit" title="Exit Session" alt="Exit Session"><img src="exit.png"></a>
 		<div class="galleria">
 		<?php
 			$data = access_full_project($_SESSION['project']);

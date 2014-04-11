@@ -201,6 +201,12 @@ input, button, select{
 	height: 600px;
 }
 
+#popupExit{
+	position: relative;
+	top: -13px;
+	left: 94%;
+}
+
 #galleryExit{
 	position: relative;
 	top: -13px;
