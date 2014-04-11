@@ -203,13 +203,13 @@ input, button, select{
 
 #popupExit{
 	position: relative;
-	top: -13px;
-	left: 94%;
+	bottom: 40px;
+	left: 58%;
 }
 
 #galleryExit{
 	position: relative;
-	top: -13px;
+	bottom: 13px;
 	left: 94%;
 }
 

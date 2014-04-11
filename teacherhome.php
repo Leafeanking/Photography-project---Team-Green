@@ -166,6 +166,7 @@ if(isset($_GET['folder'])){
 		
 <!--Edit Class, hidden div------------------------------------------------------------------------------------------>		
 	<div id='edit_classes'>
+		<a href="teacherhome.php" id="popupExit" title="Exit" alt="Exit"><img src="exit.png"></a>
 		<div id='class_create_delete'>
 			<h3>Create Class</h3>
 			<form action='index.php' method='post'>
