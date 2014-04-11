@@ -12,6 +12,7 @@ if(isset($_GET['folder'])){
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="photography.css">
 		<title>DSU Photography</title>
 		<script src="jquery.min.js"></script>

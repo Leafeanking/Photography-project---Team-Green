@@ -8,6 +8,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type"text/css" href="photography.css">
 		<title>Updating Profile</title>
 		<!--Icon place holder until we find an super awesome icon-->
