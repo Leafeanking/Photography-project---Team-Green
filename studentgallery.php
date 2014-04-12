@@ -144,7 +144,7 @@ if(!isset($_SESSION['accessCode'])){
 			<header>
 			</header>
 		<!--Large picture-->
-		<a href="studenthome.php" id="galleryExit" title="Exit Session" alt="Exit Session"><img src="exit.png"></a>
+		<div id="popupExit" title="Exit" alt="Exit" onclick='hide_all()'><img src="exit.png"></div>
 		<div class="galleriaStudent blackBorder">
 			<!--place holder picture-->
 			<div id='session_image_view'>
