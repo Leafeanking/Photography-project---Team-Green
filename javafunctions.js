@@ -28,7 +28,18 @@
 		show_element('shadow');
 		request_comments(photoId);
 		var data = document.getElementById('selectedImage')
-		data.innerHTML=document.getElementById(photoId).innerHTML + "<br/><form action='index.php' method='POST'><input type='hidden' name='imageID' value='"+photoId+"'><input type='submit' name='delete_image' value='Delete Image' onclick='return "+'confirm("Are you sure you want to delete this image?")'+"'></form>";	
+		data.innerHTML = "<h2>Please Wait while we gather Metadata</h2>";
+		var ajx = new XMLHttpRequest();
+		ajx.onreadystatechange = function(){
+			if(ajx.readyState == 4){
+			var meta = ajx.responseText;
+			data.innerHTML=document.getElementById(photoId).innerHTML + 
+			"<br/><div style='float:left'>"+meta+"</div>"+
+			"<form action='index.php' method='POST'><input type='hidden' name='imageID' value='"+photoId+"'><input type='submit' name='delete_image' value='Delete Image' onclick='return "+'confirm("Are you sure you want to delete this image?")'+"'></form>";	
+			}
+		}
+		ajx.open("GET","get_meta_data.php?imageID="+photoId+"&droponly",true);
+		ajx.send();
 	}
 	
 	function show_create_project(){

@@ -391,7 +391,6 @@ input, button, select{
 
 #selectedImage form {
 	float: right;
-	clear: both;
 }
 
 #comments_ratings{

@@ -77,9 +77,10 @@ if(isset($_GET['imageID'])){
 		$date		=$meta['date'];
 		$iso		=$meta['iso'];
 		$shutter	=$meta['shutter'];
-		
-		echo "Make: $make || Model: $model || Exposure: $exposure || Aperture: $aperture || Date: $date || Iso: $iso || Shutter: $shutter";
-		echo "<br>";
+		if(!isset($_GET['droponly'])){
+			echo "Make: $make || Model: $model || Exposure: $exposure || Aperture: $aperture || Date: $date || Iso: $iso || Shutter: $shutter";
+			echo "<br>";
+		}
 		echo "<select style='width:200px;'>";
 		foreach($full as $key => $value){
 			echo "<option>[$key]: $value</option>";
