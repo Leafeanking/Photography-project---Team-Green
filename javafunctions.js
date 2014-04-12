@@ -28,7 +28,7 @@
 		show_element('shadow');
 		request_comments(photoId);
 		var data = document.getElementById('selectedImage')
-		data.innerHTML=document.getElementById(photoId).innerHTML + "<form action='index.php' method='POST'><input type='hidden' name='imageID' value='"+photoId+"'><input type='submit' name='delete_image' value='Delete Image'></form>";	
+		data.innerHTML=document.getElementById(photoId).innerHTML + "<br/><form action='index.php' method='POST'><input type='hidden' name='imageID' value='"+photoId+"'><input type='submit' name='delete_image' value='Delete Image' onclick='return "+'confirm("Are you sure you want to delete this image?")'+"'></form>";	
 	}
 	
 	function show_create_project(){

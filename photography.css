@@ -391,8 +391,6 @@ input, button, select{
 
 #selectedImage form {
 	float: right;
-	position: relative;
-	top: 470px;
 	clear: both;
 }
 

@@ -28,7 +28,8 @@
 				echo "<li>Total: 0%</li>";
 			}
 			else{
-				echo "<li>Total: ".(string)(round(($total/$possible)*100,2))."%</li>";
+				//subtracting from 100%, a 1 is going to be the highest vote, this will reverse it.
+				echo "<li>Total: ".(string)(100-round(($total/$possible)*100,2))."%</li>"; 
 			}
 			echo "</ul>";
 			echo "</div>";
